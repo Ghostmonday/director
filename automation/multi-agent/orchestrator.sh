@@ -414,6 +414,40 @@ get_module_name() {
     esac
 }
 
+push_task_changes() {
+    local task_id="$1"
+    
+    log "INFO" "📤 Pushing task $task_id changes to GitHub"
+    
+    cd "$REPO_ROOT"
+    
+    # Add all changes
+    git add .
+    
+    # Check if there are changes to commit
+    if git diff --staged --quiet; then
+        log "INFO" "ℹ️  No changes to commit for task $task_id"
+        return 0
+    fi
+    
+    # Commit changes
+    local module_name=$(get_module_name "$task_id")
+    git commit -m "✅ Complete task $task_id: $module_name
+
+- Task $task_id completed successfully
+- Module: $module_name
+- Status: Ready for PR automation
+- Timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+    
+    # Push to main branch
+    if git push origin main; then
+        log "INFO" "✅ Task $task_id changes pushed to GitHub"
+    else
+        log "ERROR" "❌ Failed to push task $task_id changes"
+        return 1
+    fi
+}
+
 handle_review_rejection() {
     local task_id="$1"
     
@@ -648,6 +682,9 @@ main_loop() {
                 if wait_for_reviewer "$next_task"; then
                     # Mark task complete
                     mark_task_complete "$next_task"
+                    
+                    # Push changes to GitHub immediately
+                    push_task_changes "$next_task"
                     
                     # Trigger PR automation
                     "$REPO_ROOT/automation/scripts/create-module-pr.sh" \
