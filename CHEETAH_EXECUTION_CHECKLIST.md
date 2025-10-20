@@ -3356,9 +3356,12 @@ After BugBot approves, STOP and notify user to:
 
 ---
 
-## 🎬 STAGE 6: VIDEO GENERATION PIPELINE
+## 📱 STAGE 7: APP SHELL & UI
+
+### Task 7.1: Create App Entry Point
 **File:** `DirectorStudioApp.swift`
 **Priority:** 🟢 MEDIUM
+**Module Name:** `AppEntryPoint`
 
 ```swift
 // Create:
