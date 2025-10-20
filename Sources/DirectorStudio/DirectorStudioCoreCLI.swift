@@ -137,7 +137,7 @@ public final class DirectorStudioCoreCLI: DirectorStudioCoreProtocol {
         input: T.Input
     ) async throws -> T.Output {
         guard module.isEnabled else {
-            throw CoreError.moduleDisabled(module.id)
+            throw CoreError.moduleDisabled(module: module.id)
         }
         
         updateCurrentModule(module.name)
@@ -291,11 +291,7 @@ public enum PipelineState {
     case failed
 }
 
-public enum CoreError: Error {
-    case moduleDisabled(String)
-    case serviceNotFound(String)
-    case invalidConfiguration(String)
-}
+// CoreError moved to DirectorStudioCore.swift to avoid duplication
 
 // MARK: - Event Types
 
@@ -319,9 +315,7 @@ public struct CurrentModuleUpdatedEvent {
     public let module: String
 }
 
-public struct ProgressUpdatedEvent {
-    public let progress: Double
-}
+// ProgressUpdatedEvent moved to DirectorStudioCore.swift to avoid duplication
 
 public struct ModuleExecutedEvent {
     public let moduleId: String

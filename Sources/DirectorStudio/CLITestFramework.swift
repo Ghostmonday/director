@@ -170,6 +170,16 @@ public struct CLITestResult {
     public let input: Any
     public let output: Any?
     public let error: Error?
+    
+    public init(moduleId: String, moduleName: String, success: Bool, duration: TimeInterval, input: Any, output: Any?, error: Error?) {
+        self.moduleId = moduleId
+        self.moduleName = moduleName
+        self.success = success
+        self.duration = duration
+        self.input = input
+        self.output = output
+        self.error = error
+    }
 }
 
 public struct CLIPipelineTestResult {

@@ -30,7 +30,7 @@ public struct RewordingInput: Sendable {
         
         public var id: String { rawValue }
         
-        var systemPrompt: String {
+        public var systemPrompt: String {
             switch self {
             case .modernizeOldEnglish:
                 return "You are an expert at modernizing archaic or old English text into contemporary, natural language while preserving the original meaning and tone. Make it accessible to modern readers."
@@ -51,6 +51,10 @@ public struct RewordingInput: Sendable {
     }
 }
 
+// MARK: - RewordingStyle Type Alias
+
+public typealias RewordingStyle = RewordingInput.RewordingType
+
 // MARK: - Output
 
 public struct RewordingOutput: Sendable {
@@ -69,12 +73,13 @@ public struct RewordingOutput: Sendable {
 
 // MARK: - Module
 
-public final class RewordingModule: ModuleProtocol {
+public final class RewordingModule: PipelineModule {
     public typealias Input = RewordingInput
     public typealias Output = RewordingOutput
     
     public let id = "rewording"
     public let name = "Rewording"
+    public let version = "1.0.0"
     public var isEnabled = true
     
     private let aiService: AIServiceProtocol
@@ -106,5 +111,18 @@ public final class RewordingModule: ModuleProtocol {
             type: input.type,
             processingTime: processingTime
         )
+    }
+}
+
+// MARK: - PipelineModule Implementation
+
+extension RewordingModule {
+    public func execute(input: RewordingInput, context: PipelineContext) async -> Result<RewordingOutput, PipelineError> {
+        do {
+            let output = try await execute(input: input)
+            return .success(output)
+        } catch {
+            return .failure(.executionFailed(error.localizedDescription))
+        }
     }
 }

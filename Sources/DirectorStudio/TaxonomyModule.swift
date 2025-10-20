@@ -692,7 +692,7 @@ public struct PackagingModule: PipelineModule {
         
         // Segment duration note
         if !input.segments.isEmpty {
-            let totalDuration = input.segments.reduce(0.0) { $0 + $1.duration }
+            let totalDuration = input.segments.reduce(0.0) { $0 + Double($1.duration) }
             notes.append("Total runtime: \(String(format: "%.1f", totalDuration)) seconds")
         }
         

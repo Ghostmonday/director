@@ -12,16 +12,20 @@ import Foundation
 // MARK: - Project Model
 
 public struct Project: Codable, Identifiable {
-    public let id = UUID()
-    public let name: String
+    public var id = UUID()
+    public var name: String
+    public var description: String
     public let createdAt: Date
     public var lastModified: Date
+    public var updatedAt: Date
     public let status: ProjectStatus
     
-    public init(name: String, status: ProjectStatus = .draft) {
+    public init(name: String, description: String = "", status: ProjectStatus = .draft) {
         self.name = name
+        self.description = description
         self.createdAt = Date()
         self.lastModified = Date()
+        self.updatedAt = Date()
         self.status = status
     }
 }

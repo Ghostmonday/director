@@ -39,166 +39,8 @@ public struct SegmentationOutput: Sendable {
     }
 }
 
-public struct PromptSegment: Codable, Identifiable, Sendable {
-    /// Unique identifier for this segment
-    public let id = UUID()
-    
-    /// Sequential index in the story
-    public let index: Int
-    
-    /// Target duration in seconds
-    public let duration: Int
-    
-    /// The actual prompt content for video generation
-    public let content: String
-    
-    /// Characters present in this segment
-    public let characters: [String]
-    
-    /// Setting/location description
-    public let setting: String
-    
-    /// Action taking place in this segment
-    public let action: String
-    
-    /// Continuity notes for validation
-    public let continuityNotes: String
-    
-    /// Cinematic metadata for visual specification
-    public var cinematicTags: CinematicTaxonomy?
-    
-    /// Location identifier for continuity tracking
-    public let location: String
-    
-    /// Props/objects present in this segment
-    public let props: [String]
-    
-    /// Emotional tone of this segment
-    public let tone: String
-    
-    public init(
-        index: Int,
-        duration: Int,
-        content: String,
-        characters: [String],
-        setting: String,
-        action: String,
-        continuityNotes: String,
-        location: String,
-        props: [String],
-        tone: String
-    ) {
-        self.index = index
-        self.duration = duration
-        self.content = content
-        self.characters = characters
-        self.setting = setting
-        self.action = action
-        self.continuityNotes = continuityNotes
-        self.location = location
-        self.props = props
-        self.tone = tone
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case index, duration, content, characters, setting, action
-        case continuityNotes = "continuity_notes"
-        case location, props, tone
-    }
-    
-    /// Convert to SceneModel for continuity validation
-    public func toSceneModel() -> SceneModel {
-        return SceneModel(
-            id: index,
-            location: location,
-            characters: characters,
-            props: props,
-            prompt: content,
-            tone: tone
-        )
-    }
-}
 
-// MARK: - Scene Model
 
-/// Simplified scene representation for continuity validation
-public struct SceneModel: Codable, Identifiable, Equatable, Sendable {
-    public let id: Int
-    public let location: String
-    public let characters: [String]
-    public let props: [String]
-    public let prompt: String
-    public let tone: String
-    
-    public init(
-        id: Int,
-        location: String,
-        characters: [String],
-        props: [String],
-        prompt: String,
-        tone: String
-    ) {
-        self.id = id
-        self.location = location
-        self.characters = characters
-        self.props = props
-        self.prompt = prompt
-        self.tone = tone
-    }
-}
-
-// MARK: - Cinematic Taxonomy Model
-
-/// Comprehensive cinematic metadata for visual specification
-public struct CinematicTaxonomy: Codable, Sendable {
-    public let shotType: String
-    public let cameraAngle: String
-    public let framing: String
-    public let lighting: String
-    public let colorPalette: String
-    public let lensType: String
-    public let cameraMovement: String
-    public let emotionalTone: String
-    public let visualStyle: String
-    public let actionCues: [String]
-    
-    public init(
-        shotType: String,
-        cameraAngle: String,
-        framing: String,
-        lighting: String,
-        colorPalette: String,
-        lensType: String,
-        cameraMovement: String,
-        emotionalTone: String,
-        visualStyle: String,
-        actionCues: [String]
-    ) {
-        self.shotType = shotType
-        self.cameraAngle = cameraAngle
-        self.framing = framing
-        self.lighting = lighting
-        self.colorPalette = colorPalette
-        self.lensType = lensType
-        self.cameraMovement = cameraMovement
-        self.emotionalTone = emotionalTone
-        self.visualStyle = visualStyle
-        self.actionCues = actionCues
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case shotType = "shot_type"
-        case cameraAngle = "camera_angle"
-        case framing
-        case lighting
-        case colorPalette = "color_palette"
-        case lensType = "lens_type"
-        case cameraMovement = "camera_movement"
-        case emotionalTone = "emotional_tone"
-        case visualStyle = "visual_style"
-        case actionCues = "action_cues"
-    }
-}
 
 public struct SegmentationMetrics: Codable, Sendable {
     public let averageDuration: TimeInterval
@@ -222,12 +64,13 @@ public struct SegmentationMetrics: Codable, Sendable {
 
 // MARK: - Module
 
-public final class SegmentationModule: ModuleProtocol {
+public final class SegmentationModule: PipelineModule {
     public typealias Input = SegmentationInput
     public typealias Output = SegmentationOutput
     
     public let id = "segmentation"
     public let name = "Segmentation"
+    public let version = "1.0.0"
     public var isEnabled = true
     
     public init() {}
@@ -421,7 +264,7 @@ public final class SegmentationModule: ModuleProtocol {
                 order += 1
             } else {
                 // Split oversized segment
-                let words = segment.content.components(separatedBy: .whitespacesAndNewlines)
+                let words = segment.content.components(separatedBy: CharacterSet.whitespacesAndNewlines)
                 var currentChunk = ""
                 var currentWords: [String] = []
                 
@@ -601,23 +444,16 @@ public enum PacingType: String, Codable, Sendable, CaseIterable {
     public var id: String { rawValue }
 }
 
-private enum SegmentPacing: String {
-    case fast = "Fast"
-    case moderate = "Moderate"
-    case slow = "Slow"
-    case building = "Building"
+// MARK: - PipelineModule Implementation
+
+extension SegmentationModule {
+    public func execute(input: SegmentationInput, context: PipelineContext) async -> Result<SegmentationOutput, PipelineError> {
+        do {
+            let output = try await execute(input: input)
+            return .success(output)
+        } catch {
+            return .failure(.executionFailed(error.localizedDescription))
+        }
+    }
 }
 
-// MARK: - Transition Types
-
-/// Transition types between video segments
-public enum TransitionType: String, Codable, Sendable, CaseIterable {
-    case cut = "Cut"
-    case fade = "Fade"
-    case temporal = "Temporal"
-    case spatial = "Spatial"
-    case dialogue = "Dialogue"
-    case hard = "Hard"
-    
-    public var id: String { rawValue }
-}
