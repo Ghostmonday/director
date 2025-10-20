@@ -1,0 +1,54 @@
+# Xcode
+*.xcodeproj
+*.xcworkspace
+*.xcuserdata
+*.xcuserdatad
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Secrets (IMPORTANT - Never commit API keys!)
+Secrets.xcconfig
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Temporary files
+*.swp
+*.swo
+*~
+.#*
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]
+
+# Shell scripts (temporary)
+*.sh
+
+# Legacy codebase (too large for git, reference only)
+xxx.txt
+
+# Cursor
+.cursor/
+
