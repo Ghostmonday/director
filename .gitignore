@@ -43,8 +43,9 @@ Secrets.xcconfig
 __pycache__/
 *.py[cod]
 
-# Shell scripts (temporary)
+# Shell scripts (temporary) - but allow automation scripts
 *.sh
+!automation/scripts/*.sh
 
 # Legacy codebase (too large for git, reference only)
 xxx.txt
