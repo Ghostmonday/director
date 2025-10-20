@@ -1,4 +1,4 @@
-# Cheetah Execution Checklist - v2.1 (Audit-Enhanced)
+# Director Project Task List - v2.1
 
 ## 📚 IMPORTANT: Reference Legacy Code
 
@@ -78,6 +78,7 @@ The legacy codebase (31,787 lines) contains:
 - [ ] Types are Codable (for persistence)
 - [ ] Enums have all cases from legacy code
 - [ ] Struct matches legacy definition exactly
+- [ ] Swift Package Manager can resolve the module
 
 # AUTO-SYNC STEP
 git fetch origin main && git merge origin/main --no-edit
@@ -319,10 +320,11 @@ git fetch origin main && git merge origin/main --no-edit
 5. ✅ **Task 1.5:** Build Rewording UI + VALIDATE UX (UI/UX)
 
 **After Stage 1:**
-6. **Task 2.2:** Create PipelineOrchestrator
-7. **Task 3.2:** Create AIService
+6. **Task 2.1:** Create PipelineConfig
+7. **Task 2.2:** Create PipelineOrchestrator
 8. **Task 3.1:** Create Secrets Configuration
-9. **Task 3.2a:** Create ImageGenerationService
+9. **Task 3.2:** Create AIService
+10. **Task 3.2a:** Create ImageGenerationService
 
 **Everything else can be done in parallel or later.**
 
@@ -331,7 +333,7 @@ git fetch origin main && git merge origin/main --no-edit
 ## ✅ STAGE COMPLETION MARKER
 File: STAGE_1_COMPLETE.md
 - Auto-generated when all tasks in this stage are validated.
-- Used by Cheetah to confirm build progression.
+- Used to confirm build progression.
 
 # AUTO-GENERATE STAGE_1_COMPLETE.md after all validation checkboxes are ✅
 
@@ -377,7 +379,7 @@ File: STAGE_1_COMPLETE.md
 
 ## 🚀 EXECUTION GUIDELINES FOR AI AGENTS
 
-### 🤖 **Cheetah Execution Protocol:**
+### 🤖 **Developer Execution Protocol:**
 
 1. **Read Task Completely** - Don't skip sections
 2. **Reference Legacy Code** - Read specified line numbers first
@@ -414,6 +416,17 @@ File: STAGE_1_COMPLETE.md
 
 ---
 
+## 🔄 INTEGRATION TESTING FRAMEWORK
+
+### 🧪 **Module Integration Requirements:**
+- **Inter-Module Tests:** Validate communication between modules
+- **Data Flow Validation:** Verify data passes correctly through pipeline
+- **Dependency Injection:** Test service registration and resolution
+- **Error Propagation:** Verify errors are handled correctly across modules
+- **Event Bus:** Test event publishing and subscription across modules
+
+---
+
 ## 🎨 UI/UX COMPLIANCE FRAMEWORK
 
 ### 📱 **Responsive Design Requirements:**
@@ -444,39 +457,64 @@ File: STAGE_1_COMPLETE.md
 ## ✅ STAGE COMPLETION MARKER
 File: STAGE_2_COMPLETE.md
 - Auto-generated when all tasks in this stage are validated.
-- Used by Cheetah to confirm build progression.
+- Used to confirm build progression.
 
 # AUTO-GENERATE STAGE_2_COMPLETE.md after all validation checkboxes are ✅
 
 ## ✅ STAGE COMPLETION MARKER
 File: STAGE_3_COMPLETE.md
 - Auto-generated when all tasks in this stage are validated.
-- Used by Cheetah to confirm build progression.
+- Used to confirm build progression.
 
 # AUTO-GENERATE STAGE_3_COMPLETE.md after all validation checkboxes are ✅
 
 ## ✅ STAGE COMPLETION MARKER
 File: STAGE_4_COMPLETE.md
 - Auto-generated when all tasks in this stage are validated.
-- Used by Cheetah to confirm build progression.
+- Used to confirm build progression.
 
 # AUTO-GENERATE STAGE_4_COMPLETE.md after all validation checkboxes are ✅
 
 ## ✅ STAGE COMPLETION MARKER
 File: STAGE_5_COMPLETE.md
 - Auto-generated when all tasks in this stage are validated.
-- Used by Cheetah to confirm build progression.
+- Used to confirm build progression.
 
 # AUTO-GENERATE STAGE_5_COMPLETE.md after all validation checkboxes are ✅
+
+## ✅ STAGE COMPLETION MARKER
+File: STAGE_6_COMPLETE.md
+- Auto-generated when all tasks in this stage are validated.
+- Used to confirm build progression.
+
+# AUTO-GENERATE STAGE_6_COMPLETE.md after all validation checkboxes are ✅
+
+## ✅ STAGE COMPLETION MARKER
+File: STAGE_7_COMPLETE.md
+- Auto-generated when all tasks in this stage are validated.
+- Used to confirm build progression.
+
+# AUTO-GENERATE STAGE_7_COMPLETE.md after all validation checkboxes are ✅
+
+## ✅ STAGE COMPLETION MARKER
+File: STAGE_8_COMPLETE.md
+- Auto-generated when all tasks in this stage are validated.
+- Used to confirm build progression.
+
+# AUTO-GENERATE STAGE_8_COMPLETE.md after all validation checkboxes are ✅
 
 ## 🧾 FINAL PRE-SUBMISSION CHECKLIST
 - [ ] STAGE_COMPLETION_REPORT.md generated
 - [ ] DeepSeqAPIKey & PolloAPIKey verified for all build configs
 - [ ] No storyboard or unused asset references
 - [ ] All validations timestamped in STAGE_COMPLETION_REPORT.md
+- [ ] Swift Package Manager structure validation complete
+- [ ] Integration tests between modules passing
+- [ ] Localization placeholder strings verified
+- [ ] Performance benchmarks established
 
 ---
 
-**Ready for optimized Cheetah execution!** 🚀
+**Ready for optimized project execution!** 🚀
 
 **Start with Stage 1, Task 1.1 and follow the critical path.**
