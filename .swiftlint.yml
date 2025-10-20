@@ -1,0 +1,110 @@
+# SwiftLint Configuration for DirectorStudio
+# BugBot uses this for static analysis
+
+# Rules
+disabled_rules:
+  - trailing_whitespace
+  - line_length  # Handled by formatter
+
+opt_in_rules:
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - missing_docs
+  - private_over_fileprivate
+  - strict_fileprivate
+  - explicit_init
+  - explicit_type_interface
+  - fatal_error_message
+  - file_header
+  - let_var_whitespace
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_parameters
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - sorted_imports
+  - unused_import
+  - unused_private_declaration
+
+# Analyzer rules
+analyzer_rules:
+  - explicit_self
+  - unused_declaration
+  - unused_import
+
+# Severity
+force_unwrapping: error
+missing_docs:
+  warning:
+    - public
+    - open
+
+# Excluded paths
+excluded:
+  - Pods
+  - .build
+  - DerivedData
+  - .swiftpm
+  - xxx.txt
+
+# File length
+file_length:
+  warning: 500
+  error: 1000
+
+# Type body length
+type_body_length:
+  warning: 300
+  error: 500
+
+# Function body length
+function_body_length:
+  warning: 50
+  error: 100
+
+# Cyclomatic complexity
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+
+# Nesting
+nesting:
+  type_level:
+    warning: 2
+  statement_level:
+    warning: 5
+
+# Identifier name
+identifier_name:
+  min_length:
+    warning: 2
+  max_length:
+    warning: 40
+    error: 50
+  excluded:
+    - id
+    - URL
+    - url
+
+# Custom rules
+custom_rules:
+  no_print:
+    name: "No Print Statements"
+    regex: "print\\("
+    message: "Use proper logging instead of print()"
+    severity: warning
+  
+  no_force_try:
+    name: "No Force Try"
+    regex: "try!"
+    message: "Use proper error handling instead of try!"
+    severity: error
+  
+  no_hardcoded_keys:
+    name: "No Hardcoded API Keys"
+    regex: "(sk-|pk-|api_key|apiKey)\\s*=\\s*\"[^\"]+\""
+    message: "Never hardcode API keys - use Secrets.xcconfig"
+    severity: error
+

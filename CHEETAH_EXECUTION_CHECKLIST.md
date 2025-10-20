@@ -59,6 +59,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.2: Create PipelineContext ⚠️ BLOCKING
@@ -97,6 +109,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.3: Create MockAIService ⚠️ BLOCKING
@@ -133,6 +157,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.4: Update rewording.swift + VALIDATE
@@ -166,6 +202,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.4b: Build Rewording UI + VALIDATE UX
@@ -216,6 +264,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.5: Update segmentation.swift + VALIDATE
@@ -249,6 +309,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.5b: Build Segmentation UI + VALIDATE UX
@@ -304,6 +376,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.6: Update storyanalysis.swift + VALIDATE
@@ -337,6 +421,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.6b: Build Story Analysis UI + VALIDATE UX
@@ -394,6 +490,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.7: Update taxonomy.swift + VALIDATE
@@ -427,6 +535,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.7b: Build Taxonomy UI + VALIDATE UX
@@ -483,6 +603,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.8: Update continuity.swift + VALIDATE
@@ -516,6 +648,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.8b: Build Continuity UI + VALIDATE UX
@@ -573,6 +717,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 1.9: Validation Test
@@ -602,6 +758,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ## 🔧 STAGE 2: PIPELINE ORCHESTRATION
@@ -641,6 +809,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 2.2: Create PipelineOrchestrator
@@ -680,6 +860,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 2.2b: Build Pipeline Orchestrator UI + VALIDATE UX
@@ -741,6 +933,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 2.3-2.6: Implement Pipeline Features
@@ -783,6 +987,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 2.8: Add Telemetry for Pipeline Execution
@@ -830,6 +1046,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 2.9: Documentation Milestone - Pipeline System
@@ -879,6 +1107,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ## 🤖 STAGE 3: AI SERVICE INTEGRATION
@@ -1132,6 +1372,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 3.2b: Build AI Service Settings UI + VALIDATE UX
@@ -1246,6 +1498,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 3.4-3.6: Update Modules for Real AI
@@ -1290,6 +1554,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 4.2: Create PersistenceController
@@ -1318,6 +1594,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 4.2b: Build Project Management UI + VALIDATE UX
@@ -1377,6 +1665,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 4.3-4.5: Integrate with Core
@@ -1421,6 +1721,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 5.2: Create StoreKitService
@@ -1449,6 +1761,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 5.2b: Build Credits & Store UI + VALIDATE UX
@@ -1508,6 +1832,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 5.3: Integrate with Pipeline
@@ -1570,6 +1906,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 5.5: Create Developer Dashboard & Monetization Control
@@ -1664,6 +2012,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 5.6: Documentation Milestone - Credits & Monetization
@@ -1725,6 +2085,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ## 🎬 STAGE 6: VIDEO GENERATION PIPELINE
@@ -1776,6 +2148,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 6.2: Create VideoGenerationModule
@@ -1841,6 +2225,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 6.2b: Build Video Generation Settings UI + VALIDATE UX
@@ -1973,6 +2369,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 6.3b: Build Video Assembly Settings UI + VALIDATE UX
@@ -2101,6 +2509,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 6.5: Build Video Generation Progress UI + VALIDATE UX
@@ -2431,6 +2851,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 6.9: Documentation Milestone - Video Pipeline
@@ -2493,6 +2925,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ## 📱 STAGE 7: APP SHELL & UI
@@ -2539,6 +2983,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ## ✅ COMPLETION CHECKLIST
@@ -2669,6 +3125,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 7.4: Add Localization Scaffolding
@@ -2727,6 +3195,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 7.5: Add Accessibility Validation
@@ -2799,6 +3279,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ---
@@ -2874,6 +3366,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ### Task 8.2: Create Security Documentation
@@ -2948,6 +3452,18 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Test functionality programmatically
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
+
+**🤖 AUTO-PR TRIGGER (Optional):**
+If module is complete and ready for review, run:
+```bash
+./automation/scripts/create-module-pr.sh <ModuleName>
+```
+This will automatically:
+- Create PR branch with timestamp
+- Trigger BugBot review (build, lint, security checks)
+- Auto-merge if approved OR create patch branch if issues found
+- Log status to `automation/logs/pr-tracker.md`
+
 ---
 
 ---

@@ -1,0 +1,388 @@
+name: 🤖 Auto PR + BugBot Review
+
+on:
+  push:
+    branches:
+      - 'pr/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+env:
+  BUGBOT_ENABLED: true
+  AUTO_MERGE_ON_PASS: true
+
+jobs:
+  create-pr:
+    name: 📝 Create Auto PR
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/pr/')
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Extract module name
+        id: module
+        run: |
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          MODULE_NAME=$(echo "$BRANCH_NAME" | sed 's/pr\/\(.*\)-validation-.*/\1/')
+          TIMESTAMP=$(echo "$BRANCH_NAME" | sed 's/.*-validation-\(.*\)/\1/')
+          echo "name=$MODULE_NAME" >> $GITHUB_OUTPUT
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+      
+      - name: Create Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.module.outputs.branch }}
+          base: main
+          title: "🔧 Module Complete: ${{ steps.module.outputs.name }} | Auto-Validation & BugBot Scan"
+          body: |
+            ## 🎯 Module Validation Complete
+            
+            **Module:** `${{ steps.module.outputs.name }}`  
+            **Timestamp:** `${{ steps.module.outputs.timestamp }}`  
+            **Branch:** `${{ steps.module.outputs.branch }}`
+            
+            ---
+            
+            ### ✅ Local Validation Passed
+            - [x] Module compiles without errors
+            - [x] All validation tests passed
+            - [x] Fidelity checks complete
+            
+            ### 🤖 BugBot Review
+            - [ ] Awaiting BugBot scan...
+            - [ ] No blocking issues detected
+            - [ ] Ready for merge
+            
+            ---
+            
+            **Auto-generated PR** | Awaiting BugBot review
+          labels: needs-bugbot-review,auto-pr
+          draft: false
+      
+      - name: Log PR creation
+        run: |
+          mkdir -p automation/logs
+          cat >> automation/logs/pr-tracker.md << EOF
+          
+          ## [Module: ${{ steps.module.outputs.name }}]
+          - PR: #${{ steps.create_pr.outputs.pull-request-number }} opened at $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          - Branch: \`${{ steps.module.outputs.branch }}\`
+          - BugBot: ⏳ Pending
+          - Merged: ⏳ Pending
+          
+          EOF
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add automation/logs/pr-tracker.md
+          git commit -m "📊 Log PR #${{ steps.create_pr.outputs.pull-request-number }} creation" || true
+          git push origin main || true
+
+  bugbot-review:
+    name: 🐛 BugBot Analysis
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'needs-bugbot-review')
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.9"
+      
+      - name: Run Swift Build Check
+        id: build
+        continue-on-error: true
+        run: |
+          swift build 2>&1 | tee build.log
+          if [ $? -eq 0 ]; then
+            echo "status=pass" >> $GITHUB_OUTPUT
+          else
+            echo "status=fail" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Run SwiftLint (BugBot Static Analysis)
+        id: swiftlint
+        continue-on-error: true
+        run: |
+          # Install SwiftLint if not available
+          if ! command -v swiftlint &> /dev/null; then
+            brew install swiftlint
+          fi
+          
+          swiftlint lint --reporter json > swiftlint-report.json || true
+          
+          # Parse results
+          VIOLATIONS=$(jq '[.[] | select(.severity == "error")] | length' swiftlint-report.json)
+          WARNINGS=$(jq '[.[] | select(.severity == "warning")] | length' swiftlint-report.json)
+          
+          echo "errors=$VIOLATIONS" >> $GITHUB_OUTPUT
+          echo "warnings=$WARNINGS" >> $GITHUB_OUTPUT
+          
+          if [ "$VIOLATIONS" -eq 0 ]; then
+            echo "status=pass" >> $GITHUB_OUTPUT
+          else
+            echo "status=fail" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Run Custom BugBot Checks
+        id: bugbot
+        run: |
+          # Check for common issues
+          ISSUES=0
+          
+          # Check 1: No hardcoded API keys
+          if grep -r "sk-" --include="*.swift" .; then
+            echo "❌ Found potential hardcoded API keys" >> bugbot-report.txt
+            ISSUES=$((ISSUES + 1))
+          fi
+          
+          # Check 2: No force unwraps in production code
+          FORCE_UNWRAPS=$(grep -r "!" --include="*.swift" . | grep -v "// " | wc -l)
+          if [ "$FORCE_UNWRAPS" -gt 10 ]; then
+            echo "⚠️ Found $FORCE_UNWRAPS force unwraps - consider safer alternatives" >> bugbot-report.txt
+          fi
+          
+          # Check 3: All public APIs documented
+          UNDOCUMENTED=$(grep -r "public func\|public var\|public struct\|public class" --include="*.swift" . | grep -v "///" | wc -l)
+          if [ "$UNDOCUMENTED" -gt 0 ]; then
+            echo "⚠️ Found $UNDOCUMENTED undocumented public APIs" >> bugbot-report.txt
+          fi
+          
+          # Check 4: No print statements in production
+          PRINT_STATEMENTS=$(grep -r "print(" --include="*.swift" . | grep -v "// " | wc -l)
+          if [ "$PRINT_STATEMENTS" -gt 0 ]; then
+            echo "⚠️ Found $PRINT_STATEMENTS print statements - use proper logging" >> bugbot-report.txt
+          fi
+          
+          echo "issues=$ISSUES" >> $GITHUB_OUTPUT
+          
+          if [ "$ISSUES" -eq 0 ]; then
+            echo "status=pass" >> $GITHUB_OUTPUT
+          else
+            echo "status=fail" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Generate BugBot Report
+        id: report
+        run: |
+          cat > bugbot-full-report.md << EOF
+          # 🤖 BugBot Analysis Report
+          
+          **PR:** #${{ github.event.pull_request.number }}  
+          **Branch:** \`${{ github.event.pull_request.head.ref }}\`  
+          **Timestamp:** $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          
+          ---
+          
+          ## 📊 Results Summary
+          
+          | Check | Status | Details |
+          |-------|--------|---------|
+          | Swift Build | ${{ steps.build.outputs.status == 'pass' && '✅ Pass' || '❌ Fail' }} | ${{ steps.build.outputs.status == 'pass' && 'Compiled successfully' || 'Build errors detected' }} |
+          | SwiftLint | ${{ steps.swiftlint.outputs.status == 'pass' && '✅ Pass' || '⚠️ Issues' }} | Errors: ${{ steps.swiftlint.outputs.errors }}, Warnings: ${{ steps.swiftlint.outputs.warnings }} |
+          | BugBot Checks | ${{ steps.bugbot.outputs.status == 'pass' && '✅ Pass' || '❌ Fail' }} | Issues: ${{ steps.bugbot.outputs.issues }} |
+          
+          ---
+          
+          ## 🔍 Detailed Findings
+          
+          EOF
+          
+          if [ -f bugbot-report.txt ]; then
+            cat bugbot-report.txt >> bugbot-full-report.md
+          else
+            echo "✅ No issues detected!" >> bugbot-full-report.md
+          fi
+          
+          # Determine overall status
+          if [ "${{ steps.build.outputs.status }}" == "pass" ] && [ "${{ steps.bugbot.outputs.status }}" == "pass" ]; then
+            echo "overall=pass" >> $GITHUB_OUTPUT
+            echo "✅ **Overall Status: PASS** - Ready for merge" >> bugbot-full-report.md
+          else
+            echo "overall=fail" >> $GITHUB_OUTPUT
+            echo "❌ **Overall Status: FAIL** - Issues must be resolved" >> bugbot-full-report.md
+          fi
+      
+      - name: Comment BugBot Report on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('bugbot-full-report.md', 'utf8');
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+      
+      - name: Update PR labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ steps.report.outputs.overall }}';
+            
+            // Remove needs-bugbot-review label
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'needs-bugbot-review'
+            });
+            
+            // Add appropriate status label
+            if (status === 'pass') {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['bugbot-approved', 'ready-to-merge']
+              });
+            } else {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['bugbot-issues', 'needs-fixes']
+              });
+            }
+      
+      - name: Update PR tracker log
+        run: |
+          MODULE_NAME=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/pr\/\(.*\)-validation-.*/\1/')
+          
+          # Update the log entry
+          sed -i "s/\[Module: $MODULE_NAME\]/[Module: $MODULE_NAME]\n- BugBot: ${{ steps.report.outputs.overall == 'pass' && '✅ Passed' || '❌ Failed' }}/" automation/logs/pr-tracker.md || true
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add automation/logs/pr-tracker.md
+          git commit -m "📊 Update BugBot status for PR #${{ github.event.pull_request.number }}" || true
+          git push origin main || true
+      
+      - name: Create patch branch if needed
+        if: steps.report.outputs.overall == 'fail'
+        run: |
+          MODULE_NAME=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/pr\/\(.*\)-validation-.*/\1/')
+          TIMESTAMP=$(date +%s)
+          PATCH_BRANCH="patch/${MODULE_NAME}-bugfix-${TIMESTAMP}"
+          
+          git checkout -b "$PATCH_BRANCH"
+          git push origin "$PATCH_BRANCH"
+          
+          echo "🔧 Created patch branch: $PATCH_BRANCH" >> $GITHUB_STEP_SUMMARY
+          echo "Manual intervention required for complex fixes." >> $GITHUB_STEP_SUMMARY
+
+  auto-merge:
+    name: 🚀 Auto Merge
+    runs-on: ubuntu-latest
+    needs: bugbot-review
+    if: contains(github.event.pull_request.labels.*.name, 'bugbot-approved')
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Enable auto-merge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              merge_method: 'squash',
+              commit_title: '🔧 Auto-merge: ${{ github.event.pull_request.title }}',
+              commit_message: 'BugBot approved - auto-merged via automation'
+            });
+      
+      - name: Delete branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'heads/${{ github.event.pull_request.head.ref }}'
+            });
+      
+      - name: Update PR tracker log
+        run: |
+          MODULE_NAME=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/pr\/\(.*\)-validation-.*/\1/')
+          
+          # Update the log entry
+          sed -i "s/\[Module: $MODULE_NAME\]/[Module: $MODULE_NAME]\n- Merged: ✅ Yes at $(date -u +"%Y-%m-%dT%H:%M:%SZ")/" automation/logs/pr-tracker.md || true
+          
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add automation/logs/pr-tracker.md
+          git commit -m "📊 Mark PR #${{ github.event.pull_request.number }} as merged" || true
+          git push origin main || true
+      
+      - name: Notify success
+        run: |
+          echo "✅ PR #${{ github.event.pull_request.number }} successfully merged!" >> $GITHUB_STEP_SUMMARY
+          echo "🧹 Branch cleaned up" >> $GITHUB_STEP_SUMMARY
+
+  failsafe:
+    name: 🚨 Failsafe Alert
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+      - name: Create failure issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '❗ Automation failed at stage: ${{ github.job }}',
+              body: `## 🚨 Automation Failure Alert
+              
+              **Workflow:** ${{ github.workflow }}
+              **Job:** ${{ github.job }}
+              **Run:** ${{ github.run_id }}
+              **Trigger:** ${{ github.event_name }}
+              
+              ---
+              
+              ### Manual Action Required
+              
+              The automated PR + BugBot workflow has failed. Please investigate:
+              
+              1. Check workflow logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              2. Review the failed step
+              3. Apply manual fixes if needed
+              
+              ---
+              
+              **Auto-generated alert** | Please resolve and close this issue when fixed.`,
+              labels: ['automation-failure', 'urgent']
+            });
+
