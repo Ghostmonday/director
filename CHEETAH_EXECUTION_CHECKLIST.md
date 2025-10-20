@@ -3356,9 +3356,7 @@ After BugBot approves, STOP and notify user to:
 
 ---
 
-## 📱 STAGE 7: APP SHELL & UI
-
-### Task 7.1: Create App Entry Point
+## 🎬 STAGE 6: VIDEO GENERATION PIPELINE
 **File:** `DirectorStudioApp.swift`
 **Priority:** 🟢 MEDIUM
 
@@ -3376,9 +3374,10 @@ After BugBot approves, STOP and notify user to:
 
 ---
 
-### Task 6.2-6.6: Create UI Views
+### Task 6.10: Create Additional UI Views
 **Files:** Multiple view files
 **Priority:** 🟢 LOW
+**Module Name:** `AdditionalUIViews`
 
 **Views to create:**
 - [ ] MainTabView
@@ -3961,6 +3960,8 @@ After BugBot approves, STOP and notify user to:
 6. Create PipelineOrchestrator (Task 2.2)
 7. Create AIService (Task 3.2)
 8. Create KeychainService (Task 3.1)
+
+9. Create ImageGenerationService (Task 3.2a)
 
 **Everything else can be done in parallel or later.**
 
