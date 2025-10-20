@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "DirectorStudio",
     platforms: [
-        .macOS(.v10_15)
+        .macOS(.v11)
     ],
     products: [
         .library(
@@ -14,6 +14,10 @@ let package = Package(
         .executable(
             name: "DirectorStudioCLI",
             targets: ["DirectorStudioCLI"]
+        ),
+        .library(
+            name: "DirectorStudioUI",
+            targets: ["DirectorStudioUI"]
         ),
     ],
     dependencies: [
@@ -33,6 +37,11 @@ let package = Package(
                 .product(name: "ArgumentParser", package: "swift-argument-parser")
             ],
             path: "Sources/DirectorStudioCLI"
+        ),
+        .target(
+            name: "DirectorStudioUI",
+            dependencies: ["DirectorStudio"],
+            path: "Sources/DirectorStudioUI"
         ),
         .testTarget(
             name: "DirectorStudioTests",
