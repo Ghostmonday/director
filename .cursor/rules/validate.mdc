@@ -1,0 +1,98 @@
+description: >
+Intelligent self-activating validation rule for Swift modules in DirectorStudio.
+Automatically detects when an agent finishes building a module, runs validation,
+and enforces programmatic, structural, and documentation completion before progression.
+globs:
+
+"**/*.swift"
+alwaysApply: false
+
+Smart Agent Rule — Swift Module Auto-Validation
+
+Trigger Conditions
+
+Activates automatically when:
+
+File contains // MODULE COMPLETE, // ✅ BUILD SUCCESS, or public struct *: PipelineModule
+
+A Swift build or test run completes successfully
+
+A new .swift file is created inside Modules/, Pipeline/, or Core/
+
+Validation Process
+
+Build & Syntax Check
+
+Run swift build --build-tests
+
+Block completion if errors or warnings appear:
+❌ Build errors in [ModuleName.swift]
+
+Continue only on 0 errors.
+
+Test Execution
+
+Auto-detect the corresponding test target (ModuleNameTests)
+
+Run swift test --filter ModuleNameTests
+
+Require 100% pass rate.
+
+If no tests found:
+⚠️ No tests found for ModuleName.swift
+
+Interface & Protocol Check
+
+Confirm conformance to required protocols (PipelineModule, ValidatableModule)
+
+Ensure:
+public struct ModuleName: PipelineModule
+public let version = "x.y.z"
+
+Verify all public functions/types have doc comments.
+
+Continuity & Telemetry Check
+
+Detect at least one telemetry event:
+Telemetry.shared.logEvent(...)
+
+Ensure proper integration with ContinuityEngine where applicable.
+
+Metadata & Documentation
+
+Require header:
+// MODULE: <Name>
+// VERSION: <x.y.z>
+// PURPOSE: <short description>
+
+If missing, agent auto-fills from known metadata or prompts the user.
+
+Post-Validation Behaviour
+
+If all checks pass:
+✅ [ModuleName.swift] validated — functional completion confirmed.
+Optionally auto-tag commit [validated]
+
+If failure:
+Halt pipeline (packaging, PR, or release)
+Summarize and requeue for revalidation
+
+Adaptive Intelligence
+
+Learns from failure patterns (e.g., missing telemetry/test coverage)
+
+Prioritizes incomplete modules for revalidation
+
+Auto-skips previously validated, unchanged modules
+
+Agent Behaviour
+
+Runs automatically upon module completion detection
+
+Never skips validation unless overridden with:
+// @validate: skip
+
+Reports inline in Cursor with:
+[VALIDATION STATUS]: ✅ or ❌
+
+End of Rule

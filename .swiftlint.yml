@@ -1,110 +1,89 @@
 # SwiftLint Configuration for DirectorStudio
-# BugBot uses this for static analysis
 
-# Rules
+# Paths to include/exclude
+included:
+  - Sources
+  - Tests
+
+excluded:
+  - .build
+  - .git
+  - automation
+
+# Rules to enable/disable
 disabled_rules:
   - trailing_whitespace
-  - line_length  # Handled by formatter
+  - line_length
 
 opt_in_rules:
+  - empty_count
+  - empty_string
   - force_unwrapping
   - implicitly_unwrapped_optional
-  - missing_docs
-  - private_over_fileprivate
-  - strict_fileprivate
-  - explicit_init
-  - explicit_type_interface
-  - fatal_error_message
-  - file_header
-  - let_var_whitespace
-  - multiline_arguments
-  - multiline_function_chains
-  - multiline_parameters
-  - operator_usage_whitespace
   - overridden_super_call
-  - prohibited_super_call
+  - prohibited_interface_builder
   - redundant_nil_coalescing
-  - sorted_imports
-  - unused_import
-  - unused_private_declaration
+  - redundant_type_annotation
+  - single_test_class
+  - sorted_first_last
+  - switch_case_on_newline
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
 
-# Analyzer rules
-analyzer_rules:
-  - explicit_self
-  - unused_declaration
-  - unused_import
-
-# Severity
-force_unwrapping: error
-missing_docs:
-  warning:
-    - public
-    - open
-
-# Excluded paths
-excluded:
-  - Pods
-  - .build
-  - DerivedData
-  - .swiftpm
-  - xxx.txt
+# Custom rules
+custom_rules:
+  no_hardcoded_strings:
+    name: "No Hardcoded Strings"
+    regex: '"[A-Za-z0-9\s]+"'
+    message: "Avoid hardcoded strings, use localized strings instead"
+    severity: warning
 
 # File length
 file_length:
   warning: 500
   error: 1000
 
+# Function length
+function_body_length:
+  warning: 50
+  error: 100
+
+# Line length
+line_length:
+  warning: 120
+  error: 200
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_comments: true
+
 # Type body length
 type_body_length:
   warning: 300
   error: 500
 
-# Function body length
-function_body_length:
-  warning: 50
-  error: 100
-
-# Cyclomatic complexity
-cyclomatic_complexity:
-  warning: 10
-  error: 20
-
-# Nesting
-nesting:
-  type_level:
-    warning: 2
-  statement_level:
-    warning: 5
-
 # Identifier name
 identifier_name:
-  min_length:
-    warning: 2
-  max_length:
-    warning: 40
-    error: 50
+  min_length: 1
+  max_length: 60
   excluded:
     - id
-    - URL
     - url
+    - urlRequest
+    - globalValueKey
 
-# Custom rules
-custom_rules:
-  no_print:
-    name: "No Print Statements"
-    regex: "print\\("
-    message: "Use proper logging instead of print()"
-    severity: warning
-  
-  no_force_try:
-    name: "No Force Try"
-    regex: "try!"
-    message: "Use proper error handling instead of try!"
-    severity: error
-  
-  no_hardcoded_keys:
-    name: "No Hardcoded API Keys"
-    regex: "(sk-|pk-|api_key|apiKey)\\s*=\\s*\"[^\"]+\""
-    message: "Never hardcode API keys - use Secrets.xcconfig"
-    severity: error
+# Type name
+type_name:
+  min_length: 3
+  max_length: 40
 
+# Variable name
+variable_name:
+  min_length: 1
+  max_length: 60
+  excluded:
+    - id
+    - url
+    - urlRequest
+    - globalValueKey

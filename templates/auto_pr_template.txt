@@ -1,9 +1,0 @@
-# AUTO-SYNC STEP
-git fetch origin main && git merge origin/main --no-edit
-
-**🤖 AUTO-PR TRIGGER:**
-```bash
-./automation/scripts/create-module-pr.sh MODULE_NAME_HERE
-```
-
-**⏸️ WAIT for BugBot approval**

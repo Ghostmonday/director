@@ -1,0 +1,266 @@
+{
+  "tasks": [
+    {
+      "id": "1.1",
+      "name": "Create PromptSegment Type ⚠️ BLOCKING",
+      "file": "DataModels.swift",
+      "priority": "CRITICAL",
+      "status": "in_progress",
+      "dependencies": [],
+      "assigned_to": "builder",
+      "attempts": 0
+    },
+    {
+      "id": "1.4",
+      "name": "Update RewordingModule.swift + VALIDATE",
+      "file": "RewordingModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "1.3"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "1.5",
+      "name": "Update SegmentationModule.swift + VALIDATE",
+      "file": "SegmentationModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "1.4"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "1.6",
+      "name": "Update StoryAnalysisModule.swift + VALIDATE",
+      "file": "StoryAnalysisModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "1.5"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "1.7",
+      "name": "Update TaxonomyModule.swift + VALIDATE",
+      "file": "TaxonomyModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "1.6"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "1.8",
+      "name": "Update ContinuityModule.swift + VALIDATE",
+      "file": "ContinuityModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "1.7"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "2.1",
+      "name": "Create PipelineConfiguration",
+      "file": "PipelineConfiguration.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "1.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "2.2",
+      "name": "Create PipelineOrchestrator",
+      "file": "PipelineOrchestrator.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "2.1"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "2.7",
+      "name": "Integration Test",
+      "file": "pipeline_integration_test.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "2.6"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "3.2",
+      "name": "Create AIService",
+      "file": "AIService.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "3.1"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "3.2a",
+      "name": "Create ImageGenerationService (Pollo API)",
+      "file": "ImageGenerationService.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "3.1"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "3.3",
+      "name": "Add Rate Limiting",
+      "file": "AIService.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "3.2"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "4.1",
+      "name": "Create CoreData Model",
+      "file": "DirectorStudio.xcdatamodeld",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "3.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "4.2",
+      "name": "Create PersistenceController",
+      "file": "PersistenceController.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "4.1"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "5.1",
+      "name": "Create CreditsService",
+      "file": "CreditsService.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "4.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "5.2",
+      "name": "Create StoreKitService",
+      "file": "StoreKitService.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "5.1"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "5.3",
+      "name": "Integrate with Pipeline",
+      "file": "PipelineOrchestrator.swift",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "5.2"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "6.1",
+      "name": "Update Segmentation for Video Clip Calculation",
+      "file": "SegmentationModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "5.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "6.4",
+      "name": "Update ContinuityModule for Video Validation",
+      "file": "ContinuityModule.swift",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "6.3"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "7.1",
+      "name": "Create App Entry Point",
+      "file": "DirectorStudioApp.swift",
+      "priority": "MEDIUM",
+      "status": "pending",
+      "dependencies": [
+        "6.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "7.5",
+      "name": "Add Accessibility Validation",
+      "file": "Accessibility audit across all views",
+      "priority": "HIGH",
+      "status": "pending",
+      "dependencies": [
+        "7.4"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    },
+    {
+      "id": "8.1",
+      "name": "Comprehensive Security Review",
+      "file": "Security audit across entire codebase",
+      "priority": "CRITICAL",
+      "status": "pending",
+      "dependencies": [
+        "7.9"
+      ],
+      "assigned_to": null,
+      "attempts": 0
+    }
+  ]
+}

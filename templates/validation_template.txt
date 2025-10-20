@@ -1,6 +1,0 @@
-**Validation Checklist:**
-- [ ] File compiles without errors
-- [ ] Run `swift test --filter MODULE_NAME_HERE`
-- [ ] Integration tests with dependent modules pass
-- [ ] Swift Package Manager can resolve the module
-- [ ] Localization placeholders added where needed
