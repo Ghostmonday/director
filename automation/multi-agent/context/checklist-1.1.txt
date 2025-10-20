@@ -1,4 +1,0 @@
-File compiles
-Types are Sendable
-Types are Codable
-Enums have all cases from legacy
