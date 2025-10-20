@@ -26,6 +26,7 @@ The legacy codebase (31,787 lines) contains:
 ### Task 1.1: Create PromptSegment Type ⚠️ BLOCKING
 **File:** `DataModels.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `PromptSegment`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -60,8 +61,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -71,11 +72,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.2: Create PipelineContext ⚠️ BLOCKING
 **File:** Update `continuity.swift` or create `PipelineTypes.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `PipelineContext`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -110,8 +114,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -121,11 +125,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.3: Create MockAIService ⚠️ BLOCKING
 **File:** `core.swift` or new `MockServices.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `MockAIService`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -158,8 +165,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -169,11 +176,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.4: Update rewording.swift + VALIDATE
 **File:** `rewording.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `RewordingModule`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -203,8 +213,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -214,11 +224,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.4b: Build Rewording UI + VALIDATE UX
 **File:** `RewordingView.swift` (new)
 **Priority:** 🔴 CRITICAL
+**Module Name:** `RewordingUI`
 
 **🎯 FIDELITY REMINDER:**
 - Build intuitive, production-ready UI
@@ -265,8 +278,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -276,11 +289,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.5: Update segmentation.swift + VALIDATE
 **File:** `segmentation.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `SegmentationModule`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -310,8 +326,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -321,11 +337,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.5b: Build Segmentation UI + VALIDATE UX
 **File:** `SegmentationView.swift` (new)
 **Priority:** 🔴 CRITICAL
+**Module Name:** `SegmentationUI`
 
 **🎯 FIDELITY REMINDER:**
 - Build intuitive, production-ready UI
@@ -377,8 +396,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -388,11 +407,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.6: Update storyanalysis.swift + VALIDATE
 **File:** `storyanalysis.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `StoryAnalysisModule`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -422,8 +444,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -433,11 +455,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.6b: Build Story Analysis UI + VALIDATE UX
 **File:** `StoryAnalysisView.swift` (new)
 **Priority:** 🔴 CRITICAL
+**Module Name:** `StoryAnalysisUI`
 
 **🎯 FIDELITY REMINDER:**
 - Build intuitive, production-ready UI
@@ -491,8 +516,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -502,11 +527,14 @@ This will automatically:
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
 
+**⏸️ WAIT for BugBot approval before proceeding to next task**
+
 ---
 
 ### Task 1.7: Update taxonomy.swift + VALIDATE
 **File:** `taxonomy.swift`
 **Priority:** 🔴 CRITICAL
+**Module Name:** `TaxonomyModule`
 
 **🎯 FIDELITY REMINDER:**
 - Maintain 100% functionality from legacy code
@@ -536,8 +564,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -546,6 +574,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -604,8 +634,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -614,6 +644,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -649,8 +681,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -659,6 +691,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -718,8 +752,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -728,6 +762,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -759,8 +795,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -769,6 +805,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -810,8 +848,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -820,6 +858,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -861,8 +901,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -871,6 +911,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -934,8 +976,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -944,6 +986,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -988,8 +1032,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -998,6 +1042,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1047,8 +1093,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1057,6 +1103,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1108,8 +1156,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1118,6 +1166,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1373,8 +1423,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1383,6 +1433,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1499,8 +1551,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1509,6 +1561,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1555,8 +1609,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1565,6 +1619,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1595,8 +1651,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1605,6 +1661,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1666,8 +1724,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1676,6 +1734,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1722,8 +1782,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1732,6 +1792,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1762,8 +1824,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1772,6 +1834,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1833,8 +1897,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1843,6 +1907,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -1907,8 +1973,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -1917,6 +1983,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2013,8 +2081,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2023,6 +2091,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2086,8 +2156,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2096,6 +2166,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2149,8 +2221,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2159,6 +2231,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2226,8 +2300,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2236,6 +2310,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2370,8 +2446,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2380,6 +2456,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2510,8 +2588,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2520,6 +2598,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2852,8 +2932,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2862,6 +2942,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2926,8 +3008,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2936,6 +3018,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -2984,8 +3068,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -2994,6 +3078,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -3126,8 +3212,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -3136,6 +3222,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -3196,8 +3284,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -3206,6 +3294,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -3280,8 +3370,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -3290,6 +3380,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -3367,8 +3459,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -3377,6 +3469,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
@@ -3453,8 +3547,8 @@ Once this task is complete, STOP development and notify user to:
 - [ ] Verify feature works as specified
 **⏸️ WAIT for user approval before proceeding to next task**
 
-**🤖 AUTO-PR TRIGGER (Optional):**
-If module is complete and ready for review, run:
+**🤖 AUTO-PR TRIGGER:**
+✅ **REQUIRED - Run immediately after validation:**
 ```bash
 ./automation/scripts/create-module-pr.sh <ModuleName>
 ```
@@ -3463,6 +3557,8 @@ This will automatically:
 - Trigger BugBot review (build, lint, security checks)
 - Auto-merge if approved OR create patch branch if issues found
 - Log status to `automation/logs/pr-tracker.md`
+
+**⏸️ WAIT for BugBot approval before proceeding to next task**
 
 ---
 
