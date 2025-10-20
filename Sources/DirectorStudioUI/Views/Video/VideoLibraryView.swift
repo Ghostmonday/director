@@ -47,7 +47,6 @@ struct VideoLibraryView: View {
                 }
             }
             .navigationTitle("Video Library")
-            .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showingVideoPlayer) {
                 if let video = selectedVideo {
                     VideoPlayerView(video: video)
@@ -72,14 +71,14 @@ struct VideoLibraryView: View {
                     .textFieldStyle(PlainTextFieldStyle())
                 
                 if !searchText.isEmpty {
-                    Button(action: { searchText = "" }) {
+                    Button { searchText = "" } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.secondary)
                     }
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(10)
             
             // Controls
@@ -363,11 +362,11 @@ struct VideoGridItemView: View {
                 }
             }
             .padding()
-            .background(Color(.systemBackground))
+            .background(Color.systemBackground)
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
+                    .stroke(Color.systemGray4, lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -386,7 +385,7 @@ struct VideoGridItemView: View {
             
             Divider()
             
-            Button(action: {}, role: .destructive) {
+            Button(role: .destructive, action: {}) {
                 Label("Delete", systemImage: "trash")
             }
         }
@@ -472,11 +471,11 @@ struct VideoListItemView: View {
                     .foregroundColor(.blue)
             }
             .padding()
-            .background(Color(.systemBackground))
+            .background(Color.systemBackground)
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
+                    .stroke(Color.systemGray4, lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -569,7 +568,7 @@ struct VideoPlayerView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.systemGray6)
                         .foregroundColor(.primary)
                         .cornerRadius(10)
                     }
@@ -579,9 +578,8 @@ struct VideoPlayerView: View {
             }
             .padding()
             .navigationTitle("Video Player")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }

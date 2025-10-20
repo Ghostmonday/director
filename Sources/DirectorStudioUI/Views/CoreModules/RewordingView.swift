@@ -53,7 +53,6 @@ struct RewordingView: View {
             }
             .padding()
             .navigationTitle("Text Rewording")
-            .navigationBarTitleDisplayMode(.large)
         }
     }
     
@@ -82,11 +81,11 @@ struct RewordingView: View {
             TextEditor(text: $inputText)
                 .frame(minHeight: 120)
                 .padding(8)
-                .background(Color(.systemGray6))
+                .background(Color.systemGray6)
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(.systemGray4), lineWidth: 1)
+                        .stroke(Color.systemGray4, lineWidth: 1)
                 )
             
             if inputText.isEmpty {
@@ -111,7 +110,7 @@ struct RewordingView: View {
             }
             .pickerStyle(MenuPickerStyle())
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(8)
             
             // Style Description
@@ -138,7 +137,7 @@ struct RewordingView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(inputText.isEmpty ? Color(.systemGray4) : Color.blue)
+            .background(inputText.isEmpty ? Color.systemGray4 : Color.blue)
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -158,7 +157,7 @@ struct RewordingView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.systemGray6)
         .cornerRadius(8)
     }
     
@@ -177,7 +176,7 @@ struct RewordingView: View {
                         .foregroundColor(.blue)
                 }
                 
-                Button(action: { showComparison.toggle() }) {
+                Button { showComparison.toggle() } label: {
                     Image(systemName: showComparison ? "eye.slash" : "eye")
                         .foregroundColor(.blue)
                 }
@@ -195,7 +194,7 @@ struct RewordingView: View {
                             
                             Text(inputText)
                                 .padding()
-                                .background(Color(.systemGray6))
+                                .background(Color.systemGray6)
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -211,7 +210,7 @@ struct RewordingView: View {
                             
                             Text(rewordedText)
                                 .padding()
-                                .background(Color(.systemGray6))
+                                .background(Color.systemGray6)
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -219,7 +218,7 @@ struct RewordingView: View {
                         // Only transformed text
                         Text(rewordedText)
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.systemGray6)
                             .cornerRadius(6)
                             .font(.body)
                     }
@@ -228,11 +227,11 @@ struct RewordingView: View {
             .frame(maxHeight: 300)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.systemBackground)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(.systemGray4), lineWidth: 1)
+                .stroke(Color.systemGray4, lineWidth: 1)
         )
     }
     
@@ -287,11 +286,10 @@ struct RewordingView: View {
     }
     
     private func copyResult() {
+        #if os(iOS)
         UIPasteboard.general.string = rewordedText
-        
-        // Show brief feedback
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.impactOccurred()
+        #endif
+        // Show brief feedback (haptic removed for iOS compatibility)
     }
 }
 

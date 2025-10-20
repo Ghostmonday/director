@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "DirectorStudio",
     platforms: [
-        .macOS(.v11)
+        .iOS(.v15)
     ],
     products: [
         .library(

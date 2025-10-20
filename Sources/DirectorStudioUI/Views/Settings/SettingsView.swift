@@ -52,11 +52,11 @@ struct SettingsView: View {
                 
                 // Support Section
                 Section("Support") {
-                    Button(action: { showingHelp = true }) {
+                    Button { showingHelp = true } label: {
                         Label("Help & Support", systemImage: "questionmark.circle")
                     }
                     
-                    Button(action: { showingAbout = true }) {
+                    Button { showingAbout = true } label: {
                         Label("About DirectorStudio", systemImage: "info.circle")
                     }
                 }
@@ -72,7 +72,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showingAbout) {
                 AboutView()
             }
@@ -118,9 +117,8 @@ struct AboutView: View {
             }
             .padding()
             .navigationTitle("About")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
@@ -186,9 +184,8 @@ struct HelpView: View {
                 .padding()
             }
             .navigationTitle("Help & Support")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
@@ -232,7 +229,6 @@ struct AIServiceSettingsView: View {
     var body: some View {
         Text("AI Service Settings")
             .navigationTitle("AI Settings")
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -241,7 +237,6 @@ struct VideoGenerationSettingsView: View {
     var body: some View {
         Text("Video Generation Settings")
             .navigationTitle("Video Settings")
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -250,7 +245,6 @@ struct VideoAssemblySettingsView: View {
     var body: some View {
         Text("Video Assembly Settings")
             .navigationTitle("Assembly Settings")
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

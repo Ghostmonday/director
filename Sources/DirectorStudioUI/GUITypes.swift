@@ -8,6 +8,65 @@
 
 import Foundation
 import SwiftUI
+import DirectorStudio
+
+// MARK: - RewordingType for UI
+public enum RewordingType: String, CaseIterable, Identifiable, Sendable {
+    case modernizeOldEnglish = "modernize_old_english"
+    case simplifyComplex = "simplify_complex"
+    case enhanceDescriptive = "enhance_descriptive"
+    case convertToDialogue = "convert_to_dialogue"
+    case addEmotionalDepth = "add_emotional_depth"
+    case createSuspense = "create_suspense"
+    case improveFlow = "improve_flow"
+    
+    public var id: String { rawValue }
+    
+    public var displayName: String {
+        switch self {
+        case .modernizeOldEnglish:
+            return "Modernize Old English"
+        case .simplifyComplex:
+            return "Simplify Complex Text"
+        case .enhanceDescriptive:
+            return "Enhance Descriptions"
+        case .convertToDialogue:
+            return "Convert to Dialogue"
+        case .addEmotionalDepth:
+            return "Add Emotional Depth"
+        case .createSuspense:
+            return "Create Suspense"
+        case .improveFlow:
+            return "Improve Flow"
+        }
+    }
+    
+    public var description: String {
+        switch self {
+        case .modernizeOldEnglish:
+            return "Transform archaic or old English text into contemporary language"
+        case .simplifyComplex:
+            return "Make complex text more accessible and readable"
+        case .enhanceDescriptive:
+            return "Add vivid descriptions and sensory details"
+        case .convertToDialogue:
+            return "Transform narrative text into engaging dialogue"
+        case .addEmotionalDepth:
+            return "Enhance emotional resonance and character depth"
+        case .createSuspense:
+            return "Build tension and anticipation in the text"
+        case .improveFlow:
+            return "Improve sentence flow and readability"
+        }
+    }
+}
+
+// MARK: - iOS-Compatible Colors
+extension Color {
+    static let systemGray6 = Color(UIColor.systemGray6)
+    static let systemGray4 = Color(UIColor.systemGray4)
+    static let systemBackground = Color(UIColor.systemBackground)
+}
 
 /// GUI-specific types for the UI layer
 

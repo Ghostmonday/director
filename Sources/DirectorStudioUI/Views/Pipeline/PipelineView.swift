@@ -35,9 +35,8 @@ struct PipelineView: View {
                 }
             }
             .navigationTitle("Pipeline Orchestrator")
-            .navigationBarTitleDisplayMode(.large)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     if isProcessing {
                         Button("Cancel") {
                             cancelProcessing()
@@ -123,11 +122,11 @@ struct PipelineView: View {
             TextEditor(text: $storyInput)
                 .frame(minHeight: 200)
                 .padding(8)
-                .background(Color(.systemGray6))
+                .background(Color.systemGray6)
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(.systemGray4), lineWidth: 1)
+                        .stroke(Color.systemGray4, lineWidth: 1)
                 )
             
             if storyInput.isEmpty {
@@ -211,11 +210,11 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.systemBackground)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(.systemGray4), lineWidth: 1)
+                .stroke(Color.systemGray4, lineWidth: 1)
         )
     }
     
@@ -264,7 +263,7 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.systemGray6)
         .cornerRadius(8)
     }
     
@@ -280,7 +279,7 @@ struct PipelineView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(canRunPipeline ? Color.blue : Color(.systemGray4))
+                .background(canRunPipeline ? Color.blue : Color.systemGray4)
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -310,7 +309,7 @@ struct PipelineView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -322,7 +321,7 @@ struct PipelineView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -357,7 +356,7 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.systemGray6)
         .cornerRadius(8)
     }
     
@@ -380,7 +379,7 @@ struct PipelineView: View {
                     Spacer()
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(Color.systemBackground)
                 .cornerRadius(8)
             }
         }
@@ -395,7 +394,7 @@ struct PipelineView: View {
             
             ScrollView {
                 LazyVStack(spacing: 8) {
-                    ForEach(Array(liveResults.keys.sorted()), id: \.self) { key in
+                    ForEach(liveResults.keys.sorted(), id: \.self) { key in
                         if let value = liveResults[key] {
                             HStack {
                                 Text(key)
@@ -409,7 +408,7 @@ struct PipelineView: View {
                                     .foregroundColor(.secondary)
                             }
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.systemGray6)
                             .cornerRadius(6)
                         }
                     }
@@ -513,7 +512,9 @@ struct PipelineView: View {
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: exportData, options: .prettyPrinted),
            let jsonString = String(data: jsonData, encoding: .utf8) {
+            #if os(iOS)
             UIPasteboard.general.string = jsonString
+            #endif
         }
     }
     

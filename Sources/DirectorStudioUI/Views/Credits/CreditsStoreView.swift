@@ -37,7 +37,6 @@ struct CreditsStoreView: View {
                 .padding()
             }
             .navigationTitle("Credits & Store")
-            .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 loadCreditsData()
             }
@@ -66,7 +65,7 @@ struct CreditsStoreView: View {
                     .foregroundColor(.secondary)
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(12)
             
             // Quick Actions
@@ -79,12 +78,12 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
                 
-                Button(action: { showingPurchaseHistory = true }) {
+                Button { showingPurchaseHistory = true } label: {
                     HStack {
                         Image(systemName: "clock.fill")
                         Text("History")
@@ -92,7 +91,7 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -151,7 +150,7 @@ struct CreditsStoreView: View {
                 )
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(8)
         }
     }
@@ -331,11 +330,11 @@ struct CreditPackageView: View {
                     .cornerRadius(6)
             }
             .padding()
-            .background(Color(.systemBackground))
+            .background(Color.systemBackground)
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(package.popular ? Color.orange : Color(.systemGray4), lineWidth: package.popular ? 2 : 1)
+                    .stroke(package.popular ? Color.orange : Color.systemGray4, lineWidth: package.popular ? 2 : 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -413,9 +412,8 @@ struct PurchaseHistoryView: View {
                 }
             }
             .navigationTitle("Purchase History")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }

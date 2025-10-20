@@ -55,7 +55,6 @@ struct SegmentationView: View {
             }
             .padding()
             .navigationTitle("Story Segmentation")
-            .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showSegmentDetails) {
                 if let selectedSegment = selectedSegment {
                     SegmentDetailView(segment: selectedSegment)
@@ -89,11 +88,11 @@ struct SegmentationView: View {
             TextEditor(text: $storyText)
                 .frame(minHeight: 200)
                 .padding(8)
-                .background(Color(.systemGray6))
+                .background(Color.systemGray6)
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(.systemGray4), lineWidth: 1)
+                        .stroke(Color.systemGray4, lineWidth: 1)
                 )
             
             if storyText.isEmpty {
@@ -161,7 +160,7 @@ struct SegmentationView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(canSegment ? Color.blue : Color(.systemGray4))
+                .background(canSegment ? Color.blue : Color.systemGray4)
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -177,7 +176,7 @@ struct SegmentationView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .foregroundColor(.primary)
                     .cornerRadius(10)
                 }
@@ -199,7 +198,7 @@ struct SegmentationView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.systemGray6)
         .cornerRadius(8)
     }
     
@@ -234,11 +233,11 @@ struct SegmentationView: View {
             .frame(maxHeight: 400)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color.systemBackground)
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(.systemGray4), lineWidth: 1)
+                .stroke(Color.systemGray4, lineWidth: 1)
         )
     }
     
@@ -368,11 +367,11 @@ struct SegmentCardView: View {
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
+                    .stroke(Color.systemGray4, lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -415,7 +414,7 @@ struct SegmentDetailView: View {
                         Text(segment.content)
                             .font(.body)
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.systemGray6)
                             .cornerRadius(8)
                     }
                     
@@ -469,7 +468,7 @@ struct SegmentDetailView: View {
                             Text(segment.continuityNotes)
                                 .font(.body)
                                 .padding()
-                                .background(Color(.systemGray6))
+                                .background(Color.systemGray6)
                                 .cornerRadius(8)
                         }
                     }
@@ -477,9 +476,8 @@ struct SegmentDetailView: View {
                 .padding()
             }
             .navigationTitle("Segment Details")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }

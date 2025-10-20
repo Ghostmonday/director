@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DirectorStudio
 
 /// GUI Abstraction Layer for UI interactions
 public class GUIAbstraction {

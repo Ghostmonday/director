@@ -42,10 +42,9 @@ struct ProjectsView: View {
                 }
             }
             .navigationTitle("Projects")
-            .navigationBarTitleDisplayMode(.large)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showingCreateProject = true }) {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { showingCreateProject = true } label: {
                         Image(systemName: "plus")
                     }
                 }
@@ -74,14 +73,14 @@ struct ProjectsView: View {
                     .textFieldStyle(PlainTextFieldStyle())
                 
                 if !searchText.isEmpty {
-                    Button(action: { searchText = "" }) {
+                    Button { searchText = "" } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.secondary)
                     }
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .cornerRadius(10)
             
             // Sort Options
@@ -153,7 +152,7 @@ struct ProjectsView: View {
                 .multilineTextAlignment(.center)
             
             if searchText.isEmpty {
-                Button(action: { showingCreateProject = true }) {
+                Button { showingCreateProject = true } label: {
                     Text("Create Project")
                         .fontWeight(.semibold)
                         .padding()
@@ -225,7 +224,7 @@ struct ProjectCardView: View {
     @State private var showingProjectDetail: Bool = false
     
     var body: some View {
-        Button(action: { showingProjectDetail = true }) {
+        Button { showingProjectDetail = true } label: {
             VStack(alignment: .leading, spacing: 12) {
                 // Project Header
                 HStack {
@@ -296,11 +295,11 @@ struct ProjectCardView: View {
                     )
             }
             .padding()
-            .background(Color(.systemBackground))
+            .background(Color.systemBackground)
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color(.systemGray4), lineWidth: 1)
+                    .stroke(Color.systemGray4, lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -356,24 +355,24 @@ struct CreateProjectView: View {
                     Text("Description")
                         .font(.headline)
                     
-                    TextField("Enter project description", text: $projectDescription, axis: .vertical)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .lineLimit(3...6)
+                    TextEditor(text: $projectDescription)
+                        .frame(minHeight: 100, maxHeight: 150)
+                        .border(Color.gray.opacity(0.3), width: 1)
+                        .cornerRadius(4)
                 }
                 
                 Spacer()
             }
             .padding()
             .navigationTitle("Create Project")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Create") {
                         createProject()
                     }
@@ -455,7 +454,7 @@ struct ProjectDetailView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.systemGray6)
                             .foregroundColor(.primary)
                             .cornerRadius(10)
                         }
@@ -466,9 +465,8 @@ struct ProjectDetailView: View {
                 .padding()
             }
             .navigationTitle("Project Details")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }

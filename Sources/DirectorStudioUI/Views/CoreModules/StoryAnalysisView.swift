@@ -52,7 +52,6 @@ struct StoryAnalysisView: View {
                 }
             }
             .navigationTitle("Story Analysis")
-            .navigationBarTitleDisplayMode(.large)
         }
     }
     
@@ -124,11 +123,11 @@ struct StoryAnalysisView: View {
             TextEditor(text: $storyText)
                 .frame(minHeight: 300)
                 .padding(8)
-                .background(Color(.systemGray6))
+                .background(Color.systemGray6)
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(.systemGray4), lineWidth: 1)
+                        .stroke(Color.systemGray4, lineWidth: 1)
                 )
             
             if storyText.isEmpty {
@@ -159,7 +158,7 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(canAnalyze ? Color.blue : Color(.systemGray4))
+            .background(canAnalyze ? Color.blue : Color.systemGray4)
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -205,7 +204,7 @@ struct StoryAnalysisView: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.systemGray6)
         .cornerRadius(8)
     }
     
@@ -215,7 +214,7 @@ struct StoryAnalysisView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
                 ForEach(AnalysisTab.allCases, id: \.self) { tab in
-                    Button(action: { selectedTab = tab }) {
+                    Button { selectedTab = tab } label: {
                         VStack(spacing: 4) {
                             Image(systemName: tab.icon)
                                 .font(.title2)
@@ -237,7 +236,7 @@ struct StoryAnalysisView: View {
             .padding(.horizontal)
         }
         .padding(.vertical, 8)
-        .background(Color(.systemBackground))
+        .background(Color.systemBackground)
     }
     
     // MARK: - Tab Content Section
@@ -275,7 +274,7 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.systemGray6)
             .foregroundColor(.primary)
             .cornerRadius(10)
         }
@@ -335,7 +334,7 @@ struct StoryAnalysisView: View {
                     Text(analysis.narrativeArc)
                         .font(.body)
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.systemGray6)
                         .cornerRadius(8)
                 }
             }
@@ -351,7 +350,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.characterDevelopment)
                     .font(.body)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .cornerRadius(8)
             }
         }
@@ -366,7 +365,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.narrativeArc)
                     .font(.body)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .cornerRadius(8)
             }
         }
@@ -381,7 +380,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.themes)
                     .font(.body)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .cornerRadius(8)
             }
         }
@@ -396,7 +395,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.emotionalCurve)
                     .font(.body)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .cornerRadius(8)
             }
         }
@@ -412,7 +411,7 @@ struct StoryAnalysisView: View {
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.systemGray6)
                     .cornerRadius(8)
             }
         }
@@ -520,11 +519,10 @@ struct StoryAnalysisView: View {
            let jsonString = String(data: jsonData, encoding: .utf8) {
             
             // Copy to clipboard
+            #if os(iOS)
             UIPasteboard.general.string = jsonString
-            
+            #endif
             // Show feedback
-            let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-            impactFeedback.impactOccurred()
         }
     }
 }
