@@ -68,6 +68,8 @@ public struct EnhancedTextEditor: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(6)
                     }
+                    .accessibilityLabel("Enhance text with AI")
+                    .accessibilityHint("Improves your text using artificial intelligence")
                 }
                 
                 // Clear button
@@ -77,6 +79,9 @@ public struct EnhancedTextEditor: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
+                    .accessibilityLabel("Clear text")
+                    .accessibilityHint("Removes all text from the editor")
+                    .frame(minWidth: 44, minHeight: 44) // Apple HIG minimum tap target
                 }
             }
             .padding(.horizontal, 12)

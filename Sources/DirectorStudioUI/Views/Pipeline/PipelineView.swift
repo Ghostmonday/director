@@ -551,6 +551,9 @@ struct PipelineView: View {
                         .shadow(color: Color.blue.opacity(0.4), radius: 12, x: 0, y: 6)
                         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                     }
+                    .accessibilityLabel("Run pipeline")
+                    .accessibilityHint("Processes your story through all enabled modules")
+                    .accessibilityAddTraits(.isButton)
                     .padding(.trailing, 20)
                     .padding(.bottom, 20)
                 }
