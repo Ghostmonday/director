@@ -325,14 +325,18 @@ public final class VideoAssemblyModule: PipelineModule, @unchecked Sendable { //
                 metadata: metadata
             )
             
-            print("✅ Video assembly completed in \(String(format: "%.2f", processingTime))s")
-            print("📁 Output: \(assembledVideo.path)")
-            print("📊 Final duration: \(String(format: "%.2f", totalDuration))s")
+            Telemetry.shared.logEvent("video_assembly_completed", properties: [
+                "processing_time": String(format: "%.2f", processingTime),
+                "output_path": assembledVideo.lastPathComponent,
+                "duration": String(format: "%.2f", totalDuration)
+            ])
             
             return .success(output)
             
         } catch {
-            print("❌ Video assembly failed: \(error.localizedDescription)")
+            Telemetry.shared.logEvent("video_assembly_failed", properties: [
+                "error": error.localizedDescription
+            ])
             return .failure(.executionFailed(error.localizedDescription))
         }
     }
@@ -360,7 +364,7 @@ public final class VideoAssemblyModule: PipelineModule, @unchecked Sendable { //
         var processedClips: [VideoClip] = []
         
         for (index, clip) in clips.enumerated() {
-            print("🔧 Processing clip \(index + 1)/\(clips.count)")
+            // Processing clip \(index + 1)/\(clips.count)
             
             // Simulate video processing (in real implementation, this would use AVFoundation)
             if #available(iOS 15.0, *) {
@@ -383,7 +387,7 @@ public final class VideoAssemblyModule: PipelineModule, @unchecked Sendable { //
             return clips
         }
         
-        print("✨ Applying \(transitions.count) transitions...")
+        // Applying \(transitions.count) transitions
         
         // Simulate transition processing
         if #available(iOS 15.0, *) {
@@ -403,7 +407,7 @@ public final class VideoAssemblyModule: PipelineModule, @unchecked Sendable { //
         settings: VideoProjectSettings,
         outputFormat: VideoFormat
     ) async throws -> URL {
-        print("🎬 Assembling final video...")
+        // Assembling final video
         
         // Create output URL
         let outputDir = fileManager.temporaryDirectory.appendingPathComponent("DirectorStudio")

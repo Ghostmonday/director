@@ -253,7 +253,7 @@ struct CreditsStoreView: View {
     
     private func purchaseCredits(_ package: CreditPackage) {
         // Simulate purchase process
-        print("Purchasing \(package.name) package...")
+        // Purchasing \(package.name) package
         
         // In a real app, this would integrate with StoreKit
         // For now, just simulate adding credits

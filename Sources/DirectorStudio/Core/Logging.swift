@@ -30,8 +30,10 @@ public struct SimpleLogger: Sendable {
     }
     
     private func log(level: String, message: String) {
+        #if DEBUG
         let timestamp = DateFormatter.logTimestamp.string(from: Date())
         print("[\(timestamp)] \(level) [\(subsystem).\(category)]: \(message)")
+        #endif
     }
 }
 

@@ -147,10 +147,10 @@ struct PipelineView: View {
                 text: $storyInput,
                 placeholder: "Enter your story here to begin the pipeline...",
                 minHeight: 200,
-                onAIEnhance: {
-                    // Future: AI enhancement integration
-                    print("AI Enhance story")
-                }
+                    onAIEnhance: {
+                        // Future: AI enhancement integration
+                        // TODO: Implement AI story enhancement
+                    }
             )
         }
     }
@@ -535,7 +535,7 @@ struct PipelineView: View {
     
     private func exportAsPDF() {
         // Export pipeline results as PDF (placeholder)
-        print("Export as PDF functionality would be implemented here")
+        // TODO: Implement PDF export functionality
     }
     
     // 🚨 UX FIX #5: Calculate estimated cost for credits preview

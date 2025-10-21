@@ -149,7 +149,7 @@ struct EnhancedTextEditor_Previews: PreviewProvider {
                 placeholder: "Enter your story here...",
                 minHeight: 200,
                 onAIEnhance: {
-                    print("AI Enhance tapped")
+                    // TODO: Implement AI enhancement
                 }
             )
             .padding()

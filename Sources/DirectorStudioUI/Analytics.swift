@@ -6,10 +6,12 @@ class Analytics {
     private init() {}
     
     func track(event: String, properties: [String: Any]? = nil) {
+        #if DEBUG
         print("📊 Analytics Event: \(event)")
         if let properties = properties {
             print("   Properties: \(properties)")
         }
+        #endif
         
         // In production, send to analytics service
         #if !DEBUG
