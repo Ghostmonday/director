@@ -53,6 +53,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>DirectorStudio needs access to your photos to import images for video generation and export final videos to your library.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>DirectorStudio needs permission to save generated videos to your photo library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>DirectorStudio can use your camera to capture content for video projects.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>DirectorStudio can record audio narration for your video projects.</string>
 </dict>
 </plist>
 
