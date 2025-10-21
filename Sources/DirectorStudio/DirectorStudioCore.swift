@@ -11,6 +11,7 @@ import Foundation
 
 // MARK: - Director Studio Core
 
+@available(iOS 15.0, *)
 public class DirectorStudioCore {
     // MARK: - Singleton Instance
     
@@ -479,6 +480,7 @@ public class DirectorStudioCore {
     
     // MARK: - Helper Methods
     
+    @available(iOS 15.0, *)
     private func executeWithTimeout<M: PipelineModule>(
         module: M,
         input: M.Input,

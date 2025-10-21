@@ -48,6 +48,7 @@ public final class ContinuityModule: PipelineModule, ObservableObject {
     
     // MARK: - PipelineModule Implementation
     
+    @available(iOS 15.0, *)
     public func execute(
         input: Input,
         context: PipelineContext
@@ -112,6 +113,7 @@ public final class ContinuityModule: PipelineModule, ObservableObject {
         return !input.segments.isEmpty
     }
     
+    @available(iOS 15.0, *)
     public func execute(input: Input) async throws -> Output {
         let context = PipelineContext()
         let result = await execute(input: input, context: context)
