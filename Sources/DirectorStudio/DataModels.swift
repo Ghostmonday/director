@@ -4,19 +4,19 @@ import Foundation
 public struct PromptSegment: Codable, Identifiable, Sendable {
     // BugScan: character DNA noop touch for analysis
     public let id = UUID()
-    let index: Int
-    let duration: Int // Target duration in seconds
-    var content: String
-    let characters: [String]
-    let setting: String
-    let action: String
-    let continuityNotes: String
-    var cinematicTags: CinematicTaxonomy?
+    public let index: Int
+    public let duration: Int // Target duration in seconds
+    public var content: String
+    public let characters: [String]
+    public let setting: String
+    public let action: String
+    public let continuityNotes: String
+    public var cinematicTags: CinematicTaxonomy?
     
     // New properties for continuity engine
-    let location: String
-    let props: [String]
-    let tone: String
+    public let location: String
+    public let props: [String]
+    public let tone: String
     
     public init(index: Int, duration: Int, content: String, characters: [String], setting: String, action: String, continuityNotes: String, location: String, props: [String], tone: String) {
         self.index = index
@@ -58,15 +58,7 @@ public enum SegmentPacing: String, Sendable, Codable {
     case building = "Building"
 }
 
-// MARK: - Transition Type Enum
-public enum TransitionType: String, Sendable, Codable {
-    case cut = "Cut"
-    case fade = "Fade"
-    case temporal = "Temporal"
-    case spatial = "Spatial"
-    case dialogue = "Dialogue"
-    case hard = "Hard"
-}
+// MARK: - Transition Type Enum (moved to ContinuityModule.swift for richer functionality)
 
 // MARK: - Supporting Types (referenced by PromptSegment)
 public struct CinematicTaxonomy: Codable, Sendable {

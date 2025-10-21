@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Credits & Store UI with payment integration
 struct CreditsStoreView: View {
@@ -65,7 +66,7 @@ struct CreditsStoreView: View {
                     .foregroundColor(.secondary)
             }
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(12)
             
             // Quick Actions
@@ -78,7 +79,7 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -91,7 +92,7 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -150,7 +151,7 @@ struct CreditsStoreView: View {
                 )
             }
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(8)
         }
     }
@@ -330,11 +331,11 @@ struct CreditPackageView: View {
                     .cornerRadius(6)
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color(UIColor.systemBackground))
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(package.popular ? Color.orange : Color.systemGray4, lineWidth: package.popular ? 2 : 1)
+                    .stroke(package.popular ? Color.orange : Color(UIColor.systemGray4), lineWidth: package.popular ? 2 : 1)
             )
         }
         .buttonStyle(PlainButtonStyle())

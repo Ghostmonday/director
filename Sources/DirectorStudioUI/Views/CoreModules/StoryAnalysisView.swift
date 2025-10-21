@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Story Analysis Module UI - Multi-tab analysis interface
 struct StoryAnalysisView: View {
@@ -123,11 +124,11 @@ struct StoryAnalysisView: View {
             TextEditor(text: $storyText)
                 .frame(minHeight: 300)
                 .padding(8)
-                .background(Color.systemGray6)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.systemGray4, lineWidth: 1)
+                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
                 )
             
             if storyText.isEmpty {
@@ -158,7 +159,7 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(canAnalyze ? Color.blue : Color.systemGray4)
+            .background(canAnalyze ? Color.blue : Color(UIColor.systemGray4))
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -204,7 +205,7 @@ struct StoryAnalysisView: View {
             }
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color(UIColor.systemGray6))
         .cornerRadius(8)
     }
     
@@ -236,7 +237,7 @@ struct StoryAnalysisView: View {
             .padding(.horizontal)
         }
         .padding(.vertical, 8)
-        .background(Color.systemBackground)
+        .background(Color(UIColor.systemBackground))
     }
     
     // MARK: - Tab Content Section
@@ -274,7 +275,7 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .foregroundColor(.primary)
             .cornerRadius(10)
         }
@@ -334,7 +335,7 @@ struct StoryAnalysisView: View {
                     Text(analysis.narrativeArc)
                         .font(.body)
                         .padding()
-                        .background(Color.systemGray6)
+                        .background(Color(UIColor.systemGray6))
                         .cornerRadius(8)
                 }
             }
@@ -350,7 +351,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.characterDevelopment)
                     .font(.body)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
             }
         }
@@ -365,7 +366,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.narrativeArc)
                     .font(.body)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
             }
         }
@@ -380,7 +381,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.themes)
                     .font(.body)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
             }
         }
@@ -395,7 +396,7 @@ struct StoryAnalysisView: View {
                 Text(analysis.emotionalCurve)
                     .font(.body)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
             }
         }
@@ -411,7 +412,7 @@ struct StoryAnalysisView: View {
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .cornerRadius(8)
             }
         }

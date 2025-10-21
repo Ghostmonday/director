@@ -302,7 +302,7 @@ public class MockMonetizationManager: MonetizationManagerProtocol {
         do {
             self.credits = try persistenceManager.getCreditsBalance()
         } catch {
-            print("Failed to load credits: \(error.localizedDescription)")
+            Telemetry.shared.logEvent("credits_load_failed", properties: ["error": error.localizedDescription])
             self.credits = 100 // Default starting credits
         }
     }
@@ -402,7 +402,12 @@ public class MockMonetizationManager: MonetizationManagerProtocol {
     
     public func purchaseProduct(_ productId: String) async throws -> PurchaseResult {
         // Simulate network delay
-        try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        }
         
         // Find product
         let products = try await getAvailableProducts()
@@ -441,7 +446,12 @@ public class MockMonetizationManager: MonetizationManagerProtocol {
     
     public func restorePurchases() async throws -> [PurchaseResult] {
         // Simulate network delay
-        try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        }
         
         // Simulate no previous purchases
         return []

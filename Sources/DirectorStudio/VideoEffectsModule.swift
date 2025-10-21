@@ -157,6 +157,7 @@ public struct VideoEffectsMetadata: Sendable, Codable {
 
 // MARK: - Video Effects Module
 
+@available(iOS 15.0, *)
 public final class VideoEffectsModule: PipelineModule {
     public typealias Input = VideoEffectsInput
     public typealias Output = VideoEffectsOutput
@@ -181,9 +182,10 @@ public final class VideoEffectsModule: PipelineModule {
         let startTime = Date()
         
         do {
-            print("✨ Starting video effects processing")
-            print("🎬 Input video: \(input.videoURL.lastPathComponent)")
-            print("🎨 Effects to apply: \(input.effects.count)")
+            Telemetry.shared.logEvent("video_effects_started", properties: [
+                "input_video": input.videoURL.lastPathComponent,
+                "effects_count": input.effects.count
+            ])
             
             // Phase 1: Validate input video
             try validateInputVideo(input.videoURL)
@@ -220,14 +222,16 @@ public final class VideoEffectsModule: PipelineModule {
                 metadata: outputMetadata
             )
             
-            print("✅ Video effects processing completed in \(String(format: "%.2f", processingTime))s")
-            print("📁 Output: \(processedVideoURL.path)")
-            print("🎨 Effects applied: \(input.effects.map { $0.type.rawValue }.joined(separator: ", "))")
+            Telemetry.shared.logEvent("video_effects_completed", properties: [
+                "processing_time": processingTime,
+                "output_path": processedVideoURL.path,
+                "effects_applied": input.effects.map { $0.type.rawValue }.joined(separator: ", ")
+            ])
             
             return .success(output)
             
         } catch {
-            print("❌ Video effects processing failed: \(error.localizedDescription)")
+            Telemetry.shared.logEvent("video_effects_failed", properties: ["error": error.localizedDescription])
             return .failure(.executionFailed(error.localizedDescription))
         }
     }
@@ -248,6 +252,7 @@ public final class VideoEffectsModule: PipelineModule {
         }
     }
     
+    @available(iOS 15.0, *)
     private func getVideoMetadata(_ videoURL: URL) async throws -> VideoEffectsMetadata {
         // Simulate metadata extraction (in real implementation, this would use AVFoundation)
         try await Task.sleep(nanoseconds: 200_000_000) // 0.2 seconds
@@ -274,7 +279,7 @@ public final class VideoEffectsModule: PipelineModule {
         quality: VideoQuality,
         outputFormat: VideoFormat
     ) async throws -> URL {
-        print("🎨 Applying \(effects.count) effects...")
+        Telemetry.shared.logEvent("effects_application_started", properties: ["effects_count": effects.count])
         
         // Create output URL
         let outputDir = fileManager.temporaryDirectory.appendingPathComponent("DirectorStudio")
@@ -287,7 +292,11 @@ public final class VideoEffectsModule: PipelineModule {
         var currentVideoURL = videoURL
         
         for (index, effect) in effects.enumerated() {
-            print("✨ Applying effect \(index + 1)/\(effects.count): \(effect.type.rawValue)")
+            Telemetry.shared.logEvent("effect_application", properties: [
+                "effect_index": index + 1,
+                "total_effects": effects.count,
+                "effect_type": effect.type.rawValue
+            ])
             
             let effectOutputURL = outputDir.appendingPathComponent("effect_\(index)_\(timestamp).\(outputFormat.fileExtension)")
             
@@ -310,6 +319,7 @@ public final class VideoEffectsModule: PipelineModule {
         return outputURL
     }
     
+    @available(iOS 15.0, *)
     private func applySingleEffect(
         inputURL: URL,
         outputURL: URL,
@@ -318,7 +328,12 @@ public final class VideoEffectsModule: PipelineModule {
     ) async throws {
         // Simulate effect processing (in real implementation, this would use AVFoundation or Core Image)
         let processingTime = TimeInterval(effect.intensity) * 0.5 // Simulate processing time based on intensity
-        try await Task.sleep(nanoseconds: UInt64(processingTime * 1_000_000_000))
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: UInt64(processingTime * 1_000_000_000))
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: UInt64(processingTime * 1_000_000_000))
+        }
         
         // Create processed video file (placeholder)
         try createProcessedVideoFile(at: outputURL, from: inputURL, effect: effect)

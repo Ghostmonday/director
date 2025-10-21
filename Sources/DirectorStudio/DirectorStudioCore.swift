@@ -484,33 +484,45 @@ public class DirectorStudioCore {
         input: M.Input,
         timeout: TimeInterval = 15
     ) async throws -> M.Output {
-        return try await withThrowingTaskGroup(of: M.Output.self) { group in
-            // Add timeout task
-            group.addTask {
-                try await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
-                throw CoreError.operationTimeout(module: String(describing: M.self), timeout: timeout)
-            }
-            
-            // Add execution task
-            group.addTask {
-                let context = PipelineContext()
-                let result = await module.execute(input: input, context: context)
-                
-                switch result {
-                case .success(let output):
-                    return output
-                case .failure(let error):
-                    throw CoreError.moduleError(module: String(describing: M.self), error: error)
+        if #available(iOS 15.0, *) {
+            return try await withThrowingTaskGroup(of: M.Output.self) { group in
+                // Add timeout task
+                group.addTask {
+                    try await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
+                    throw CoreError.operationTimeout(module: String(describing: M.self), timeout: timeout)
                 }
+                
+                // Add execution task
+                group.addTask {
+                    let context = PipelineContext()
+                    let result = await module.execute(input: input, context: context)
+                    
+                    switch result {
+                    case .success(let output):
+                        return output
+                    case .failure(let error):
+                        throw CoreError.moduleError(module: String(describing: M.self), error: error)
+                    }
+                }
+                
+                // Return the first completed task (success or failure)
+                let result = try await group.next()!
+                
+                // Cancel remaining tasks
+                group.cancelAll()
+                
+                return result
             }
-            
-            // Return the first completed task (success or failure)
-            let result = try await group.next()!
-            
-            // Cancel remaining tasks
-            group.cancelAll()
-            
-            return result
+        } else {
+            // Fallback for iOS < 15.0 - execute without timeout
+            let context = PipelineContext()
+            let result = await module.execute(input: input, context: context)
+            switch result {
+            case .success(let output):
+                return output
+            case .failure(let error):
+                throw CoreError.moduleError(module: String(describing: M.self), error: error)
+            }
         }
     }
     

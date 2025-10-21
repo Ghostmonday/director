@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Pipeline Orchestrator UI - Complete pipeline configuration and execution
 struct PipelineView: View {
@@ -122,11 +123,11 @@ struct PipelineView: View {
             TextEditor(text: $storyInput)
                 .frame(minHeight: 200)
                 .padding(8)
-                .background(Color.systemGray6)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.systemGray4, lineWidth: 1)
+                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
                 )
             
             if storyInput.isEmpty {
@@ -210,11 +211,11 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color.systemBackground)
+        .background(Color(UIColor.systemBackground))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.systemGray4, lineWidth: 1)
+                .stroke(Color(UIColor.systemGray4), lineWidth: 1)
         )
     }
     
@@ -241,9 +242,10 @@ struct PipelineView: View {
                         .font(.subheadline)
                     
                     Picker("Quality", selection: $moduleSettings.videoQuality) {
-                        Text("720p").tag(VideoQuality.hd)
-                        Text("1080p").tag(VideoQuality.fullHD)
-                        Text("4K").tag(VideoQuality.uhd)
+                        Text("Low").tag(VideoQuality.low)
+                        Text("Medium").tag(VideoQuality.medium)
+                        Text("High").tag(VideoQuality.high)
+                        Text("Ultra").tag(VideoQuality.ultra)
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
@@ -263,7 +265,7 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color(UIColor.systemGray6))
         .cornerRadius(8)
     }
     
@@ -279,7 +281,7 @@ struct PipelineView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(canRunPipeline ? Color.blue : Color.systemGray4)
+                .background(canRunPipeline ? Color.blue : Color(UIColor.systemGray4))
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -309,7 +311,7 @@ struct PipelineView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -321,7 +323,7 @@ struct PipelineView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -356,7 +358,7 @@ struct PipelineView: View {
             }
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color(UIColor.systemGray6))
         .cornerRadius(8)
     }
     
@@ -379,7 +381,7 @@ struct PipelineView: View {
                     Spacer()
                 }
                 .padding()
-                .background(Color.systemBackground)
+                .background(Color(UIColor.systemBackground))
                 .cornerRadius(8)
             }
         }
@@ -408,7 +410,7 @@ struct PipelineView: View {
                                     .foregroundColor(.secondary)
                             }
                             .padding()
-                            .background(Color.systemGray6)
+                            .background(Color(UIColor.systemGray6))
                             .cornerRadius(6)
                         }
                     }
@@ -564,16 +566,12 @@ struct ModuleSettings {
     
     // Advanced settings
     var targetDuration: Double = 120.0
-    var videoQuality: VideoQuality = .fullHD
+    var videoQuality: VideoQuality = .high
     var processingMode: ProcessingMode = .balanced
 }
 
-/// Video Quality Enum
-enum VideoQuality: String, CaseIterable {
-    case hd = "720p"
-    case fullHD = "1080p"
-    case uhd = "4K"
-}
+/// Video Quality Enum (using DirectorStudio.VideoQuality from VideoGenerationModule)
+// Removed duplicate - use DirectorStudio.VideoQuality instead
 
 /// Processing Mode Enum
 enum ProcessingMode: String, CaseIterable {

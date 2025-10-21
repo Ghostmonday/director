@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Segmentation Module UI - Story segmentation with timeline
 struct SegmentationView: View {
@@ -88,11 +89,11 @@ struct SegmentationView: View {
             TextEditor(text: $storyText)
                 .frame(minHeight: 200)
                 .padding(8)
-                .background(Color.systemGray6)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.systemGray4, lineWidth: 1)
+                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
                 )
             
             if storyText.isEmpty {
@@ -160,7 +161,7 @@ struct SegmentationView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(canSegment ? Color.blue : Color.systemGray4)
+                .background(canSegment ? Color.blue : Color(UIColor.systemGray4))
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -176,7 +177,7 @@ struct SegmentationView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.systemGray6)
+                    .background(Color(UIColor.systemGray6))
                     .foregroundColor(.primary)
                     .cornerRadius(10)
                 }
@@ -198,7 +199,7 @@ struct SegmentationView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color(UIColor.systemGray6))
         .cornerRadius(8)
     }
     
@@ -233,11 +234,11 @@ struct SegmentationView: View {
             .frame(maxHeight: 400)
         }
         .padding()
-        .background(Color.systemBackground)
+        .background(Color(UIColor.systemBackground))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.systemGray4, lineWidth: 1)
+                .stroke(Color(UIColor.systemGray4), lineWidth: 1)
         )
     }
     
@@ -367,11 +368,11 @@ struct SegmentCardView: View {
                 }
             }
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.systemGray4, lineWidth: 1)
+                    .stroke(Color(UIColor.systemGray4), lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -414,7 +415,7 @@ struct SegmentDetailView: View {
                         Text(segment.content)
                             .font(.body)
                             .padding()
-                            .background(Color.systemGray6)
+                            .background(Color(UIColor.systemGray6))
                             .cornerRadius(8)
                     }
                     
@@ -468,7 +469,7 @@ struct SegmentDetailView: View {
                             Text(segment.continuityNotes)
                                 .font(.body)
                                 .padding()
-                                .background(Color.systemGray6)
+                                .background(Color(UIColor.systemGray6))
                                 .cornerRadius(8)
                         }
                     }

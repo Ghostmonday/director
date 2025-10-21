@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Settings View
 struct SettingsView: View {
@@ -254,3 +255,4 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
     }
 }
+

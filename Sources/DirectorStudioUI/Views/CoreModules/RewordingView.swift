@@ -7,11 +7,12 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Rewording Module UI - Text transformation interface
 struct RewordingView: View {
     @State private var inputText: String = ""
-    @State private var selectedTransformationType: RewordingType = .modernizeOldEnglish
+    @State private var selectedTransformationType: DirectorStudio.RewordingInput.RewordingType = .modernizeOldEnglish
     @State private var isProcessing: Bool = false
     @State private var rewordedText: String = ""
     @State private var showComparison: Bool = false
@@ -81,11 +82,11 @@ struct RewordingView: View {
             TextEditor(text: $inputText)
                 .frame(minHeight: 120)
                 .padding(8)
-                .background(Color.systemGray6)
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.systemGray4, lineWidth: 1)
+                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
                 )
             
             if inputText.isEmpty {
@@ -104,13 +105,13 @@ struct RewordingView: View {
                 .font(.headline)
             
             Picker("Transformation Type", selection: $selectedTransformationType) {
-                ForEach(RewordingType.allCases, id: \.self) { type in
+                ForEach(DirectorStudio.RewordingInput.RewordingType.allCases, id: \.self) { type in
                     Text(type.displayName).tag(type)
                 }
             }
             .pickerStyle(MenuPickerStyle())
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(8)
             
             // Style Description
@@ -137,7 +138,7 @@ struct RewordingView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(inputText.isEmpty ? Color.systemGray4 : Color.blue)
+            .background(inputText.isEmpty ? Color(UIColor.systemGray4) : Color.blue)
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -157,7 +158,7 @@ struct RewordingView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color.systemGray6)
+        .background(Color(UIColor.systemGray6))
         .cornerRadius(8)
     }
     
@@ -194,7 +195,7 @@ struct RewordingView: View {
                             
                             Text(inputText)
                                 .padding()
-                                .background(Color.systemGray6)
+                                .background(Color(UIColor.systemGray6))
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -210,7 +211,7 @@ struct RewordingView: View {
                             
                             Text(rewordedText)
                                 .padding()
-                                .background(Color.systemGray6)
+                                .background(Color(UIColor.systemGray6))
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -218,7 +219,7 @@ struct RewordingView: View {
                         // Only transformed text
                         Text(rewordedText)
                             .padding()
-                            .background(Color.systemGray6)
+                            .background(Color(UIColor.systemGray6))
                             .cornerRadius(6)
                             .font(.body)
                     }
@@ -227,11 +228,11 @@ struct RewordingView: View {
             .frame(maxHeight: 300)
         }
         .padding()
-        .background(Color.systemBackground)
+        .background(Color(UIColor.systemBackground))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.systemGray4, lineWidth: 1)
+                .stroke(Color(UIColor.systemGray4), lineWidth: 1)
         )
     }
     
@@ -293,46 +294,7 @@ struct RewordingView: View {
     }
 }
 
-/// RewordingType enum with display names and descriptions
-extension RewordingType {
-    var displayName: String {
-        switch self {
-        case .modernizeOldEnglish:
-            return "Modernize Old English"
-        case .formalizeCasual:
-            return "Formalize Casual Text"
-        case .casualizeFormal:
-            return "Make More Casual"
-        case .simplifyComplex:
-            return "Simplify Complex Text"
-        case .enhanceDescriptive:
-            return "Enhance Descriptions"
-        case .professionalize:
-            return "Professional Tone"
-        case .creativeRewrite:
-            return "Creative Rewrite"
-        }
-    }
-    
-    var description: String {
-        switch self {
-        case .modernizeOldEnglish:
-            return "Converts archaic or old English text into contemporary, natural language"
-        case .formalizeCasual:
-            return "Transforms casual, conversational text into formal, professional language"
-        case .casualizeFormal:
-            return "Makes formal text more conversational and approachable"
-        case .simplifyComplex:
-            return "Simplifies complex sentences and vocabulary for better readability"
-        case .enhanceDescriptive:
-            return "Adds vivid descriptions and sensory details to enhance imagery"
-        case .professionalize:
-            return "Applies professional tone and business-appropriate language"
-        case .creativeRewrite:
-            return "Creatively rephrases content while maintaining the core message"
-        }
-    }
-}
+// Extension moved to GUITypes.swift to avoid duplication
 
 /// Preview
 struct RewordingView_Previews: PreviewProvider {

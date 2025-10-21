@@ -57,6 +57,7 @@ public struct GUISegment: Codable {
     public let characters: [String]
     public let setting: String
     public let action: String
+    public let continuityNotes: String
     public let hasCinematicTags: Bool
     
     public init(
@@ -67,6 +68,7 @@ public struct GUISegment: Codable {
         characters: [String],
         setting: String,
         action: String,
+        continuityNotes: String,
         hasCinematicTags: Bool
     ) {
         self.id = id
@@ -76,6 +78,7 @@ public struct GUISegment: Codable {
         self.characters = characters
         self.setting = setting
         self.action = action
+        self.continuityNotes = continuityNotes
         self.hasCinematicTags = hasCinematicTags
     }
     
@@ -87,6 +90,7 @@ public struct GUISegment: Codable {
         self.characters = segment.characters
         self.setting = segment.setting
         self.action = segment.action
+        self.continuityNotes = segment.continuityNotes
         self.hasCinematicTags = segment.cinematicTags != nil
     }
 }
@@ -170,25 +174,42 @@ public class GUIAbstraction: GUIAbstractionProtocol {
     public func getProjects() async throws -> [GUIProject] {
         let projects = try core.persistenceManager.getAllProjects()
         
-        return try await withThrowingTaskGroup(of: GUIProject.self) { group in
-            for project in projects {
-                group.addTask {
-                    let segments = try self.core.persistenceManager.getSegments(projectId: project.id)
-                    let hasVideo = try self.core.persistenceManager.getVideoMetadata(projectId: project.id) != nil
-                    
-                    return GUIProject(
-                        from: project,
-                        segmentCount: segments.count,
-                        hasVideo: hasVideo
-                    )
+        if #available(iOS 15.0, *) {
+            return try await withThrowingTaskGroup(of: GUIProject.self) { group in
+                for project in projects {
+                    group.addTask {
+                        let segments = try self.core.persistenceManager.getSegments(projectId: project.id)
+                        let hasVideo = try self.core.persistenceManager.getVideoMetadata(projectId: project.id) != nil
+                        
+                        return GUIProject(
+                            from: project,
+                            segmentCount: segments.count,
+                            hasVideo: hasVideo
+                        )
+                    }
                 }
+                
+                var guiProjects: [GUIProject] = []
+                for try await project in group {
+                    guiProjects.append(project)
+                }
+                
+                return guiProjects.sorted(by: { $0.updatedAt > $1.updatedAt })
             }
-            
+        } else {
+            // Fallback for iOS < 15.0 - sequential processing
             var guiProjects: [GUIProject] = []
-            for try await project in group {
-                guiProjects.append(project)
+            for project in projects {
+                let segments = try core.persistenceManager.getSegments(projectId: project.id)
+                let hasVideo = try core.persistenceManager.getVideoMetadata(projectId: project.id) != nil
+                
+                let guiProject = GUIProject(
+                    from: project,
+                    segmentCount: segments.count,
+                    hasVideo: hasVideo
+                )
+                guiProjects.append(guiProject)
             }
-            
             return guiProjects.sorted(by: { $0.updatedAt > $1.updatedAt })
         }
     }
@@ -292,7 +313,7 @@ public class GUIAbstraction: GUIAbstractionProtocol {
     
     public func validateContinuity() async throws -> [ContinuityIssue] {
         let result = try await core.validateContinuity()
-        return result.continuityIssues
+        return result.issues
     }
     
     // MARK: - Video Generation

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Video Library & Management UI
 struct VideoLibraryView: View {
@@ -78,7 +79,7 @@ struct VideoLibraryView: View {
                 }
             }
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
             
             // Controls
@@ -231,24 +232,24 @@ struct VideoLibraryView: View {
                         id: UUID(),
                         title: "Sample Video 1",
                         description: "A sample video generated from a story",
-                        url: URL(string: "https://example.com/video1.mp4")!,
-                        thumbnailURL: URL(string: "https://example.com/thumb1.jpg")!,
                         duration: 120.0,
+                        createdAt: Date().addingTimeInterval(-86400),
+                        thumbnailURL: URL(string: "https://example.com/thumb1.jpg")!,
+                        videoURL: URL(string: "https://example.com/video1.mp4")!,
                         fileSize: 15_000_000,
                         resolution: CGSize(width: 1920, height: 1080),
-                        createdAt: Date().addingTimeInterval(-86400),
                         tags: ["cinematic", "drama"]
                     ),
                     GUIVideo(
                         id: UUID(),
                         title: "Sample Video 2",
                         description: "Another sample video with different style",
-                        url: URL(string: "https://example.com/video2.mp4")!,
-                        thumbnailURL: URL(string: "https://example.com/thumb2.jpg")!,
                         duration: 90.0,
+                        createdAt: Date().addingTimeInterval(-172800),
+                        thumbnailURL: URL(string: "https://example.com/thumb2.jpg")!,
+                        videoURL: URL(string: "https://example.com/video2.mp4")!,
                         fileSize: 12_000_000,
                         resolution: CGSize(width: 1920, height: 1080),
-                        createdAt: Date().addingTimeInterval(-172800),
                         tags: ["action", "thriller"]
                     )
                 ]
@@ -362,11 +363,11 @@ struct VideoGridItemView: View {
                 }
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color(UIColor.systemBackground))
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.systemGray4, lineWidth: 1)
+                    .stroke(Color(UIColor.systemGray4), lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -471,11 +472,11 @@ struct VideoListItemView: View {
                     .foregroundColor(.blue)
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color(UIColor.systemBackground))
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.systemGray4, lineWidth: 1)
+                    .stroke(Color(UIColor.systemGray4), lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -568,7 +569,7 @@ struct VideoPlayerView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.systemGray6)
+                        .background(Color(UIColor.systemGray6))
                         .foregroundColor(.primary)
                         .cornerRadius(10)
                     }

@@ -9,6 +9,78 @@
 import Foundation
 import DirectorStudio
 
+// MARK: - GUI Data Models
+
+public struct GUIStoryAnalysis {
+    public let genre: String
+    public let targetAudience: String
+    public let estimatedDuration: Int
+    public let complexityScore: Double
+    public let narrativeArc: String
+    public let emotionalCurve: String
+    public let characterDevelopment: String
+    public let themes: String
+    
+    public init(genre: String, targetAudience: String, estimatedDuration: Int, complexityScore: Double, narrativeArc: String, emotionalCurve: String, characterDevelopment: String, themes: String) {
+        self.genre = genre
+        self.targetAudience = targetAudience
+        self.estimatedDuration = estimatedDuration
+        self.complexityScore = complexityScore
+        self.narrativeArc = narrativeArc
+        self.emotionalCurve = emotionalCurve
+        self.characterDevelopment = characterDevelopment
+        self.themes = themes
+    }
+}
+
+public struct GUIProject: Identifiable {
+    public let id: UUID
+    public let name: String
+    public let description: String
+    public let createdAt: Date
+    public let lastModified: Date
+    public let status: ProjectStatus
+    public let segmentCount: Int
+    public let hasVideo: Bool
+    
+    public init(id: UUID, name: String, description: String, createdAt: Date, lastModified: Date, status: ProjectStatus, segmentCount: Int, hasVideo: Bool) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.createdAt = createdAt
+        self.lastModified = lastModified
+        self.status = status
+        self.segmentCount = segmentCount
+        self.hasVideo = hasVideo
+    }
+}
+
+public struct GUIVideo: Identifiable {
+    public let id: UUID
+    public let title: String
+    public let description: String
+    public let duration: TimeInterval
+    public let createdAt: Date
+    public let thumbnailURL: URL?
+    public let videoURL: URL?
+    public let fileSize: Int
+    public let resolution: CGSize
+    public let tags: [String]
+    
+    public init(id: UUID, title: String, description: String, duration: TimeInterval, createdAt: Date, thumbnailURL: URL?, videoURL: URL?, fileSize: Int, resolution: CGSize, tags: [String]) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.duration = duration
+        self.createdAt = createdAt
+        self.thumbnailURL = thumbnailURL
+        self.videoURL = videoURL
+        self.fileSize = fileSize
+        self.resolution = resolution
+        self.tags = tags
+    }
+}
+
 /// GUI Abstraction Layer for UI interactions
 public class GUIAbstraction {
     
@@ -16,7 +88,7 @@ public class GUIAbstraction {
     
     // MARK: - Rewording Operations
     
-    public func rewordText(text: String, type: RewordingType) async throws -> RewordingOutput {
+    public func rewordText(text: String, type: DirectorStudio.RewordingInput.RewordingType) async throws -> DirectorStudio.RewordingOutput {
         // Simulate AI processing time
         try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
         
@@ -31,22 +103,22 @@ public class GUIAbstraction {
         )
     }
     
-    private func transformText(_ text: String, type: RewordingType) -> String {
+    private func transformText(_ text: String, type: DirectorStudio.RewordingInput.RewordingType) -> String {
         switch type {
         case .modernizeOldEnglish:
             return "Modernized: \(text)"
-        case .formalizeCasual:
-            return "Formal: \(text)"
-        case .casualizeFormal:
+        case .improveGrammar:
+            return "Grammar improved: \(text)"
+        case .casualTone:
             return "Casual: \(text)"
-        case .simplifyComplex:
-            return "Simplified: \(text)"
-        case .enhanceDescriptive:
-            return "Enhanced: \(text)"
-        case .professionalize:
-            return "Professional: \(text)"
-        case .creativeRewrite:
-            return "Creative: \(text)"
+        case .formalTone:
+            return "Formal: \(text)"
+        case .poeticStyle:
+            return "Poetic: \(text)"
+        case .fasterPacing:
+            return "Fast-paced: \(text)"
+        case .cinematicMood:
+            return "Cinematic: \(text)"
         }
     }
     
@@ -78,7 +150,8 @@ public class GUIAbstraction {
                     characters: extractCharacters(from: content),
                     setting: "Scene \(i + 1)",
                     action: "Narrative action for segment \(i + 1)",
-                    continuityNotes: "Continuity notes for segment \(i + 1)"
+                    continuityNotes: "Continuity notes for segment \(i + 1)",
+                    hasCinematicTags: false
                 )
                 segments.append(segment)
             }

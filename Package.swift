@@ -11,18 +11,17 @@ let package = Package(
             name: "DirectorStudio",
             targets: ["DirectorStudio"]
         ),
-        .executable(
-            name: "DirectorStudioCLI",
-            targets: ["DirectorStudioCLI"]
-        ),
         .library(
             name: "DirectorStudioUI",
             targets: ["DirectorStudioUI"]
         ),
+        .executable(
+            name: "DirectorStudioApp",
+            targets: ["DirectorStudioApp"]
+        ),
     ],
     dependencies: [
-        // CLI-compatible dependencies only
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.2.0"),
+        // iOS-only dependencies
     ],
     targets: [
         .target(
@@ -30,18 +29,15 @@ let package = Package(
             dependencies: [],
             path: "Sources/DirectorStudio"
         ),
-        .executableTarget(
-            name: "DirectorStudioCLI",
-            dependencies: [
-                "DirectorStudio",
-                .product(name: "ArgumentParser", package: "swift-argument-parser")
-            ],
-            path: "Sources/DirectorStudioCLI"
-        ),
         .target(
             name: "DirectorStudioUI",
             dependencies: ["DirectorStudio"],
             path: "Sources/DirectorStudioUI"
+        ),
+        .executableTarget(
+            name: "DirectorStudioApp",
+            dependencies: ["DirectorStudioUI"],
+            path: "Sources/DirectorStudioApp"
         ),
         .testTarget(
             name: "DirectorStudioTests",

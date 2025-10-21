@@ -22,6 +22,7 @@ public struct CinematicTaxonomyModule: PipelineModule {
     public let id = "taxonomy"
     public let name = "Cinematic Taxonomy"
     public let version = "2.0.0"
+    public var isValidated = true
     public var isEnabled: Bool = true
     
     private let logger = Loggers.taxonomy

@@ -139,7 +139,8 @@ public struct GenerationVideoMetadata: Sendable, Codable {
 
 // MARK: - Video Generation Module
 
-public final class VideoGenerationModule: PipelineModule {
+@available(iOS 15.0, *)
+public final class VideoGenerationModule: PipelineModule, @unchecked Sendable {
     public typealias Input = VideoGenerationInput
     public typealias Output = VideoGenerationOutput
     
@@ -165,10 +166,12 @@ public final class VideoGenerationModule: PipelineModule {
         let startTime = Date()
         
         do {
-            print("🎬 Starting video generation for '\(input.projectName)'")
-            print("📊 Processing \(input.segments.count) segments")
-            print("🎨 Style: \(input.style.rawValue)")
-            print("📐 Quality: \(input.quality.rawValue)")
+            Telemetry.shared.logEvent("video_generation_started", properties: [
+                "project_name": input.projectName,
+                "segment_count": input.segments.count,
+                "style": input.style.rawValue,
+                "quality": input.quality.rawValue
+            ])
             
             // Phase 1: Generate video clips for each segment
             let videoClips = try await generateVideoClips(for: input.segments, style: input.style, quality: input.quality)
@@ -199,14 +202,16 @@ public final class VideoGenerationModule: PipelineModule {
                 processingTime: processingTime
             )
             
-            print("✅ Video generation completed in \(String(format: "%.2f", processingTime))s")
-            print("📁 Output: \(finalVideo.path)")
-            print("📊 File size: \(formatFileSize(fileSize))")
+            Telemetry.shared.logEvent("video_generation_completed", properties: [
+                "processing_time": processingTime,
+                "output_path": finalVideo.path,
+                "file_size": fileSize
+            ])
             
             return .success(output)
             
         } catch {
-            print("❌ Video generation failed: \(error.localizedDescription)")
+            Telemetry.shared.logEvent("video_generation_failed", properties: ["error": error.localizedDescription])
             return .failure(.executionFailed(error.localizedDescription))
         }
     }
@@ -217,7 +222,11 @@ public final class VideoGenerationModule: PipelineModule {
         var clips: [URL] = []
         
         for (index, segment) in segments.enumerated() {
-            print("🎥 Generating clip \(index + 1)/\(segments.count): \(segment.content.prefix(50))...")
+            Telemetry.shared.logEvent("video_clip_generation", properties: [
+                "clip_index": index + 1,
+                "total_clips": segments.count,
+                "content_preview": String(segment.content.prefix(50))
+            ])
             
             // Generate AI prompt for video creation
             let videoPrompt = createVideoPrompt(from: segment, style: style)
@@ -236,9 +245,15 @@ public final class VideoGenerationModule: PipelineModule {
         return clips
     }
     
+    @available(iOS 15.0, *)
     private func generateVideoClip(prompt: String, duration: TimeInterval, quality: VideoQuality, index: Int) async throws -> URL {
         // Simulate AI video generation delay
-        try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
+        }
         
         // Create a placeholder video file (in real implementation, this would be actual video generation)
         let tempDir = fileManager.temporaryDirectory
@@ -274,7 +289,7 @@ public final class VideoGenerationModule: PipelineModule {
     }
     
     private func assembleVideo(clips: [URL], input: VideoGenerationInput) async throws -> URL {
-        print("🎞️ Assembling \(clips.count) video clips...")
+        Telemetry.shared.logEvent("video_assembly_started", properties: ["clip_count": clips.count])
         
         // Create output URL
         let outputDir = fileManager.temporaryDirectory.appendingPathComponent("DirectorStudio")
@@ -288,19 +303,31 @@ public final class VideoGenerationModule: PipelineModule {
         return outputURL
     }
     
+    @available(iOS 15.0, *)
     private func assembleVideoClips(clips: [URL], outputURL: URL, quality: VideoQuality) async throws {
         // Simulate assembly delay
-        try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        }
         
         // Create assembled video file (placeholder)
         try createPlaceholderVideoFile(at: outputURL, duration: 4.0, quality: quality)
     }
     
+    @available(iOS 15.0, *)
     private func applyPostProcessing(to videoURL: URL, style: VideoStyle) async throws -> URL {
-        print("✨ Applying \(style.rawValue) post-processing effects...")
+        Telemetry.shared.logEvent("post_processing_started", properties: ["style": style.rawValue])
         
         // Simulate post-processing delay
-        try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 1_500_000_000) // 1.5 seconds
+        }
         
         // In real implementation, this would apply actual video effects
         return videoURL

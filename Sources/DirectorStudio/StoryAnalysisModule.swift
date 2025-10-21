@@ -23,6 +23,7 @@ public final class StoryAnalysisModule: PipelineModule {
     public let name = "Story Analysis"
     public let version = "1.0.0"
     public var isEnabled = true
+    public var isValidated = true
     
     public init() {}
     
@@ -32,7 +33,7 @@ public final class StoryAnalysisModule: PipelineModule {
     }
     
     public func execute(input: StoryAnalysisInput) async throws -> StoryAnalysisOutput {
-        print("🔍 Starting deep story analysis [v2.0]")
+        Telemetry.shared.logEvent("story_analysis_started", properties: ["version": "2.0", "input_length": input.story.count])
         
         let startTime = Date()
         
@@ -40,7 +41,7 @@ public final class StoryAnalysisModule: PipelineModule {
             // Validate input
             let warnings = validateDetailed(input: input)
             if !warnings.isEmpty {
-                print("⚠️ Validation warnings: \(warnings.joined(separator: ", "))")
+                Telemetry.shared.logEvent("story_analysis_warnings", properties: ["warnings": warnings.joined(separator: ", ")])
             }
             
             // Multi-layer extraction
@@ -55,16 +56,20 @@ public final class StoryAnalysisModule: PipelineModule {
                 processingTime: executionTime
             )
             
-            print("✅ Deep analysis completed in \(String(format: "%.2f", executionTime))s")
-            print("📊 Extracted: \(analysis.characterDevelopment.count) characters, \(analysis.themes.count) themes, complexity: \(analysis.complexityScore)")
+            Telemetry.shared.logEvent("story_analysis_completed", properties: [
+                "execution_time": executionTime,
+                "character_count": analysis.characterDevelopment.count,
+                "theme_count": analysis.themes.count,
+                "complexity_score": analysis.complexityScore
+            ])
             
             return output
             
         } catch {
-            print("❌ Analysis failed: \(error.localizedDescription)")
+            Telemetry.shared.logEvent("story_analysis_failed", properties: ["error": error.localizedDescription])
             
             // Triple-fallback system for maximum resilience
-            print("🔄 Attempting fallback analysis chain")
+            Telemetry.shared.logEvent("story_analysis_fallback", properties: ["reason": "primary_analysis_failed"])
             let fallbackAnalysis = performTripleFallback(input.story)
             
             let output = StoryAnalysisOutput(
@@ -106,28 +111,28 @@ public final class StoryAnalysisModule: PipelineModule {
     /// Performs multi-layer deep analysis with entity relationship mapping
     private func performDeepAnalysis(story: String) async throws -> StoryAnalysis {
         
-        print("🧬 Phase 1: Structural decomposition")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "structural_decomposition"])
         let structure = analyzeStructure(story)
         
-        print("🎭 Phase 2: Entity extraction")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "entity_extraction"])
         let entities = extractEntities(story, structure: structure)
         
-        print("🗺️ Phase 3: Location mapping")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "location_mapping"])
         let locations = extractLocations(story, entities: entities)
         
-        print("🎬 Phase 4: Scene breakdown")
-        let scenes = extractScenes(story, structure: structure, entities: entities)
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "scene_breakdown"])
+        let scenes = extractStoryScenes(story, structure: structure, entities: entities)
         
-        print("💬 Phase 5: Dialogue extraction")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "dialogue_extraction"])
         let dialogue = extractDialogue(story, structure: structure)
         
-        print("🎨 Phase 6: Theme identification")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "theme_identification"])
         let themes = extractThemes(story, entities: entities, scenes: scenes)
         
-        print("😊 Phase 7: Emotional arc mapping")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "emotional_arc_mapping"])
         let emotionalArc = buildEmotionalArc(story, scenes: scenes)
         
-        print("🔗 Phase 8: Entity relationship graph")
+        Telemetry.shared.logEvent("story_analysis_phase", properties: ["phase": "entity_relationship_graph"])
         let relationships = buildEntityRelationships(entities: entities, dialogue: dialogue)
         
         // Calculate comprehensive confidence score
@@ -360,15 +365,15 @@ public final class StoryAnalysisModule: PipelineModule {
         }
     }
     
-    // MARK: - Scene Extraction
+    // MARK: - StoryScene Extraction
     
     /// Extracts narrative scenes with temporal markers
-    private func extractScenes(
+    private func extractStoryScenes(
         _ story: String,
         structure: StoryStructure,
         entities: EntityCollection
-    ) -> [Scene] {
-        var scenes: [Scene] = []
+    ) -> [StoryScene] {
+        var scenes: [StoryScene] = []
         
         let paragraphs = story.components(separatedBy: "\n\n")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -382,7 +387,7 @@ public final class StoryAnalysisModule: PipelineModule {
                     paragraph.lowercased().contains(entity.name.lowercased())
                 }.map { $0.name }
                 
-                scenes.append(Scene(
+                scenes.append(StoryScene(
                     number: index + 1,
                     description: preview + (paragraph.count > 100 ? "..." : ""),
                     characters: characters,
@@ -398,7 +403,7 @@ public final class StoryAnalysisModule: PipelineModule {
                 .filter { !$0.isEmpty }
             
             for (index, sentence) in sentences.prefix(10).enumerated() {
-                scenes.append(Scene(
+                scenes.append(StoryScene(
                     number: index + 1,
                     description: sentence,
                     characters: [],
@@ -411,7 +416,7 @@ public final class StoryAnalysisModule: PipelineModule {
         
         // Ensure minimum scenes
         if scenes.isEmpty {
-            scenes.append(Scene(
+            scenes.append(StoryScene(
                 number: 1,
                 description: "Single scene narrative",
                 characters: entities.characters.map { $0.name },
@@ -456,7 +461,7 @@ public final class StoryAnalysisModule: PipelineModule {
     private func extractThemes(
         _ story: String,
         entities: EntityCollection,
-        scenes: [Scene]
+        scenes: [StoryScene]
     ) -> [String] {
         var themes: Set<String> = []
         let lowercased = story.lowercased()
@@ -497,7 +502,7 @@ public final class StoryAnalysisModule: PipelineModule {
     // MARK: - Emotional Arc
     
     /// Builds emotional progression through the story
-    private func buildEmotionalArc(_ story: String, scenes: [Scene]) -> [EmotionalBeat] {
+    private func buildEmotionalArc(_ story: String, scenes: [StoryScene]) -> [EmotionalBeat] {
         var arc: [EmotionalBeat] = []
         
         for (index, scene) in scenes.enumerated() {
@@ -554,7 +559,7 @@ public final class StoryAnalysisModule: PipelineModule {
     
     /// Triple-fallback for maximum resilience
     private func performTripleFallback(_ story: String) -> StoryAnalysis {
-        print("🔄 Fallback Level 1: Rule-based extraction")
+        Telemetry.shared.logEvent("story_analysis_fallback_level", properties: ["level": "rule_based_extraction"])
         
         // Level 1: Basic rule-based
         let structure = analyzeStructure(story)
@@ -564,7 +569,7 @@ public final class StoryAnalysisModule: PipelineModule {
             return createBasicAnalysis(story, entities: entities, structure: structure)
         }
         
-        print("🔄 Fallback Level 2: Pattern matching")
+        Telemetry.shared.logEvent("story_analysis_fallback_level", properties: ["level": "pattern_matching"])
         // Level 2: Simple pattern matching
         let simpleCharacters = extractSimplePatterns(story)
         if !simpleCharacters.isEmpty {
@@ -576,7 +581,7 @@ public final class StoryAnalysisModule: PipelineModule {
             return createBasicAnalysis(story, entities: simpleEntities, structure: structure)
         }
         
-        print("🔄 Fallback Level 3: Minimal viable analysis")
+        Telemetry.shared.logEvent("story_analysis_fallback_level", properties: ["level": "minimal_viable_analysis"])
         // Level 3: Absolute minimum
         return createMinimalAnalysis(story)
     }
@@ -738,7 +743,7 @@ public final class StoryAnalysisModule: PipelineModule {
     private func calculateConfidence(
         structure: StoryStructure,
         entities: EntityCollection,
-        scenes: [Scene]
+        scenes: [StoryScene]
     ) -> Double {
         var score = 0.0
         
@@ -751,7 +756,7 @@ public final class StoryAnalysisModule: PipelineModule {
         if entities.characters.count > 0 { score += 0.2 }
         if entities.characters.count > 2 { score += 0.1 }
         
-        // Scene extraction
+        // StoryScene extraction
         if scenes.count > 1 { score += 0.2 }
         
         return min(score, 1.0)
@@ -880,7 +885,7 @@ public enum LocationType: String, Codable {
     case unspecified = "Unspecified"
 }
 
-public struct Scene: Codable {
+public struct StoryScene: Codable {
     public let number: Int
     public let description: String
     public let characters: [String]

@@ -255,6 +255,7 @@ public struct AnyCodable: Sendable, Codable {
 
 // MARK: - Video Assembly Module
 
+@available(iOS 15.0, *)
 public final class VideoAssemblyModule: PipelineModule {
     public typealias Input = VideoAssemblyInput
     public typealias Output = VideoAssemblyOutput
@@ -279,9 +280,11 @@ public final class VideoAssemblyModule: PipelineModule {
         let startTime = Date()
         
         do {
-            print("🎞️ Starting video assembly with \(input.videoClips.count) clips")
-            print("🎬 Transitions: \(input.transitions.count)")
-            print("🎵 Audio track: \(input.audioTrack != nil ? "Yes" : "No")")
+            Telemetry.shared.logEvent("video_assembly_started", properties: [
+                "clip_count": input.videoClips.count,
+                "transition_count": input.transitions.count,
+                "has_audio_track": input.audioTrack != nil
+            ])
             
             // Phase 1: Validate input clips
             try validateVideoClips(input.videoClips)
@@ -352,6 +355,7 @@ public final class VideoAssemblyModule: PipelineModule {
         }
     }
     
+    @available(iOS 15.0, *)
     private func processVideoClips(_ clips: [VideoClip], settings: VideoProjectSettings) async throws -> [VideoClip] {
         var processedClips: [VideoClip] = []
         
@@ -359,7 +363,12 @@ public final class VideoAssemblyModule: PipelineModule {
             print("🔧 Processing clip \(index + 1)/\(clips.count)")
             
             // Simulate video processing (in real implementation, this would use AVFoundation)
-            try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            if #available(iOS 15.0, *) {
+                try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            } else {
+                // Fallback for iOS < 15.0
+                try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            }
             
             // For now, return the clip as-is (in real implementation, this would apply processing)
             processedClips.append(clip)
@@ -368,6 +377,7 @@ public final class VideoAssemblyModule: PipelineModule {
         return processedClips
     }
     
+    @available(iOS 15.0, *)
     private func applyTransitions(_ clips: [VideoClip], transitions: [VideoTransition]) async throws -> [VideoClip] {
         if transitions.isEmpty {
             return clips
@@ -376,7 +386,12 @@ public final class VideoAssemblyModule: PipelineModule {
         print("✨ Applying \(transitions.count) transitions...")
         
         // Simulate transition processing
-        try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+        }
         
         // In real implementation, this would apply actual video transitions
         return clips
@@ -398,7 +413,12 @@ public final class VideoAssemblyModule: PipelineModule {
         let outputURL = outputDir.appendingPathComponent("assembled_video_\(timestamp).\(outputFormat.fileExtension)")
         
         // Simulate video assembly (in real implementation, this would use AVFoundation)
-        try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        if #available(iOS 15.0, *) {
+            try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        } else {
+            // Fallback for iOS < 15.0
+            try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
+        }
         
         // Create assembled video file (placeholder)
         try createPlaceholderVideoFile(at: outputURL, duration: clips.reduce(0) { $0 + $1.duration })

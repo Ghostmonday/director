@@ -72,6 +72,7 @@ public final class SegmentationModule: PipelineModule {
     public let name = "Segmentation"
     public let version = "1.0.0"
     public var isEnabled = true
+    public var isValidated = true
     
     public init() {}
     
@@ -81,6 +82,7 @@ public final class SegmentationModule: PipelineModule {
     }
     
     public func execute(input: SegmentationInput) async throws -> SegmentationOutput {
+        Telemetry.shared.logEvent("segmentation_started", properties: ["input_length": input.story.count, "max_duration": input.maxDuration])
         let startTime = Date()
         
         // Analyze story structure
@@ -363,11 +365,11 @@ public final class SegmentationModule: PipelineModule {
     }
     
     private func detectTransitionType(_ segment: PromptSegment, previousSegment: PromptSegment?) -> TransitionType {
-        guard previousSegment != nil else { return .hard }
+        guard previousSegment != nil else { return .cut }
         let currentStart = String(segment.content.prefix(50)).lowercased()
-        if currentStart.contains("meanwhile") || currentStart.contains("later") { return .temporal }
-        if currentStart.contains("at ") || currentStart.contains("in the") { return .spatial }
-        if segment.content.contains("\"") { return .dialogue }
+        if currentStart.contains("meanwhile") || currentStart.contains("later") { return .fade }
+        if currentStart.contains("at ") || currentStart.contains("in the") { return .dissolve }
+        if segment.content.contains("\"") { return .cut }
         return .cut
     }
     

@@ -30,6 +30,27 @@ public struct RewordingInput: Sendable {
         
         public var id: String { rawValue }
         
+        public var displayName: String { rawValue }
+        
+        public var description: String {
+            switch self {
+            case .modernizeOldEnglish:
+                return "Converts archaic language to modern, accessible text"
+            case .improveGrammar:
+                return "Fixes grammatical errors and improves sentence structure"
+            case .casualTone:
+                return "Transforms text into casual, conversational style"
+            case .formalTone:
+                return "Elevates text to formal, professional language"
+            case .poeticStyle:
+                return "Rewrites text with poetic, evocative language"
+            case .fasterPacing:
+                return "Increases narrative pace with dynamic, urgent language"
+            case .cinematicMood:
+                return "Transforms text into cinematic prose with visual richness"
+            }
+        }
+        
         public var systemPrompt: String {
             switch self {
             case .modernizeOldEnglish:
@@ -81,6 +102,7 @@ public final class RewordingModule: PipelineModule {
     public let name = "Rewording"
     public let version = "1.0.0"
     public var isEnabled = true
+    public var isValidated = true
     
     private let aiService: AIServiceProtocol
     

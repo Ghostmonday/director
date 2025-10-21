@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Project Management UI - Project library with cards and search
 struct ProjectsView: View {
@@ -80,7 +81,7 @@ struct ProjectsView: View {
                 }
             }
             .padding()
-            .background(Color.systemGray6)
+            .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
             
             // Sort Options
@@ -295,11 +296,11 @@ struct ProjectCardView: View {
                     )
             }
             .padding()
-            .background(Color.systemBackground)
+            .background(Color(UIColor.systemBackground))
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.systemGray4, lineWidth: 1)
+                    .stroke(Color(UIColor.systemGray4), lineWidth: 1)
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -454,7 +455,7 @@ struct ProjectDetailView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.systemGray6)
+                            .background(Color(UIColor.systemGray6))
                             .foregroundColor(.primary)
                             .cornerRadius(10)
                         }
