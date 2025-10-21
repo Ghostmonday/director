@@ -1,0 +1,27 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "director",
+          "kind" : "fileSystem",
+          "location" : "/Users/user944529/director/director",
+          "name" : "DirectorStudio"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/user944529/director/director"
+        },
+        "subpath" : "director"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

@@ -1,0 +1,23 @@
+{
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/DraftRecoveryManager.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/EnhancedTextEditor.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/PipelinePresets.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.swiftdeps"
+  }
+}

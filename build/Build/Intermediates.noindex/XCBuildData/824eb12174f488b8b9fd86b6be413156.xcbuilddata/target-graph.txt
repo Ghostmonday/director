@@ -1,0 +1,12 @@
+Target dependency graph (5 targets)
+Target 'DirectorStudioApp' in project 'DirectorStudioApp'
+➜ Explicit dependency on target 'DirectorStudioUI' in project 'DirectorStudio'
+➜ Explicit dependency on target 'DirectorStudio' in project 'DirectorStudio'
+Target 'DirectorStudio' in project 'DirectorStudio'
+➜ Explicit dependency on target 'DirectorStudio' in project 'DirectorStudio'
+Target 'DirectorStudioUI' in project 'DirectorStudio'
+➜ Explicit dependency on target 'DirectorStudioUI' in project 'DirectorStudio'
+➜ Explicit dependency on target 'DirectorStudio' in project 'DirectorStudio'
+Target 'DirectorStudioUI' in project 'DirectorStudio'
+➜ Explicit dependency on target 'DirectorStudio' in project 'DirectorStudio'
+Target 'DirectorStudio' in project 'DirectorStudio' (no dependencies)

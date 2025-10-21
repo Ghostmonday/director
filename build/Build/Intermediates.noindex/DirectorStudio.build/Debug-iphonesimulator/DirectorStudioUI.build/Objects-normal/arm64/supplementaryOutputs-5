@@ -1,0 +1,23 @@
+{
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/SegmentListView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/SmartTextEditor.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/TimelineViews.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.swiftdeps"
+  }
+}

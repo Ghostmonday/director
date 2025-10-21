@@ -1,0 +1,299 @@
+{
+  "" : {
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI-primary.dia",
+    "emit-module-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI-primary-emit-module.dia",
+    "pch" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI-primary.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Accessibility/AccessibilityHelpers.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Analytics.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/BreadcrumbBar.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/CompactModuleToggle.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CompactModuleToggle~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/ContextBar.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ContextBar~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/CreditsIndicator.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsIndicator~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/DraftRecoveryManager.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DraftRecoveryManager~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/EnhancedTextEditor.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/EnhancedTextEditor~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/PipelinePresets.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelinePresets~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/SegmentListView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentListView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/SmartTextEditor.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SmartTextEditor~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/TimelineViews.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/TimelineViews~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/DesignSystem/DesignSystem.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/DirectorStudioUI.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/GUIAbstraction.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Theme/ColorTheme.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ColorTheme~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Theme/LaunchScreenColors.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/LaunchScreenColors~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/UIGUIAbstraction.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/UIGUIAbstraction~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Utilities/HapticManager.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/HapticManager~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/CoreModules/RewordingView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/RewordingView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/CoreModules/SegmentationView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SegmentationView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/CoreModules/StoryAnalysisView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/StoryAnalysisView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Credits/CreditsStoreView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/CreditsStoreView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/OnboardingView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/OnboardingView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Pipeline/PipelineView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PipelineView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Pipeline/PromptCardView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/PromptCardView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Projects/ProjectsView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/ProjectsView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Settings/SettingsView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Views/Video/VideoLibraryView.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.dia",
+    "index-unit-output-path" : "/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.o",
+    "llvm-bc" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.bc",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView.swiftdeps",
+    "swiftmodule" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/VideoLibraryView~partial.swiftmodule"
+  }
+}

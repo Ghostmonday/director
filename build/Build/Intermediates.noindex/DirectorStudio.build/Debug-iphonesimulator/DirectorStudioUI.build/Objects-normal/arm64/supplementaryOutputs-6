@@ -1,0 +1,23 @@
+{
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/DesignSystem/DesignSystem.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DesignSystem.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/DirectorStudioUI.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/DirectorStudioUI.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/GUIAbstraction.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/GUIAbstraction.swiftdeps"
+  }
+}

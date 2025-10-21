@@ -1,0 +1,4 @@
+module DirectorStudio {
+header "DirectorStudio-Swift.h"
+export *
+}

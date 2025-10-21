@@ -207,20 +207,6 @@ struct PipelineView: View {
                     description: "Ensure visual and narrative continuity",
                     isEnabled: $moduleSettings.continuityEnabled
                 )
-                
-                // Video Generation Module
-                ModuleToggleView(
-                    title: "Video Generation",
-                    description: "Generate video clips from segments",
-                    isEnabled: $moduleSettings.videoGenerationEnabled
-                )
-                
-                // Video Assembly Module
-                ModuleToggleView(
-                    title: "Video Assembly",
-                    description: "Combine clips into final video",
-                    isEnabled: $moduleSettings.videoAssemblyEnabled
-                )
             }
         }
         .padding()

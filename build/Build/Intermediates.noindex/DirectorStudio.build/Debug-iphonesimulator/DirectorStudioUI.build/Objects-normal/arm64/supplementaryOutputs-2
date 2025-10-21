@@ -1,0 +1,23 @@
+{
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Accessibility/AccessibilityHelpers.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/AccessibilityHelpers.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Analytics.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/Analytics.swiftdeps"
+  },
+  "/Users/user944529/director/director/Sources/DirectorStudioUI/Components/BreadcrumbBar.swift" : {
+    "const-values" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.swiftconstvalues",
+    "dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.d",
+    "diagnostics" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.dia",
+    "object" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.o",
+    "swift-dependencies" : "/Users/user944529/director/director/build/Build/Intermediates.noindex/DirectorStudio.build/Debug-iphonesimulator/DirectorStudioUI.build/Objects-normal/arm64/BreadcrumbBar.swiftdeps"
+  }
+}

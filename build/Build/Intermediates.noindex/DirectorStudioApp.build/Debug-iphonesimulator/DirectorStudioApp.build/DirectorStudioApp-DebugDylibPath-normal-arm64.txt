@@ -1,0 +1,1 @@
+DirectorStudioApp.debug.dylib
