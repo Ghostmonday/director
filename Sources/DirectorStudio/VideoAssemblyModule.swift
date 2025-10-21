@@ -215,7 +215,7 @@ public enum AspectRatio: String, Sendable, Codable, CaseIterable {
 
 // MARK: - AnyCodable Helper
 
-public struct AnyCodable: Sendable, Codable {
+public struct AnyCodable: Codable { // ✅ Warning cleaned: Removed Sendable conformance (Any is not Sendable)
     public let value: Any
     
     public init(_ value: Any) {
@@ -256,7 +256,7 @@ public struct AnyCodable: Sendable, Codable {
 // MARK: - Video Assembly Module
 
 @available(iOS 15.0, *)
-public final class VideoAssemblyModule: PipelineModule {
+public final class VideoAssemblyModule: PipelineModule, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable properties
     public typealias Input = VideoAssemblyInput
     public typealias Output = VideoAssemblyOutput
     

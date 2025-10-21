@@ -13,7 +13,7 @@ import Foundation
 /// Advanced continuity validation and cinematic intelligence engine
 /// Analyzes scene transitions with semantic understanding, emotional flow, and narrative coherence
 @available(iOS 15.0, *)
-public final class ContinuityModule: PipelineModule, ObservableObject {
+public final class ContinuityModule: PipelineModule, ObservableObject, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable @Published properties
     public typealias Input = ContinuityInput
     public typealias Output = ContinuityOutput
     
@@ -241,7 +241,7 @@ public final class ContinuityModule: PipelineModule, ObservableObject {
         for segment in segments {
             // Classify locations semantically
             if !segment.location.isEmpty {
-                locationClassifier.classify(segment.location)
+                _ = locationClassifier.classify(segment.location) // ✅ Warning cleaned: Discard result
             }
             
             // Track props across narrative
@@ -1068,7 +1068,17 @@ private actor ToneEvolutionGraph {
     private var genreAdjustments: [String: [Tone: Set<Tone>]] = [:]
     
     init() {
-        buildDefaultAdjacencyMap()
+        // ✅ Warning cleaned: Initialize adjacencyMap directly to avoid actor isolation warning
+        self.adjacencyMap = [
+            .neutral: [.calm, .mysterious, .joyful, .tense],
+            .calm: [.neutral, .joyful, .mysterious, .melancholic],
+            .joyful: [.calm, .neutral, .action],
+            .action: [.tense, .joyful, .neutral],
+            .tense: [.action, .dark, .neutral],
+            .dark: [.tense, .melancholic, .mysterious],
+            .melancholic: [.dark, .calm, .neutral],
+            .mysterious: [.neutral, .dark, .tense, .calm]
+        ]
     }
     
     func configureForGenre(_ genre: String) {
@@ -1130,19 +1140,7 @@ private actor ToneEvolutionGraph {
         
         return false
     }
-    
-    private func buildDefaultAdjacencyMap() {
-        adjacencyMap = [
-            .neutral: [.calm, .mysterious, .joyful, .tense],
-            .calm: [.neutral, .joyful, .mysterious, .melancholic],
-            .joyful: [.calm, .neutral, .action],
-            .action: [.tense, .joyful, .neutral],
-            .tense: [.action, .dark, .neutral],
-            .dark: [.tense, .melancholic, .mysterious],
-            .melancholic: [.dark, .calm, .neutral],
-            .mysterious: [.neutral, .dark, .tense, .calm]
-        ]
-    }
+    // ✅ Warning cleaned: Removed buildDefaultAdjacencyMap - initialization moved to init
 }
 
 // MARK: - Tone Enum

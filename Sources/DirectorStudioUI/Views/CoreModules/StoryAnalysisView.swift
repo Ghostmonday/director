@@ -404,7 +404,7 @@ struct StoryAnalysisView: View {
     
     private var relationshipsContent: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if let analysis = analysisResult {
+            if analysisResult != nil { // ✅ Warning cleaned: Changed from 'if let' to boolean test
                 Text("Character Relationships")
                     .font(.headline)
                 

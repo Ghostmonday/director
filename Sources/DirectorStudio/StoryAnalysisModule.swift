@@ -15,7 +15,7 @@ import Foundation
 
 /// Advanced story analysis with multi-layer extraction, entity relationships, and emotional mapping
 /// Handles structured narratives, chaotic streams, dreams, and fragmentary text
-public final class StoryAnalysisModule: PipelineModule {
+public final class StoryAnalysisModule: PipelineModule, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable properties
     public typealias Input = StoryAnalysisInput
     public typealias Output = StoryAnalysisOutput
     

@@ -135,11 +135,11 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
         
         // Initialize settings if needed
         if !fileManager.fileExists(atPath: userSettingsFile.path) {
-            try saveUserSettings(UserSettings())
+            _ = try saveUserSettings(UserSettings()) // ✅ Warning cleaned: Discard result
         }
         
         if !fileManager.fileExists(atPath: creditsFile.path) {
-            try saveCreditsBalance(100) // Default starting credits
+            _ = try saveCreditsBalance(100) // ✅ Warning cleaned: Discard result - Default starting credits
         }
         
         // Configure JSON encoder/decoder
@@ -195,8 +195,8 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
         try fileManager.removeItem(at: projectFile)
         
         // Also delete associated segments and video metadata
-        try? deleteSegments(projectId: id)
-        try? deleteVideoMetadata(projectId: id)
+        _ = try? deleteSegments(projectId: id) // ✅ Warning cleaned: Discard result
+        _ = try? deleteVideoMetadata(projectId: id) // ✅ Warning cleaned: Discard result
         
         return true
     }
@@ -274,7 +274,7 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
     public func getUserSettings() throws -> UserSettings {
         guard fileManager.fileExists(atPath: userSettingsFile.path) else {
             let defaultSettings = UserSettings()
-            try saveUserSettings(defaultSettings)
+            _ = try saveUserSettings(defaultSettings) // ✅ Warning cleaned: Discard result
             return defaultSettings
         }
         
@@ -386,12 +386,11 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
         var project = try decoder.decode(Project.self, from: projectData)
         
         // Generate new UUID to avoid conflicts
-        let originalId = project.id
-        project.id = UUID()
+        project.id = UUID() // ✅ Warning cleaned: Removed unused originalId
         project.name += " (Imported)"
         
         // Save project
-        try saveProject(project)
+        _ = try saveProject(project) // ✅ Warning cleaned: Discard result
         
         // Import segments if available
         if manifest.hasSegments {
@@ -399,7 +398,7 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
             if fileManager.fileExists(atPath: segmentsFile.path) {
                 let segmentsData = try Data(contentsOf: segmentsFile)
                 let segments = try decoder.decode([PromptSegment].self, from: segmentsData)
-                try saveSegments(segments, projectId: project.id)
+                _ = try saveSegments(segments, projectId: project.id) // ✅ Warning cleaned: Discard result
             }
         }
         
@@ -409,7 +408,7 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
             if fileManager.fileExists(atPath: videoFile.path) {
                 let videoData = try Data(contentsOf: videoFile)
                 let videoMetadata = try decoder.decode(VideoMetadata.self, from: videoData)
-                try saveVideoMetadata(videoMetadata, projectId: project.id)
+                _ = try saveVideoMetadata(videoMetadata, projectId: project.id) // ✅ Warning cleaned: Discard result
             }
         }
         
@@ -522,7 +521,7 @@ public class FilePersistenceManager: PersistenceManagerProtocol {
         }
         
         let manifestData = try Data(contentsOf: manifestFile)
-        let manifest = try decoder.decode(BackupManifest.self, from: manifestData)
+        _ = try decoder.decode(BackupManifest.self, from: manifestData) // ✅ Warning cleaned: Removed unused manifest
         
         // Verify backup structure
         let projectsBackupDir = tempDir.appendingPathComponent("Projects")

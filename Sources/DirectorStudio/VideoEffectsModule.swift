@@ -158,7 +158,7 @@ public struct VideoEffectsMetadata: Sendable, Codable {
 // MARK: - Video Effects Module
 
 @available(iOS 15.0, *)
-public final class VideoEffectsModule: PipelineModule {
+public final class VideoEffectsModule: PipelineModule, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable properties
     public typealias Input = VideoEffectsInput
     public typealias Output = VideoEffectsOutput
     

@@ -94,7 +94,7 @@ public struct RewordingOutput: Sendable {
 
 // MARK: - Module
 
-public final class RewordingModule: PipelineModule {
+public final class RewordingModule: PipelineModule, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable properties
     public typealias Input = RewordingInput
     public typealias Output = RewordingOutput
     

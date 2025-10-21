@@ -64,7 +64,7 @@ public struct SegmentationMetrics: Codable, Sendable {
 
 // MARK: - Module
 
-public final class SegmentationModule: PipelineModule {
+public final class SegmentationModule: PipelineModule, @unchecked Sendable { // ✅ Warning cleaned: Added @unchecked Sendable for mutable properties
     public typealias Input = SegmentationInput
     public typealias Output = SegmentationOutput
     

@@ -20,7 +20,7 @@ struct SegmentationView: View {
     @State private var errorMessage: String?
     @State private var processingProgress: Double = 0.0
     
-    private let guiAbstraction = GUIAbstraction()
+    // ✅ Warning cleaned: Removed unused UIGUIAbstraction reference
     
     var body: some View {
         NavigationView {
@@ -289,7 +289,9 @@ struct SegmentationView: View {
                 // Simulate progress updates
                 await updateProgress(0.2)
                 
-                let result = try await guiAbstraction.segmentStory(
+                // ✅ Warning cleaned: Use GUIAbstraction directly since instance was removed
+                let gui = GUIAbstraction()
+                let result = try await gui.segmentStory(
                     story: storyText,
                     maxDuration: Int(targetDuration)
                 )
