@@ -12,6 +12,23 @@ import AVFoundation
 
 // MARK: - Video Generation Input/Output Types
 
+public enum VideoGenerationError: Error, LocalizedError {
+    case generationFailed(String)
+    case invalidInput(String)
+    case apiError(String)
+    
+    public var errorDescription: String? {
+        switch self {
+        case .generationFailed(let message):
+            return "Video generation failed: \(message)"
+        case .invalidInput(let message):
+            return "Invalid input: \(message)"
+        case .apiError(let message):
+            return "API error: \(message)"
+        }
+    }
+}
+
 public struct VideoGenerationInput: Sendable, Codable {
     public let segments: [PromptSegment]
     public let projectName: String
@@ -247,22 +264,45 @@ public final class VideoGenerationModule: PipelineModule, @unchecked Sendable {
     
     @available(iOS 15.0, *)
     private func generateVideoClip(prompt: String, duration: TimeInterval, quality: VideoQuality, index: Int) async throws -> URL {
-        // Simulate AI video generation delay
-        if #available(iOS 15.0, *) {
-            try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
-        } else {
-            // Fallback for iOS < 15.0
-            try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
+        // 🎥 REAL VIDEO GENERATION using Pollo API
+        Telemetry.shared.logEvent("pollo_api_video_generation_started", properties: [
+            "clip_index": index,
+            "duration": duration,
+            "quality": quality.rawValue,
+            "prompt_length": prompt.count
+        ])
+        
+        let result = await PolloAPIService.shared.generateVideo(
+            prompt: prompt,
+            style: quality.rawValue, // Use quality as style hint
+            duration: Int(duration)
+        )
+        
+        switch result.status {
+        case .success:
+            guard let videoURL = result.videoURL else {
+                throw VideoGenerationError.generationFailed("Pollo API returned no video URL")
+            }
+            
+            Telemetry.shared.logEvent("pollo_api_video_generation_success", properties: [
+                "clip_index": index,
+                "file_path": videoURL.lastPathComponent,
+                "file_size": (try? FileManager.default.attributesOfItem(atPath: videoURL.path)[.size] as? Int) ?? 0
+            ])
+            
+            return videoURL
+            
+        case .failed:
+            let errorMsg = result.errorMessage ?? "Unknown Pollo API error"
+            Telemetry.shared.logEvent("pollo_api_video_generation_failed", properties: [
+                "clip_index": index,
+                "error": errorMsg
+            ])
+            throw VideoGenerationError.generationFailed("Pollo API: \(errorMsg)")
+            
+        case .processing:
+            throw VideoGenerationError.generationFailed("Pollo API: Video still processing")
         }
-        
-        // Create a placeholder video file (in real implementation, this would be actual video generation)
-        let tempDir = fileManager.temporaryDirectory
-        let clipURL = tempDir.appendingPathComponent("clip_\(index).\(quality.resolution.width)x\(quality.resolution.height).mp4")
-        
-        // Create a simple video file placeholder
-        try createPlaceholderVideoFile(at: clipURL, duration: duration, quality: quality)
-        
-        return clipURL
     }
     
     private func createVideoPrompt(from segment: PromptSegment, style: VideoStyle) -> String {
