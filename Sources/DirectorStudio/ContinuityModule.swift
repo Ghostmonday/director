@@ -1138,7 +1138,7 @@ private actor ToneEvolutionGraph {
             }
         }
         
-        return false
+                return false
     }
     // ✅ Warning cleaned: Removed buildDefaultAdjacencyMap - initialization moved to init
 }

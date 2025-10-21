@@ -14,19 +14,24 @@ public struct EnhancedTextEditor: View {
     let minHeight: CGFloat
     var onAIEnhance: (() -> Void)? = nil
     var showClearButton: Bool = true
+    var onTextChanged: ((String) -> Void)? = nil // 🚨 UX FIX #6: Callback for debounced changes
+    
+    @State private var debounceTask: Task<Void, Never>?
     
     public init(
         text: Binding<String>,
         placeholder: String,
         minHeight: CGFloat = 200,
         onAIEnhance: (() -> Void)? = nil,
-        showClearButton: Bool = true
+        showClearButton: Bool = true,
+        onTextChanged: ((String) -> Void)? = nil
     ) {
         self._text = text
         self.placeholder = placeholder
         self.minHeight = minHeight
         self.onAIEnhance = onAIEnhance
         self.showClearButton = showClearButton
+        self.onTextChanged = onTextChanged
     }
     
     public var body: some View {
@@ -103,6 +108,16 @@ public struct EnhancedTextEditor: View {
                     .padding(.vertical, 12)
                     .frame(minHeight: minHeight)
                     .background(Color.clear)
+                    .onChange(of: text) { newValue in
+                        // 🚨 UX FIX #6: Debounce text changes to prevent excessive callbacks
+                        debounceTask?.cancel()
+                        debounceTask = Task {
+                            try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 second delay
+                            if !Task.isCancelled {
+                                onTextChanged?(newValue)
+                            }
+                        }
+                    }
             }
             .background(Color(UIColor.systemGray6))
         }
