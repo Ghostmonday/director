@@ -651,27 +651,29 @@ struct ModuleToggleView: View {
 }
 
 /// Module Settings
-struct ModuleSettings {
+public struct ModuleSettings {
     // Module toggles
-    var segmentationEnabled: Bool = true
-    var storyAnalysisEnabled: Bool = true
-    var rewordingEnabled: Bool = false
-    var taxonomyEnabled: Bool = true
-    var continuityEnabled: Bool = true
-    var videoGenerationEnabled: Bool = true
-    var videoAssemblyEnabled: Bool = true
+    public var segmentationEnabled: Bool = true
+    public var storyAnalysisEnabled: Bool = true
+    public var rewordingEnabled: Bool = false
+    public var taxonomyEnabled: Bool = true
+    public var continuityEnabled: Bool = true
+    public var videoGenerationEnabled: Bool = true
+    public var videoAssemblyEnabled: Bool = true
     
     // Advanced settings
-    var targetDuration: Double = 120.0
-    var videoQuality: VideoQuality = .high
-    var processingMode: ProcessingMode = .balanced
+    public var targetDuration: Double = 120.0
+    public var videoQuality: VideoQuality = .high
+    public var processingMode: ProcessingMode = .balanced
+    
+    public init() {}
 }
 
 /// Video Quality Enum (using DirectorStudio.VideoQuality from VideoGenerationModule)
 // Removed duplicate - use DirectorStudio.VideoQuality instead
 
 /// Processing Mode Enum
-enum ProcessingMode: String, CaseIterable {
+public enum ProcessingMode: String, CaseIterable {
     case fast = "Fast"
     case balanced = "Balanced"
     case quality = "Quality"
