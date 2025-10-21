@@ -10,17 +10,8 @@
 import SwiftUI
 import DirectorStudio
 
-@main
-struct DirectorStudioApp: App {
-    @StateObject private var appState = AppState()
-    
-    var body: some Scene {
-        WindowGroup {
-            AppRootView()
-                .environmentObject(appState)
-        }
-    }
-}
+// Note: @main entry point moved to DirectorStudioApp executable target
+// This struct is kept for potential library usage, but not marked as @main
 
 @MainActor
 public class AppState: ObservableObject {
