@@ -28,6 +28,14 @@ struct PipelineView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
+                    // 🚨 UX FIX #3: Context Bar - Shows current story/project context
+                    ContextBar(
+                        storyPreview: storyInput,
+                        segmentCount: 0, // TODO: Get from AppState
+                        projectName: nil, // TODO: Get from AppState
+                        onShowDetails: { /* TODO: Show project details */ }
+                    )
+                    
                     if !isProcessing {
                         // Configuration View
                         configurationView
@@ -42,7 +50,16 @@ struct PipelineView: View {
             }
             .navigationTitle("Pipeline Orchestrator")
             .toolbar {
+                // 🚨 UX FIX #4: Credits Indicator
                 ToolbarItem(placement: .topBarTrailing) {
+                    CreditsIndicator(
+                        currentBalance: 100, // TODO: Get from MonetizationManager
+                        estimatedCost: calculateEstimatedCost(),
+                        onTap: { /* TODO: Navigate to credits store */ }
+                    )
+                }
+                
+                ToolbarItem(placement: .topBarLeading) {
                     if isProcessing {
                         Button("Cancel") {
                             cancelProcessing()
@@ -519,6 +536,50 @@ struct PipelineView: View {
     private func exportAsPDF() {
         // Export pipeline results as PDF (placeholder)
         print("Export as PDF functionality would be implemented here")
+    }
+    
+    // 🚨 UX FIX #5: Calculate estimated cost for credits preview
+    private func calculateEstimatedCost() -> Int? {
+        guard !storyInput.isEmpty else { return nil }
+        
+        var cost = 0
+        
+        // Base segmentation cost
+        if moduleSettings.segmentationEnabled {
+            cost += 5
+        }
+        
+        // Story analysis
+        if moduleSettings.storyAnalysisEnabled {
+            cost += 10
+        }
+        
+        // Rewording (per 1000 chars)
+        if moduleSettings.rewordingEnabled {
+            cost += (storyInput.count / 1000) * 3
+        }
+        
+        // Taxonomy tagging
+        if moduleSettings.taxonomyEnabled {
+            cost += 15
+        }
+        
+        // Continuity checking
+        if moduleSettings.continuityEnabled {
+            cost += 8
+        }
+        
+        // Video generation (most expensive)
+        if moduleSettings.videoGenerationEnabled {
+            cost += 50
+        }
+        
+        // Video assembly
+        if moduleSettings.videoAssemblyEnabled {
+            cost += 20
+        }
+        
+        return cost > 0 ? cost : nil
     }
     
     // MARK: - 🚨 UX FIX #1: Floating Action Button

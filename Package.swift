@@ -15,10 +15,6 @@ let package = Package(
             name: "DirectorStudioUI",
             targets: ["DirectorStudioUI"]
         ),
-        .executable(
-            name: "DirectorStudioApp",
-            targets: ["DirectorStudioApp"]
-        ),
     ],
     dependencies: [
         // iOS-only dependencies
@@ -33,11 +29,6 @@ let package = Package(
             name: "DirectorStudioUI",
             dependencies: ["DirectorStudio"],
             path: "Sources/DirectorStudioUI"
-        ),
-        .executableTarget(
-            name: "DirectorStudioApp",
-            dependencies: ["DirectorStudioUI"],
-            path: "Sources/DirectorStudioApp"
         ),
         .testTarget(
             name: "DirectorStudioTests",
