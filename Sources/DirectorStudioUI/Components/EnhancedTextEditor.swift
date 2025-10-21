@@ -79,7 +79,11 @@ public struct EnhancedTextEditor: View {
                 
                 // Clear button
                 if showClearButton && !text.isEmpty {
-                    Button(action: { text = "" }) {
+                    Button(action: {
+                        // 🎉 Haptic: Text cleared
+                        HapticManager.shared.textCleared()
+                        text = ""
+                    }) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.caption)
                             .foregroundColor(.secondary)

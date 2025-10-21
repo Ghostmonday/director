@@ -46,7 +46,7 @@ struct OnboardingView: View {
                 
                 // Continue button
                 Button(action: {
-                    HapticManager.shared.impact(.medium)
+                    HapticManager.shared.medium()
                     withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                         hasCompletedOnboarding = true
                     }

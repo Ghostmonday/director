@@ -451,6 +451,9 @@ struct PipelineView: View {
     private func runPipeline() {
         guard canRunPipeline else { return }
         
+        // 🎉 Haptic: Pipeline started
+        HapticManager.shared.pipelineStarted()
+        
         isProcessing = true
         errorMessage = nil
         pipelineProgress = 0.0
@@ -481,12 +484,18 @@ struct PipelineView: View {
                     pipelineProgress = 1.0
                     currentModule = "Pipeline Complete"
                     isProcessing = false
+                    
+                    // 🎉 Haptic: Pipeline completed successfully
+                    HapticManager.shared.pipelineCompleted()
                 }
                 
             } catch {
                 await MainActor.run {
                     errorMessage = error.localizedDescription
                     isProcessing = false
+                    
+                    // 🎉 Haptic: Pipeline failed
+                    HapticManager.shared.pipelineFailed()
                 }
             }
         }
@@ -529,6 +538,8 @@ struct PipelineView: View {
            let jsonString = String(data: jsonData, encoding: .utf8) {
             #if os(iOS)
             UIPasteboard.general.string = jsonString
+            // 🎉 Haptic: Export completed
+            HapticManager.shared.exportCompleted()
             #endif
         }
     }
@@ -645,6 +656,10 @@ struct ModuleToggleView: View {
             
             Toggle("", isOn: $isEnabled)
                 .labelsHidden()
+                .onChange(of: isEnabled) { _ in
+                    // 🎉 Haptic: Module toggled
+                    HapticManager.shared.moduleToggled()
+                }
         }
         .padding(.vertical, 4)
     }
