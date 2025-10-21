@@ -24,37 +24,42 @@ struct SegmentationView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                // Header
-                headerSection
-                
-                // Story Input Section
-                storyInputSection
-                
-                // Duration Settings
-                durationSection
-                
-                // Segment Button
-                segmentButtonSection
-                
-                // Loading State
-                if isProcessing {
-                    loadingSection
+            ZStack {
+                VStack(spacing: 20) {
+                    // Header
+                    headerSection
+                    
+                    // Story Input Section
+                    storyInputSection
+                    
+                    // Duration Settings
+                    durationSection
+                    
+                    // Segment Button
+                    segmentButtonSection
+                    
+                    // Loading State
+                    if isProcessing {
+                        loadingSection
+                    }
+                    
+                    // Timeline of Segments
+                    if !segments.isEmpty {
+                        timelineSection
+                    }
+                    
+                    // Error Message
+                    if let errorMessage = errorMessage {
+                        errorSection(errorMessage)
+                    }
+                    
+                    Spacer()
                 }
+                .padding()
                 
-                // Timeline of Segments
-                if !segments.isEmpty {
-                    timelineSection
-                }
-                
-                // Error Message
-                if let errorMessage = errorMessage {
-                    errorSection(errorMessage)
-                }
-                
-                Spacer()
+                // 🚨 UX FIX #1: Floating Action Button
+                floatingActionButton
             }
-            .padding()
             .navigationTitle("Story Segmentation")
             .sheet(isPresented: $showSegmentDetails) {
                 if let selectedSegment = selectedSegment {
@@ -322,6 +327,43 @@ struct SegmentationView: View {
             processingProgress = progress
         }
         try? await Task.sleep(nanoseconds: 200_000_000) // 0.2 seconds
+    }
+    
+    // MARK: - 🚨 UX FIX #1: Floating Action Button
+    
+    @ViewBuilder
+    private var floatingActionButton: some View {
+        if !isProcessing && canSegment {
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: segmentStory) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "scissors.circle.fill")
+                                .font(.title3)
+                            Text("Segment Story")
+                                .fontWeight(.semibold)
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 14)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.blue, Color.blue.opacity(0.8)]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .foregroundColor(.white)
+                        .cornerRadius(28)
+                        .shadow(color: Color.blue.opacity(0.4), radius: 12, x: 0, y: 6)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
+                }
+            }
+        }
     }
 }
 

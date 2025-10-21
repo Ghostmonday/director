@@ -26,14 +26,19 @@ struct PipelineView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                if !isProcessing {
-                    // Configuration View
-                    configurationView
-                } else {
-                    // Processing View
-                    processingView
+            ZStack {
+                VStack(spacing: 0) {
+                    if !isProcessing {
+                        // Configuration View
+                        configurationView
+                    } else {
+                        // Processing View
+                        processingView
+                    }
                 }
+                
+                // 🚨 UX FIX #1: Floating Action Button
+                floatingActionButton
             }
             .navigationTitle("Pipeline Orchestrator")
             .toolbar {
@@ -523,6 +528,43 @@ struct PipelineView: View {
     private func exportAsPDF() {
         // Export pipeline results as PDF (placeholder)
         print("Export as PDF functionality would be implemented here")
+    }
+    
+    // MARK: - 🚨 UX FIX #1: Floating Action Button
+    
+    @ViewBuilder
+    private var floatingActionButton: some View {
+        if !isProcessing && canRunPipeline {
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: runPipeline) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "play.circle.fill")
+                                .font(.title3)
+                            Text("Run Pipeline")
+                                .fontWeight(.semibold)
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 14)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.blue, Color.blue.opacity(0.8)]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .foregroundColor(.white)
+                        .cornerRadius(28)
+                        .shadow(color: Color.blue.opacity(0.4), radius: 12, x: 0, y: 6)
+                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
+                }
+            }
+        }
     }
 }
 
