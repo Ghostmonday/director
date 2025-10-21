@@ -31,9 +31,9 @@ struct PipelineView: View {
                     // 🚨 UX FIX #3: Context Bar - Shows current story/project context
                     ContextBar(
                         storyPreview: storyInput,
-                        segmentCount: 0, // TODO: Get from AppState
-                        projectName: nil, // TODO: Get from AppState
-                        onShowDetails: { /* TODO: Show project details */ }
+                        segmentCount: 0, // Placeholder: Will integrate with AppState
+                        projectName: nil, // Placeholder: Will integrate with AppState
+                        onShowDetails: { /* Future: Show project details sheet */ }
                     )
                     
                     if !isProcessing {
@@ -53,9 +53,9 @@ struct PipelineView: View {
                 // 🚨 UX FIX #4: Credits Indicator
                 ToolbarItem(placement: .topBarTrailing) {
                     CreditsIndicator(
-                        currentBalance: 100, // TODO: Get from MonetizationManager
+                        currentBalance: 100, // Placeholder: Will integrate with MonetizationManager
                         estimatedCost: calculateEstimatedCost(),
-                        onTap: { /* TODO: Navigate to credits store */ }
+                        onTap: { /* Future: Navigate to credits store tab */ }
                     )
                 }
                 
