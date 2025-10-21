@@ -120,30 +120,21 @@ struct PipelineView: View {
     
     // MARK: - Story Input Section
     
+    // 🚨 UX FIX #2: Enhanced Text Editor with character/word count
     private var storyInputSection: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Story Input")
                 .font(.headline)
             
-            TextEditor(text: $storyInput)
-                .frame(minHeight: 200)
-                .padding(8)
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
-                )
-            
-            if storyInput.isEmpty {
-                Text("Enter your story here...")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-            } else {
-                Text("\(storyInput.count) characters")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-            }
+            EnhancedTextEditor(
+                text: $storyInput,
+                placeholder: "Enter your story here to begin the pipeline...",
+                minHeight: 200,
+                onAIEnhance: {
+                    // Future: AI enhancement integration
+                    print("AI Enhance story")
+                }
+            )
         }
     }
     

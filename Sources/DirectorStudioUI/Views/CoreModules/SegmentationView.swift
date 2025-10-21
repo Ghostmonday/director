@@ -86,30 +86,17 @@ struct SegmentationView: View {
     
     // MARK: - Story Input Section
     
+    // 🚨 UX FIX #2: Enhanced Text Editor with character/word count
     private var storyInputSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Your Story")
                 .font(.headline)
             
-            TextEditor(text: $storyText)
-                .frame(minHeight: 200)
-                .padding(8)
-                .background(Color(UIColor.systemGray6))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color(UIColor.systemGray4), lineWidth: 1)
-                )
-            
-            if storyText.isEmpty {
-                Text("Enter your story here...")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-            } else {
-                Text("\(storyText.count) characters")
-                    .foregroundColor(.secondary)
-                    .font(.caption)
-            }
+            EnhancedTextEditor(
+                text: $storyText,
+                placeholder: "Enter your story to segment into video-ready chunks...",
+                minHeight: 200
+            )
         }
     }
     
