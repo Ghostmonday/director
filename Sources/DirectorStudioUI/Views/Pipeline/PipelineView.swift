@@ -13,60 +13,86 @@ public struct PipelineView: View {
     @EnvironmentObject private var appState: AppState
     let project: Project
     
-    public init(project: Project) {
-        self.project = project
-    }
-    
     public var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                // Story Input
-                EnhancedTextEditor(
-                    text: $appState.storyInput,
-                    placeholder: "Enter your story here...",
-                    minHeight: 200
-                )
+            VStack(alignment: .leading, spacing: 24) {
+                storyInputSection
                 
-                // Module Configuration
-                ModuleConfigurationGrid(settings: $appState.moduleSettings)
+                moduleConfigurationSection
                 
-                // Advanced Settings
-                AdvancedSettingsView(settings: $appState.moduleSettings)
+                advancedSettingsSection
                 
-                // Run Pipeline Button
-                Button(action: appState.runPipeline) {
-                    Text("Run Pipeline")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .disabled(appState.isProcessingPipeline)
+                runPipelineButtonSection
                 
-                // Processing View
                 if appState.isProcessingPipeline {
-                    VStack {
-                        ProgressView(value: appState.pipelineProgress)
-                        Text("Processing: \(appState.currentPipelineModule)")
-                    }
+                    processingView
                 }
                 
-                // Results
                 if !appState.generatedPromptSegments.isEmpty {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Generated Prompts")
-                            .font(.headline)
-                        
-                        ForEach(appState.generatedPromptSegments) { segment in
-                            PromptCardView(prompt: segment)
-                        }
-                    }
+                    resultsSection
                 }
             }
             .padding()
         }
-        .navigationTitle(project.name)
+        .navigationTitle("Pipeline for \"\(project.name)\"")
+    }
+    
+    private var storyInputSection: some View {
+        Section(header: Text("Story Input").font(.title2).fontWeight(.bold)) {
+            TextEditor(text: $appState.storyInput)
+                .frame(minHeight: 150)
+                .padding(8)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(10)
+        }
+    }
+    
+    private var moduleConfigurationSection: some View {
+        Section(header: Text("Modules").font(.title2).fontWeight(.bold)) {
+            ModuleConfigurationGrid(settings: $appState.moduleSettings)
+        }
+    }
+    
+    private var advancedSettingsSection: some View {
+        Section(header: Text("Advanced").font(.title2).fontWeight(.bold)) {
+            AdvancedSettingsView(settings: $appState.moduleSettings)
+        }
+    }
+    
+    private var runPipelineButtonSection: some View {
+        Button(action: {
+            appState.runPipeline()
+        }) {
+            Text("Run Pipeline")
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(appState.isProcessingPipeline ? Color.gray : Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
+        .disabled(appState.isProcessingPipeline)
+    }
+    
+    private var processingView: some View {
+        Section(header: Text("Processing").font(.title2).fontWeight(.bold)) {
+            VStack(spacing: 8) {
+                ProgressView(value: appState.pipelineProgress)
+                Text(appState.currentPipelineModule)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+        }
+    }
+    
+    private var resultsSection: some View {
+        Section(header: Text("Generated Prompts").font(.title2).fontWeight(.bold)) {
+            VStack(spacing: 16) {
+                ForEach(appState.generatedPromptSegments) { segment in
+                    PromptCardView(prompt: segment)
+                }
+            }
+        }
     }
 }

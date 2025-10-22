@@ -19,6 +19,7 @@ public class AppState: ObservableObject {
     @Published public var videoLibrary: [GUIVideo] = []
     
     // MARK: - UI State
+    @Published public var isLoading: Bool = false
     @Published public var errorMessage: String?
     
     private let gui = GUIAbstraction()
@@ -31,11 +32,14 @@ public class AppState: ObservableObject {
     // MARK: - Project Functions
     
     public func loadProjects() {
+        isLoading = true
         Task {
             do {
                 projects = try await gui.fetchProjects()
+                isLoading = false
             } catch {
                 errorMessage = "Failed to load projects: \(error.localizedDescription)"
+                isLoading = false
             }
         }
     }

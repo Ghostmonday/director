@@ -5,18 +5,24 @@ struct ProjectCard: View {
     let project: Project
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(project.name)
-                .font(.headline)
+                .font(.system(.headline, design: .rounded))
+                .fontWeight(.bold)
+            
             Text(project.description)
-                .font(.subheadline)
+                .font(.system(.body, design: .rounded))
                 .foregroundColor(.secondary)
+            
             Spacer()
+            
             HStack {
                 Text("Last Modified: \(project.lastModified, style: .date)")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
                 Spacer()
+                
                 Image(systemName: "chevron.right")
                     .foregroundColor(.secondary)
             }
@@ -27,6 +33,7 @@ struct ProjectCard: View {
         #else
         .background(Color(.controlBackgroundColor))
         #endif
-        .cornerRadius(10)
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }

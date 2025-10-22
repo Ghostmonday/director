@@ -11,7 +11,7 @@ import DirectorStudio
 
 public struct ProjectsView: View {
     @EnvironmentObject private var appState: AppState
-    @State private var showingCreateProject = false
+    @State private var showingCreateSheet = false
     @State private var sortOrder: ProjectSortOrder = .dateDescending
     @State private var searchText = ""
     
@@ -19,70 +19,57 @@ public struct ProjectsView: View {
     
     public var body: some View {
         NavigationView {
-            VStack {
-                // Search and Sort Controls
-                projectControls
-                
-                // Project Grid
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 250))], spacing: 20) {
-                        ForEach(filteredProjects) { project in
-                            NavigationLink(destination: ProjectDetailView(project: project)) {
-                                ProjectCard(project: project)
-                            }
-                        }
-                    }
-                    .padding()
+            Group {
+                if appState.isLoading {
+                    ProgressView()
+                } else if appState.projects.isEmpty {
+                    emptyStateView
+                } else {
+                    projectListView
                 }
             }
             .navigationTitle("Projects")
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { showingCreateProject = true } label: {
+                    Button { showingCreateSheet = true } label: {
                         Image(systemName: "plus")
                     }
                 }
                 #else
                 ToolbarItem(placement: .primaryAction) {
-                    Button { showingCreateProject = true } label: {
+                    Button { showingCreateSheet = true } label: {
                         Image(systemName: "plus")
                     }
                 }
                 #endif
             }
-            .sheet(isPresented: $showingCreateProject) {
+            .sheet(isPresented: $showingCreateSheet) {
                 CreateProjectView { projectName, projectDescription in
                     appState.createProject(name: projectName, description: projectDescription)
                 }
             }
         }
+        .errorAlert(errorMessage: $appState.errorMessage)
     }
     
-    private var projectControls: some View {
-        HStack {
-            TextField("Search Projects", text: $searchText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.leading)
-            
-            Picker("Sort Order", selection: $sortOrder) {
-                ForEach(ProjectSortOrder.allCases) { order in
-                    Text(order.rawValue).tag(order)
+    private var projectListView: some View {
+        List {
+            ForEach(appState.projects) { project in
+                NavigationLink(destination: ProjectDetailView(project: project)) {
+                    ProjectCard(project: project)
                 }
             }
-            .pickerStyle(MenuPickerStyle())
-            .padding(.trailing)
         }
-        .padding(.top)
     }
     
-    private var filteredProjects: [Project] {
-        let sortedProjects = appState.projects.sorted(by: sortOrder.sortFunction)
-        
-        if searchText.isEmpty {
-            return sortedProjects
-        } else {
-            return sortedProjects.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    private var emptyStateView: some View {
+        VStack {
+            Text("No Projects Yet")
+                .font(.headline)
+            Text("Tap the '+' button to create your first project.")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
     }
 }
