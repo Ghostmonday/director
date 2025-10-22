@@ -77,7 +77,11 @@ public struct SmartTextEditor: View {
                             .textSelection(.enabled)
                     }
                     .frame(height: isExpanded ? maxHeight : minHeight)
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
                 } else {
                     // Editable text editor
@@ -96,7 +100,13 @@ public struct SmartTextEditor: View {
                             .frame(height: isExpanded ? maxHeight : minHeight)
                             .background(Color.clear)
                     }
+                    .frame(minHeight: minHeight, maxHeight: maxHeight)
+                    .padding(8)
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
                 }
             }

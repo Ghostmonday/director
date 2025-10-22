@@ -106,7 +106,7 @@ public final class RewordingModule: PipelineModule, @unchecked Sendable { // ✅
     
     private let aiService: AIServiceProtocol
     
-    public init(aiService: AIServiceProtocol = MockAIService()) {
+    public init(aiService: AIServiceProtocol) {
         self.aiService = aiService
     }
     

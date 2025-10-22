@@ -46,7 +46,11 @@ public struct TimelineView: View {
             .padding()
         }
         .frame(height: 120)
+        #if os(iOS)
         .background(Color(UIColor.systemGray6).opacity(0.3))
+        #else
+        .background(Color(.controlBackgroundColor).opacity(0.3))
+        #endif
     }
 }
 
@@ -87,7 +91,11 @@ struct TimelineSegmentBar: View {
         } else if segment.hasCinematicTags {
             return Color.blue.opacity(0.6)
         } else {
+            #if os(iOS)
             return Color(UIColor.systemGray4)
+            #else
+            return Color(.separatorColor)
+            #endif
         }
     }
 }
@@ -138,7 +146,11 @@ struct StoryboardCard: View {
                 // Thumbnail placeholder
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
+                        #if os(iOS)
                         .fill(Color(UIColor.systemGray5))
+                        #else
+                        .fill(Color(.quaternaryLabelColor))
+                        #endif
                         .frame(height: 100)
                     
                     VStack(spacing: 4) {
@@ -173,7 +185,11 @@ struct StoryboardCard: View {
                 }
             }
             .padding(8)
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)

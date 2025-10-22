@@ -8,6 +8,7 @@
 
 import Foundation
 import DirectorStudio
+import DirectorStudioUI
 
 // MARK: - GUI Data Models
 
@@ -189,45 +190,14 @@ public class GUIAbstraction {
         )
     }
     
-    // MARK: - Project Management
+    // MARK: - Monetization
     
-    public func getProjects() async throws -> [GUIProject] {
-        // Simulate loading time
-        try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
-        
-        // Mock projects
-        return [
-            GUIProject(
-                id: UUID(),
-                name: "Sample Project 1",
-                description: "A sample project for testing",
-                createdAt: Date().addingTimeInterval(-86400),
-                lastModified: Date().addingTimeInterval(-3600),
-                status: .complete,
-                segmentCount: 5,
-                hasVideo: true
-            ),
-            GUIProject(
-                id: UUID(),
-                name: "Sample Project 2",
-                description: "Another sample project",
-                createdAt: Date().addingTimeInterval(-172800),
-                lastModified: Date().addingTimeInterval(-7200),
-                status: .processing,
-                segmentCount: 3,
-                hasVideo: false
-            )
-        ]
-    }
-    
-    // MARK: - Credits Management
-    
-    public func getCreditsBalance() async throws -> Int {
-        // Simulate loading time
+    public func getCreditBalance() async throws -> Int {
+        // Simulate processing time
         try await Task.sleep(nanoseconds: 200_000_000) // 0.2 seconds
         
-        // Mock credits balance
-        return 150
+        // Mock balance
+        return 100
     }
     
     public func useCredits(amount: Int) async throws -> Bool {
@@ -236,5 +206,31 @@ public class GUIAbstraction {
         
         // Mock credit usage
         return true
+    }
+    
+    public func getCreditsBalance() async throws -> Int {
+        DirectorStudioCore.shared.monetizationManager.currentCredits
+    }
+    
+    // MARK: - Project Management
+    
+    public func fetchProjects() async throws -> [Project] {
+        try DirectorStudioCore.shared.getProjects()
+    }
+    
+    public func createProject(name: String, description: String) async throws -> Project {
+        try DirectorStudioCore.shared.createProject(name: name, description: description)
+    }
+    
+    // MARK: - Pipeline Execution
+    
+    @available(iOS 15.0, *)
+    public func runPipeline(story: String, settings: ModuleSettings) async throws -> [PromptSegment] {
+        return try await DirectorStudioCore.shared.runPipeline(story: story, settings: settings)
+    }
+    
+    @available(iOS 15.0, *)
+    public func generateVideo(for segment: PromptSegment) async throws -> VideoGenerationOutput {
+        try await DirectorStudioCore.shared.generateVideo(for: segment)
     }
 }

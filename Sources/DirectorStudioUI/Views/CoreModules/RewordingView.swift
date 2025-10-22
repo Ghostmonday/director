@@ -82,11 +82,19 @@ struct RewordingView: View {
             TextEditor(text: $inputText)
                 .frame(minHeight: 120)
                 .padding(8)
+                #if os(iOS)
                 .background(Color(UIColor.systemGray6))
+                #else
+                .background(Color(.controlBackgroundColor))
+                #endif
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
+                        #if os(iOS)
                         .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                        #else
+                        .stroke(Color(.separatorColor), lineWidth: 1)
+                        #endif
                 )
             
             if inputText.isEmpty {
@@ -111,7 +119,11 @@ struct RewordingView: View {
             }
             .pickerStyle(MenuPickerStyle())
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
             
             // Style Description
@@ -138,7 +150,11 @@ struct RewordingView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
+            #if os(iOS)
             .background(inputText.isEmpty ? Color(UIColor.systemGray4) : Color.blue)
+            #else
+            .background(inputText.isEmpty ? Color(.separatorColor) : Color.blue)
+            #endif
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -158,7 +174,11 @@ struct RewordingView: View {
                 .foregroundColor(.secondary)
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemGray6))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
         .cornerRadius(8)
     }
     
@@ -195,7 +215,11 @@ struct RewordingView: View {
                             
                             Text(inputText)
                                 .padding()
+                                #if os(iOS)
                                 .background(Color(UIColor.systemGray6))
+                                #else
+                                .background(Color(.controlBackgroundColor))
+                                #endif
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -211,7 +235,11 @@ struct RewordingView: View {
                             
                             Text(rewordedText)
                                 .padding()
+                                #if os(iOS)
                                 .background(Color(UIColor.systemGray6))
+                                #else
+                                .background(Color(.controlBackgroundColor))
+                                #endif
                                 .cornerRadius(6)
                                 .font(.body)
                         }
@@ -219,7 +247,11 @@ struct RewordingView: View {
                         // Only transformed text
                         Text(rewordedText)
                             .padding()
+                            #if os(iOS)
                             .background(Color(UIColor.systemGray6))
+                            #else
+                            .background(Color(.controlBackgroundColor))
+                            #endif
                             .cornerRadius(6)
                             .font(.body)
                     }
@@ -228,11 +260,19 @@ struct RewordingView: View {
             .frame(maxHeight: 300)
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemBackground))
+        #else
+        .background(Color(.windowBackgroundColor))
+        #endif
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
+                #if os(iOS)
                 .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                #else
+                .stroke(Color(.separatorColor), lineWidth: 1)
+                #endif
         )
     }
     

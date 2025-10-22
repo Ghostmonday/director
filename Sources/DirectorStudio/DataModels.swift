@@ -135,3 +135,88 @@ public struct SceneModel: Codable, Identifiable, Equatable, Sendable {
         self.tone = tone
     }
 }
+
+public struct Project: Codable, Identifiable, Equatable, Sendable {
+    public var id: UUID
+    public var name: String
+    public var description: String
+    public let createdAt: Date
+    public var lastModified: Date
+    public var status: ProjectStatus
+    
+    public init(
+        id: UUID = UUID(),
+        name: String,
+        description: String,
+        createdAt: Date = Date(),
+        lastModified: Date = Date(),
+        status: ProjectStatus = .draft
+    ) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.createdAt = createdAt
+        self.lastModified = lastModified
+        self.status = status
+    }
+}
+
+public enum ProjectStatus: String, Codable, Sendable {
+    case draft
+    case inProgress = "in_progress"
+    case completed
+    case archived
+}
+
+public enum ProjectSortOrder: String, CaseIterable, Identifiable {
+    case nameAscending = "Name (A-Z)"
+    case nameDescending = "Name (Z-A)"
+    case dateAscending = "Date (Oldest First)"
+    case dateDescending = "Date (Newest First)"
+
+    public var id: String { self.rawValue }
+
+    public var sortFunction: (Project, Project) -> Bool {
+        switch self {
+        case .nameAscending:
+            return { $0.name < $1.name }
+        case .nameDescending:
+            return { $0.name > $1.name }
+        case .dateAscending:
+            return { $0.lastModified < $1.lastModified }
+        case .dateDescending:
+            return { $0.lastModified > $1.lastModified }
+        }
+    }
+}
+
+// MARK: - Pipeline Configuration Models
+
+public struct ModuleSettings {
+    // Module toggles
+    public var segmentationEnabled: Bool = true
+    public var storyAnalysisEnabled: Bool = true
+    public var rewordingEnabled: Bool = false
+    public var taxonomyEnabled: Bool = true
+    public var continuityEnabled: Bool = true
+    
+    // Advanced settings
+    public var targetDuration: Double = 120.0
+    public var videoQuality: VideoQuality = .high
+    public var processingMode: ProcessingMode = .balanced
+    
+    public init() {}
+}
+
+public enum VideoQuality: String, CaseIterable, Sendable, Codable {
+    case low
+    case medium
+    case high
+    case ultra
+}
+
+public enum ProcessingMode: String, CaseIterable, Sendable {
+    case fast = "Fast"
+    case balanced = "Balanced"
+    case quality = "Quality"
+}

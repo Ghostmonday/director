@@ -8,106 +8,161 @@
 
 import SwiftUI
 
-/// DirectorStudio adaptive color theme
-public struct DSColors {
+#if canImport(UIKit)
+import UIKit
+#endif
+
+public enum DirectorStudioColor {
+    // MARK: - Brand Colors
     
-    // MARK: - Primary Brand Colors
+    /// The primary brand color
+    public static let brandPrimary = Color("BrandPrimary")
     
-    /// Primary brand color (adapts to dark mode)
-    public static let primary = Color.blue
-    
-    /// Secondary brand color
-    public static let secondary = Color.purple
-    
-    /// Accent color for highlights
-    public static let accent = Color.orange
+    /// A secondary accent color
+    public static let accent = Color("AccentColor")
     
     // MARK: - Background Colors
     
     /// Primary background (pure white/black in light/dark)
+    #if os(iOS)
     public static let background = Color(uiColor: .systemBackground)
+    #else
+    public static let background = Color(.windowBackgroundColor)
+    #endif
     
     /// Secondary background (slightly darker/lighter)
+    #if os(iOS)
     public static let backgroundSecondary = Color(uiColor: .secondarySystemBackground)
+    #else
+    public static let backgroundSecondary = Color(.controlBackgroundColor)
+    #endif
     
     /// Tertiary background (even more contrast)
+    #if os(iOS)
     public static let backgroundTertiary = Color(uiColor: .tertiarySystemBackground)
+    #else
+    public static let backgroundTertiary = Color(.underPageBackgroundColor)
+    #endif
     
     /// Grouped background (for lists)
+    #if os(iOS)
     public static let backgroundGrouped = Color(uiColor: .systemGroupedBackground)
+    #else
+    public static let backgroundGrouped = Color(.controlBackgroundColor)
+    #endif
     
     // MARK: - Content Colors
     
     /// Primary text color
+    #if os(iOS)
     public static let text = Color(uiColor: .label)
+    #else
+    public static let text = Color(.labelColor)
+    #endif
     
     /// Secondary text color (less emphasis)
+    #if os(iOS)
     public static let textSecondary = Color(uiColor: .secondaryLabel)
+    #else
+    public static let textSecondary = Color(.secondaryLabelColor)
+    #endif
     
     /// Tertiary text color (even less emphasis)
+    #if os(iOS)
     public static let textTertiary = Color(uiColor: .tertiaryLabel)
+    #else
+    public static let textTertiary = Color(.tertiaryLabelColor)
+    #endif
     
     /// Quaternary text color (disabled states)
+    #if os(iOS)
     public static let textQuaternary = Color(uiColor: .quaternaryLabel)
+    #else
+    public static let textQuaternary = Color(.quaternaryLabelColor)
+    #endif
     
     // MARK: - Separator Colors
     
     /// Standard separator line
+    #if os(iOS)
     public static let separator = Color(uiColor: .separator)
+    #else
+    public static let separator = Color(.separatorColor)
+    #endif
     
     /// Opaque separator (always visible)
+    #if os(iOS)
     public static let separatorOpaque = Color(uiColor: .opaqueSeparator)
+    #else
+    public static let separatorOpaque = Color(.separatorColor)
+    #endif
     
     // MARK: - System Grays (Adaptive)
     
-    public static let gray1 = Color(uiColor: .systemGray)
+    public static let gray1 = Color.gray
+    #if os(iOS)
     public static let gray2 = Color(uiColor: .systemGray2)
     public static let gray3 = Color(uiColor: .systemGray3)
     public static let gray4 = Color(uiColor: .systemGray4)
     public static let gray5 = Color(uiColor: .systemGray5)
     public static let gray6 = Color(uiColor: .systemGray6)
+    #else
+    public static let gray2 = Color(.systemGray)
+    public static let gray3 = Color(.systemGray)
+    public static let gray4 = Color(.systemGray)
+    public static let gray5 = Color(.systemGray)
+    public static let gray6 = Color(.systemGray)
+    #endif
     
     // MARK: - Semantic Colors
     
-    /// Success/positive state
+    /// A color for links
+    public static let link = Color.blue
+    
+    /// A color for interactive elements
+    public static let interactive = Color.blue
+    
+    /// A color for indicating success
     public static let success = Color.green
     
-    /// Warning/caution state
+    /// A color for indicating warnings
     public static let warning = Color.orange
     
-    /// Error/destructive state
+    /// A color for indicating errors
     public static let error = Color.red
     
-    /// Info/neutral state
-    public static let info = Color.blue
-    
-    // MARK: - Component-Specific Colors
-    
     /// Card background
+    #if os(iOS)
     public static let cardBackground = Color(uiColor: .systemGray6)
+    #else
+    public static let cardBackground = Color(.controlBackgroundColor)
+    #endif
     
     /// Input field background
+    #if os(iOS)
     public static let inputBackground = Color(uiColor: .systemGray6)
+    #else
+    public static let inputBackground = Color(.textBackgroundColor)
+    #endif
     
     /// Button primary background
     public static let buttonPrimary = Color.blue
     
     /// Button secondary background
+    #if os(iOS)
     public static let buttonSecondary = Color(uiColor: .systemGray4)
+    #else
+    public static let buttonSecondary = Color(.separatorColor)
+    #endif
     
     // MARK: - Gradient Colors
     
-    /// Primary gradient (for floating buttons, etc.)
-    public static let gradientStart = Color.blue
-    public static let gradientEnd = Color.blue.opacity(0.8)
-    
-    /// Success gradient
-    public static let gradientSuccessStart = Color.green
-    public static let gradientSuccessEnd = Color.green.opacity(0.8)
-    
-    /// Warning gradient
-    public static let gradientWarningStart = Color.orange
-    public static let gradientWarningEnd = Color.orange.opacity(0.8)
+    /// A sample gradient
+    public static let primaryGradient = LinearGradient(
+        gradient: Gradient(colors: [brandPrimary, accent]),
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
 }
 
 // MARK: - Gradient Extensions
@@ -115,21 +170,21 @@ public struct DSColors {
 public extension LinearGradient {
     /// Primary gradient for buttons
     static let primaryButton = LinearGradient(
-        gradient: Gradient(colors: [DSColors.gradientStart, DSColors.gradientEnd]),
+        gradient: Gradient(colors: [DirectorStudioColor.brandPrimary, DirectorStudioColor.accent]),
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
     
     /// Success gradient
     static let success = LinearGradient(
-        gradient: Gradient(colors: [DSColors.gradientSuccessStart, DSColors.gradientSuccessEnd]),
+        gradient: Gradient(colors: [Color.green, Color.green.opacity(0.7)]),
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
     
     /// Warning gradient
     static let warning = LinearGradient(
-        gradient: Gradient(colors: [DSColors.gradientWarningStart, DSColors.gradientWarningEnd]),
+        gradient: Gradient(colors: [Color.orange, Color.orange.opacity(0.7)]),
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
@@ -140,17 +195,17 @@ public extension LinearGradient {
 public extension View {
     /// Applies adaptive card background
     func cardBackground() -> some View {
-        self.background(DSColors.cardBackground)
+        self.background(DirectorStudioColor.cardBackground)
     }
     
     /// Applies adaptive input background
     func inputBackground() -> some View {
-        self.background(DSColors.inputBackground)
+        self.background(DirectorStudioColor.inputBackground)
     }
     
     /// Applies primary background
     func primaryBackground() -> some View {
-        self.background(DSColors.background)
+        self.background(DirectorStudioColor.background)
     }
 }
 

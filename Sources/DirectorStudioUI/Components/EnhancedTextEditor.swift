@@ -95,7 +95,11 @@ public struct EnhancedTextEditor: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
+            #if os(iOS)
             .background(Color(UIColor.systemGray6).opacity(0.5))
+            #else
+            .background(Color(.windowBackgroundColor).opacity(0.5))
+            #endif
             
             // Editor
             ZStack(alignment: .topLeading) {
@@ -123,12 +127,20 @@ public struct EnhancedTextEditor: View {
                         }
                     }
             }
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
         }
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
+                #if os(iOS)
                 .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                #else
+                .stroke(Color(.separatorColor), lineWidth: 1)
+                #endif
         )
     }
     

@@ -124,11 +124,19 @@ struct StoryAnalysisView: View {
             TextEditor(text: $storyText)
                 .frame(minHeight: 300)
                 .padding(8)
+                #if os(iOS)
                 .background(Color(UIColor.systemGray6))
+                #else
+                .background(Color(.controlBackgroundColor))
+                #endif
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
+                        #if os(iOS)
                         .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                        #else
+                        .stroke(Color(.separatorColor), lineWidth: 1)
+                        #endif
                 )
             
             if storyText.isEmpty {
@@ -159,7 +167,11 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
+            #if os(iOS)
             .background(canAnalyze ? Color.blue : Color(UIColor.systemGray4))
+            #else
+            .background(canAnalyze ? Color.blue : Color(.separatorColor))
+            #endif
             .foregroundColor(.white)
             .cornerRadius(10)
         }
@@ -205,7 +217,11 @@ struct StoryAnalysisView: View {
             }
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemGray6))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
         .cornerRadius(8)
     }
     
@@ -235,9 +251,13 @@ struct StoryAnalysisView: View {
                 }
             }
             .padding(.horizontal)
+            .padding(.vertical, 8)
+            #if os(iOS)
+            .background(Color(UIColor.systemBackground))
+            #else
+            .background(Color(.windowBackgroundColor))
+            #endif
         }
-        .padding(.vertical, 8)
-        .background(Color(UIColor.systemBackground))
     }
     
     // MARK: - Tab Content Section
@@ -275,7 +295,11 @@ struct StoryAnalysisView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .foregroundColor(.primary)
             .cornerRadius(10)
         }
@@ -335,7 +359,11 @@ struct StoryAnalysisView: View {
                     Text(analysis.narrativeArc)
                         .font(.body)
                         .padding()
+                        #if os(iOS)
                         .background(Color(UIColor.systemGray6))
+                        #else
+                        .background(Color(.controlBackgroundColor))
+                        #endif
                         .cornerRadius(8)
                 }
             }
@@ -351,7 +379,11 @@ struct StoryAnalysisView: View {
                 Text(analysis.characterDevelopment)
                     .font(.body)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
             }
         }
@@ -366,7 +398,11 @@ struct StoryAnalysisView: View {
                 Text(analysis.narrativeArc)
                     .font(.body)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
             }
         }
@@ -381,7 +417,11 @@ struct StoryAnalysisView: View {
                 Text(analysis.themes)
                     .font(.body)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
             }
         }
@@ -396,7 +436,11 @@ struct StoryAnalysisView: View {
                 Text(analysis.emotionalCurve)
                     .font(.body)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
             }
         }
@@ -412,7 +456,11 @@ struct StoryAnalysisView: View {
                     .font(.body)
                     .foregroundColor(.secondary)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .cornerRadius(8)
             }
         }

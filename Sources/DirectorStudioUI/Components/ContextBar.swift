@@ -86,7 +86,11 @@ public struct ContextBar: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
+                #if os(iOS)
                 .background(Color(UIColor.systemGray6))
+                #else
+                .background(Color(.windowBackgroundColor))
+                #endif
                 
                 Divider()
             }

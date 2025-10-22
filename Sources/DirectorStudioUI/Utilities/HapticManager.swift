@@ -8,77 +8,103 @@
 
 import SwiftUI
 
+#if os(iOS)
+import UIKit
+#endif
+
 /// Centralized haptic feedback manager for DirectorStudio
 public final class HapticManager {
     public static let shared = HapticManager()
     
+    #if os(iOS)
     private let impact = UIImpactFeedbackGenerator()
     private let selection = UISelectionFeedbackGenerator()
     private let notification = UINotificationFeedbackGenerator()
+    #endif
     
     private init() {
+        #if os(iOS)
         // Prepare generators for lower latency
         impact.prepare()
         selection.prepare()
         notification.prepare()
+        #endif
     }
     
     // MARK: - Impact Feedback
     
     /// Light impact (button taps, toggle switches)
     public func light() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
+        #endif
     }
     
     /// Medium impact (segmentlist operations, reordering)
     public func medium() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
+        #endif
     }
     
     /// Heavy impact (pipeline run, major actions)
     public func heavy() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
+        #endif
     }
     
     /// Soft impact (iOS 13+, gentle feedback)
     @available(iOS 13.0, *)
     public func soft() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .soft)
         generator.impactOccurred()
+        #endif
     }
     
     /// Rigid impact (iOS 13+, firm feedback)
     @available(iOS 13.0, *)
     public func rigid() {
+        #if os(iOS)
         let generator = UIImpactFeedbackGenerator(style: .rigid)
         generator.impactOccurred()
+        #endif
     }
     
     // MARK: - Selection Feedback
     
     /// Selection changed (picker, segmented control)
     public func selectionChanged() {
+        #if os(iOS)
         selection.selectionChanged()
+        #endif
     }
     
     // MARK: - Notification Feedback
     
     /// Success feedback (pipeline complete, video generated)
     public func success() {
+        #if os(iOS)
         notification.notificationOccurred(.success)
+        #endif
     }
     
     /// Warning feedback (insufficient credits, validation warnings)
     public func warning() {
+        #if os(iOS)
         notification.notificationOccurred(.warning)
+        #endif
     }
     
     /// Error feedback (pipeline failed, export error)
     public func error() {
+        #if os(iOS)
         notification.notificationOccurred(.error)
+        #endif
     }
     
     // MARK: - Context-Specific Feedback

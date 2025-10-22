@@ -27,15 +27,21 @@ public struct VideoGenerationResult: Sendable {
 }
 
 /// Pollo API Service for video generation
-public final class PolloAPIService: @unchecked Sendable {
+public final class PolloAPIService: AIServiceProtocol, @unchecked Sendable {
     public static let shared = PolloAPIService()
     
     private let baseURL = "https://api.pollo.ai/v1/generate" // Adjust if different
     private var apiKey: String?
     
+    public var isAvailable: Bool {
+        return apiKey != nil
+    }
+    
     private init() {
-        // Load API key from environment or Info.plist
-        if let key = ProcessInfo.processInfo.environment["PolloAPIKey"] {
+        // Load API key from SecretsManager, environment, or Info.plist
+        if let key = SecretsManager.shared.getSecret(for: "PolloAPIKey") {
+            self.apiKey = key
+        } else if let key = ProcessInfo.processInfo.environment["PolloAPIKey"] {
             self.apiKey = key
         } else if let key = Bundle.main.infoDictionary?["PolloAPIKey"] as? String {
             self.apiKey = key
@@ -214,6 +220,39 @@ public final class PolloAPIService: @unchecked Sendable {
         try data.write(to: finalURL)
         
         return finalURL
+    }
+    
+    // MARK: - Text Rewording
+    
+    public func rewordText(text: String, style: RewordingStyle) async throws -> String {
+        guard let apiKey = SecretsManager.shared.getSecret(for: "RewordingAPIKey") else {
+            throw NSError(domain: "RewordingService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Rewording API key not found."])
+        }
+        
+        let url = URL(string: "https://api.pollo.ai/v1/reword")! // Adjust if different
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let payload: [String: Any] = [
+            "text": text,
+            "style": style.rawValue
+        ]
+        
+        request.httpBody = try JSONSerialization.data(withJSONObject: payload)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let result = try JSONDecoder().decode([String: String].self, from: data)
+        return result["reworded_text"] ?? ""
+    }
+    
+    public func processText(prompt: String, systemPrompt: String) async throws -> String {
+        // This can be a more generic endpoint on your API if it exists,
+        // or it can be adapted to use the reword logic.
+        // For now, let's make it an alias for a simple reword.
+        return try await rewordText(text: prompt, style: .cinematicMood)
     }
 }
 

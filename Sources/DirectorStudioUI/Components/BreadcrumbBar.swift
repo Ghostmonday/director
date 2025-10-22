@@ -60,7 +60,14 @@ public struct BreadcrumbBar: View {
             .padding(.horizontal, 16)
         }
         .frame(height: 44)
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        #if os(iOS)
         .background(Color(UIColor.systemGray6).opacity(0.5))
+        #else
+        .background(Color(.windowBackgroundColor).opacity(0.5))
+        #endif
+        .cornerRadius(8)
     }
 }
 

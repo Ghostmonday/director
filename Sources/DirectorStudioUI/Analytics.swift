@@ -1,5 +1,7 @@
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// 🟢 POLISH: Enhanced analytics tracking system
 class Analytics {
@@ -19,8 +21,10 @@ class Analytics {
         var enrichedProperties = properties ?? [:]
         
         // Enrich with device context
+        #if os(iOS)
         enrichedProperties["device_model"] = UIDevice.current.model
         enrichedProperties["os_version"] = UIDevice.current.systemVersion
+        #endif
         enrichedProperties["app_version"] = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
         enrichedProperties["session_duration"] = sessionDuration
         enrichedProperties["timestamp"] = Date().timeIntervalSince1970
@@ -89,16 +93,20 @@ class Analytics {
         ])
     }
     
-    // MARK: - 🟢 POLISH: Enhanced Tracking Methods
+    // MARK: - Session Management
     
-    /// Track app session start
     func trackSessionStart() {
+        #if os(iOS)
         track(event: "session_start", properties: [
             "device_type": UIDevice.current.userInterfaceIdiom == .pad ? "iPad" : "iPhone"
         ])
+        #else
+        track(event: "session_start", properties: [
+            "device_type": "macOS"
+        ])
+        #endif
     }
     
-    /// Track app session end
     func trackSessionEnd() {
         track(event: "session_end", properties: [
             "duration": sessionDuration

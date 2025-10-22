@@ -66,7 +66,11 @@ struct CreditsStoreView: View {
                     .foregroundColor(.secondary)
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(12)
             
             // Quick Actions
@@ -79,7 +83,11 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -92,7 +100,11 @@ struct CreditsStoreView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .foregroundColor(.primary)
                     .cornerRadius(8)
                 }
@@ -151,7 +163,11 @@ struct CreditsStoreView: View {
                 )
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
         }
     }
@@ -331,11 +347,19 @@ struct CreditPackageView: View {
                     .cornerRadius(6)
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemBackground))
+            #else
+            .background(Color(.windowBackgroundColor))
+            #endif
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
+                    #if os(iOS)
                     .stroke(package.popular ? Color.orange : Color(UIColor.systemGray4), lineWidth: package.popular ? 2 : 1)
+                    #else
+                    .stroke(package.popular ? Color.orange : Color(.separatorColor), lineWidth: package.popular ? 2 : 1)
+                    #endif
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -414,11 +438,19 @@ struct PurchaseHistoryView: View {
             }
             .navigationTitle("Purchase History")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                #endif
             }
         }
     }

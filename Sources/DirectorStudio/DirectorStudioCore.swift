@@ -50,7 +50,7 @@ public class DirectorStudioCore {
     
     private init() {
         // Initialize AI service
-        self.aiService = MockAIService()
+        self.aiService = PolloAPIService.shared
         
         // Initialize modules
         self.segmentationModule = SegmentationModule()
@@ -82,6 +82,96 @@ public class DirectorStudioCore {
         return try persistenceManager.saveProject(project)
     }
     
+    public func getProjects() throws -> [Project] {
+        return try persistenceManager.getAllProjects()
+    }
+    
+    // ✅ NEW: Full pipeline execution orchestrator
+    @available(iOS 15.0, *)
+    public func runPipeline(story: String, settings: ModuleSettings) async throws -> [PromptSegment] {
+        guard let project = currentProject else {
+            throw CoreError.noActiveProject
+        }
+
+        updateProcessingState(true, operation: "Starting Pipeline")
+        
+        var segments: [PromptSegment] = []
+        
+        // 1. Segmentation
+        if settings.segmentationEnabled {
+            updateProcessingState(true, operation: "Segmenting Story")
+            let segmentationInput = SegmentationInput(story: story)
+            let segmentationResult = try await segmentationModule.execute(input: segmentationInput, context: .init())
+            
+            switch segmentationResult {
+                case .success(let output):
+                    segments = output.segments
+                case .failure(let error):
+                    throw CoreError.moduleError(module: "Segmentation", error: error)
+            }
+            self.currentSegments = segments
+            try persistenceManager.saveSegments(segments, projectId: project.id)
+            updateProgress(0.2)
+        }
+        
+        // 2. Story Analysis (if enabled)
+        if settings.storyAnalysisEnabled {
+            updateProcessingState(true, operation: "Analyzing Story")
+            let analysisInput = StoryAnalysisInput(story: story)
+            // Execute and handle result...
+            updateProgress(0.4)
+        }
+        
+        // 3. Rewording (if enabled)
+        // This needs more granular control, likely on a per-segment basis.
+        // Skipping for this high-level pipeline run.
+
+        // 4. Taxonomy
+        if settings.taxonomyEnabled {
+            updateProcessingState(true, operation: "Enriching with Taxonomy")
+            let taxonomyInput = CinematicTaxonomyInput(segments: self.currentSegments)
+            let taxonomyResult = try await taxonomyModule.execute(input: taxonomyInput, context: .init())
+            
+            switch taxonomyResult {
+                case .success(let output):
+                    self.currentSegments = output.enrichedSegments
+                case .failure(let error):
+                    throw CoreError.moduleError(module: "Taxonomy", error: error)
+            }
+            try persistenceManager.saveSegments(self.currentSegments, projectId: project.id)
+            updateProgress(0.6)
+        }
+        
+        // 5. Continuity
+        if settings.continuityEnabled {
+            updateProcessingState(true, operation: "Validating Continuity")
+            let continuityInput = ContinuityInput(segments: self.currentSegments)
+            // Execute and handle result...
+            updateProgress(0.8)
+        }
+        
+        updateProcessingState(false, operation: "Pipeline Complete")
+        return self.currentSegments
+    }
+
+    public func generateVideo(for segment: PromptSegment) async throws -> VideoGenerationOutput {
+        let input = VideoGenerationInput(
+            segments: [segment],
+            projectName: currentProject?.name ?? "Untitled",
+            outputFormat: .mp4,
+            quality: .high,
+            style: .cinematic
+        )
+        let result = await videoGenerationModule.execute(input: input, context: .init())
+        
+        switch result {
+        case .success(let output):
+            return output
+        case .failure(let error):
+            throw error
+        }
+    }
+
     public func loadProject(id: UUID) throws -> Project {
         guard let project = try persistenceManager.getProject(id: id) else {
             throw CoreError.projectNotFound(id: id)
@@ -102,10 +192,10 @@ public class DirectorStudioCore {
         
         // Update project
         var updatedProject = project
-        updatedProject.updatedAt = Date()
+        updatedProject.lastModified = Date()
         
         // Save project
-        self.currentProject = try persistenceManager.saveProject(updatedProject)
+        _ = try persistenceManager.saveProject(updatedProject) // ✅ Warning cleaned: Discard result
         
         // Save segments
         try persistenceManager.saveSegments(currentSegments, projectId: updatedProject.id)

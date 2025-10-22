@@ -41,8 +41,10 @@ struct OnboardingView: View {
                     )
                     .tag(2)
                 }
+                #if os(iOS)
                 .tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                #endif
                 
                 // Continue button
                 Button(action: {

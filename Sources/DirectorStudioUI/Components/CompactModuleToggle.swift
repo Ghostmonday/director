@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DirectorStudio
 
 /// Compact module toggle for grid layout
 public struct CompactModuleToggle: View {
@@ -37,7 +38,11 @@ public struct CompactModuleToggle: View {
             .padding(.vertical, 16)
             .background(
                 RoundedRectangle(cornerRadius: 12)
+                    #if os(iOS)
                     .fill(isEnabled ? Color.blue : Color(UIColor.systemGray6))
+                    #else
+                    .fill(isEnabled ? Color.blue : Color(.controlBackgroundColor))
+                    #endif
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
@@ -52,69 +57,7 @@ public struct CompactModuleToggle: View {
 }
 
 /// Grid configuration view for modules
-public struct ModuleConfigurationGrid: View {
-    @Binding var settings: ModuleSettings
-    
-    public init(settings: Binding<ModuleSettings>) {
-        self._settings = settings
-    }
-    
-    public var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Enabled Modules")
-                .font(.headline)
-                .foregroundColor(.primary)
-            
-            LazyVGrid(columns: [
-                GridItem(.flexible()),
-                GridItem(.flexible()),
-                GridItem(.flexible())
-            ], spacing: 12) {
-                CompactModuleToggle(
-                    icon: "scissors",
-                    title: "Segment",
-                    isEnabled: $settings.segmentationEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "chart.bar.doc.horizontal",
-                    title: "Analysis",
-                    isEnabled: $settings.storyAnalysisEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "text.bubble",
-                    title: "Reword",
-                    isEnabled: $settings.rewordingEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "film",
-                    title: "Taxonomy",
-                    isEnabled: $settings.taxonomyEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "checkmark.circle",
-                    title: "Continuity",
-                    isEnabled: $settings.continuityEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "video",
-                    title: "Video Gen",
-                    isEnabled: $settings.videoGenerationEnabled
-                )
-                
-                CompactModuleToggle(
-                    icon: "play.rectangle",
-                    title: "Assembly",
-                    isEnabled: $settings.videoAssemblyEnabled
-                )
-            }
-        }
-    }
-}
+// Now defined in Sources/DirectorStudioUI/Views/Pipeline/ModuleConfigurationGrid.swift
 
 // MARK: - Preview
 struct CompactModuleToggle_Previews: PreviewProvider {

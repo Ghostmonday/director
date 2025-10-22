@@ -38,8 +38,6 @@ public struct PipelinePresets {
                 rewordingEnabled: false,
                 taxonomyEnabled: false,
                 continuityEnabled: false,
-                videoGenerationEnabled: false,
-                videoAssemblyEnabled: false,
                 targetDuration: 60,
                 videoQuality: .low,
                 processingMode: .fast
@@ -55,8 +53,6 @@ public struct PipelinePresets {
                 rewordingEnabled: true,
                 taxonomyEnabled: true,
                 continuityEnabled: true,
-                videoGenerationEnabled: false,
-                videoAssemblyEnabled: false,
                 targetDuration: 120,
                 videoQuality: .medium,
                 processingMode: .balanced
@@ -72,16 +68,14 @@ public struct PipelinePresets {
                 rewordingEnabled: true,
                 taxonomyEnabled: true,
                 continuityEnabled: true,
-                videoGenerationEnabled: true,
-                videoAssemblyEnabled: true,
                 targetDuration: 180,
                 videoQuality: .high,
                 processingMode: .quality
             )
         ),
         PipelinePreset(
-            name: "Video Only",
-            description: "Skip analysis, generate video directly",
+            name: "Minimal Pipeline",
+            description: "Essential modules only",
             icon: "play.rectangle.fill",
             settings: ModuleSettings(
                 segmentationEnabled: true,
@@ -89,8 +83,6 @@ public struct PipelinePresets {
                 rewordingEnabled: false,
                 taxonomyEnabled: true,
                 continuityEnabled: false,
-                videoGenerationEnabled: true,
-                videoAssemblyEnabled: true,
                 targetDuration: 120,
                 videoQuality: .high,
                 processingMode: .fast
@@ -136,7 +128,11 @@ public struct PresetSelectorView: View {
                                 .fontWeight(.medium)
                         }
                         .frame(width: 140, height: 100)
+                        #if os(iOS)
                         .background(Color(UIColor.systemGray6))
+                        #else
+                        .background(Color(.controlBackgroundColor))
+                        #endif
                         .cornerRadius(12)
                     }
                     .accessibilityLabel("Create custom preset")
@@ -175,7 +171,11 @@ struct PresetCard: View {
             }
             .padding()
             .frame(width: 140, height: 100)
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
@@ -196,8 +196,6 @@ extension ModuleSettings {
         rewordingEnabled: Bool,
         taxonomyEnabled: Bool,
         continuityEnabled: Bool,
-        videoGenerationEnabled: Bool,
-        videoAssemblyEnabled: Bool,
         targetDuration: Double,
         videoQuality: VideoQuality,
         processingMode: ProcessingMode
@@ -208,8 +206,6 @@ extension ModuleSettings {
         self.rewordingEnabled = rewordingEnabled
         self.taxonomyEnabled = taxonomyEnabled
         self.continuityEnabled = continuityEnabled
-        self.videoGenerationEnabled = videoGenerationEnabled
-        self.videoAssemblyEnabled = videoAssemblyEnabled
         self.targetDuration = targetDuration
         self.videoQuality = videoQuality
         self.processingMode = processingMode

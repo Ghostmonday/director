@@ -38,4 +38,4 @@ Secrets.xcconfig
 
 # Project specific
 execution_status.json
-hardening_report.md
+hardening_report.mdsecrets.config

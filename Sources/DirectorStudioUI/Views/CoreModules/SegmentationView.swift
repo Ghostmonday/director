@@ -153,7 +153,11 @@ struct SegmentationView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
+                #if os(iOS)
                 .background(canSegment ? Color.blue : Color(UIColor.systemGray4))
+                #else
+                .background(canSegment ? Color.blue : Color(.separatorColor))
+                #endif
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
@@ -169,7 +173,11 @@ struct SegmentationView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray6))
+                    #else
+                    .background(Color(.controlBackgroundColor))
+                    #endif
                     .foregroundColor(.primary)
                     .cornerRadius(10)
                 }
@@ -191,7 +199,11 @@ struct SegmentationView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemGray6))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
         .cornerRadius(8)
     }
     
@@ -226,11 +238,19 @@ struct SegmentationView: View {
             .frame(maxHeight: 400)
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemBackground))
+        #else
+        .background(Color(.windowBackgroundColor))
+        #endif
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
+                #if os(iOS)
                 .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                #else
+                .stroke(Color(.separatorColor), lineWidth: 1)
+                #endif
         )
     }
     
@@ -377,7 +397,11 @@ struct SegmentCardView: View {
                         .foregroundColor(.secondary)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
-                        .background(Color(.systemGray5))
+                        #if os(iOS)
+                        .background(Color(UIColor.systemGray5))
+                        #else
+                        .background(Color.gray.opacity(0.2))
+                        #endif
                         .cornerRadius(6)
                 }
                 
@@ -402,11 +426,19 @@ struct SegmentCardView: View {
                 }
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
+                    #if os(iOS)
                     .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                    #else
+                    .stroke(Color(.separatorColor), lineWidth: 1)
+                    #endif
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -449,7 +481,11 @@ struct SegmentDetailView: View {
                         Text(segment.content)
                             .font(.body)
                             .padding()
+                            #if os(iOS)
                             .background(Color(UIColor.systemGray6))
+                            #else
+                            .background(Color(.controlBackgroundColor))
+                            #endif
                             .cornerRadius(8)
                     }
                     
@@ -503,7 +539,11 @@ struct SegmentDetailView: View {
                             Text(segment.continuityNotes)
                                 .font(.body)
                                 .padding()
+                                #if os(iOS)
                                 .background(Color(UIColor.systemGray6))
+                                #else
+                                .background(Color(.controlBackgroundColor))
+                                #endif
                                 .cornerRadius(8)
                         }
                     }
@@ -512,11 +552,19 @@ struct SegmentDetailView: View {
             }
             .navigationTitle("Segment Details")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                #endif
             }
         }
     }

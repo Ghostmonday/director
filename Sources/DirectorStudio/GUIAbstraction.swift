@@ -43,7 +43,7 @@ public struct GUIProject {
         self.name = project.name
         self.description = project.description
         self.createdAt = project.createdAt
-        self.updatedAt = project.updatedAt
+        self.updatedAt = project.lastModified
         self.segmentCount = segmentCount
         self.hasVideo = hasVideo
     }

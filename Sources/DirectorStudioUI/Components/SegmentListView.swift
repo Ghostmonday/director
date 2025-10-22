@@ -55,7 +55,9 @@ public struct SegmentListView: View {
                 }
             }
             .listStyle(.plain)
+            #if os(iOS)
             .environment(\.editMode, .constant(isSelectionMode ? .active : .inactive))
+            #endif
         }
     }
     
@@ -103,7 +105,11 @@ public struct SegmentListView: View {
                     .fontWeight(.medium)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
+                    #if os(iOS)
                     .background(Color(UIColor.systemGray5))
+                    #else
+                    .background(Color(.quaternaryLabelColor))
+                    #endif
                     .cornerRadius(6)
                 
                 // Cinematic tag indicator
@@ -153,7 +159,11 @@ public struct SegmentListView: View {
             .frame(minHeight: 44)
         }
         .padding()
+        #if os(iOS)
         .background(Color(UIColor.systemGray6))
+        #else
+        .background(Color(.controlBackgroundColor))
+        #endif
     }
     
     // MARK: - Helper Methods

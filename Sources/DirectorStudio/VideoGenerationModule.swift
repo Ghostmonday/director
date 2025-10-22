@@ -96,31 +96,6 @@ public enum VideoFormat: String, Sendable, Codable, CaseIterable {
     }
 }
 
-public enum VideoQuality: String, Sendable, Codable, CaseIterable {
-    case low = "low"
-    case medium = "medium"
-    case high = "high"
-    case ultra = "ultra"
-    
-    public var resolution: CGSize {
-        switch self {
-        case .low: return CGSize(width: 640, height: 480)
-        case .medium: return CGSize(width: 1280, height: 720)
-        case .high: return CGSize(width: 1920, height: 1080)
-        case .ultra: return CGSize(width: 3840, height: 2160)
-        }
-    }
-    
-    public var bitrate: Int {
-        switch self {
-        case .low: return 500_000
-        case .medium: return 2_000_000
-        case .high: return 8_000_000
-        case .ultra: return 25_000_000
-        }
-    }
-}
-
 public enum VideoStyle: String, Sendable, Codable, CaseIterable {
     case cinematic = "cinematic"
     case documentary = "documentary"
@@ -173,62 +148,26 @@ public final class VideoGenerationModule: PipelineModule, @unchecked Sendable {
     }
     private let fileManager = FileManager.default
     
-    public init(aiService: AIServiceProtocol = MockAIService()) {
+    public init(aiService: AIServiceProtocol) {
         self.aiService = aiService
     }
     
     // MARK: - PipelineModule Implementation
     
     public func execute(input: VideoGenerationInput, context: PipelineContext) async -> Result<VideoGenerationOutput, PipelineError> {
-        let startTime = Date()
-        
         do {
-            Telemetry.shared.logEvent("video_generation_started", properties: [
-                "project_name": input.projectName,
-                "segment_count": input.segments.count,
-                "style": input.style.rawValue,
-                "quality": input.quality.rawValue
-            ])
-            
-            // Phase 1: Generate video clips for each segment
-            let videoClips = try await generateVideoClips(for: input.segments, style: input.style, quality: input.quality)
-            
-            // Phase 2: Assemble clips into final video
-            let assembledVideo = try await assembleVideo(clips: videoClips, input: input)
-            
-            // Phase 3: Apply post-processing effects
-            let finalVideo = try await applyPostProcessing(to: assembledVideo, style: input.style)
-            
-            // Phase 4: Generate metadata
-            let metadata = GenerationVideoMetadata(
-                title: input.projectName,
-                description: "AI-generated video from \(input.segments.count) story segments",
-                tags: input.segments.compactMap { $0.cinematicTags != nil ? [$0.cinematicTags!.visualStyle] : [] }.flatMap { $0 }
+            let videoResult = try await aiService.generateVideo(
+                prompt: input.segments.first?.content ?? "No prompt",
+                style: input.style.rawValue,
+                duration: Int(input.segments.first?.duration ?? 20)
             )
             
-            let processingTime = Date().timeIntervalSince(startTime)
-            let fileSize = try getFileSize(url: finalVideo)
-            
-            let output = VideoGenerationOutput(
-                videoURL: finalVideo,
-                duration: input.duration,
-                fileSize: fileSize,
-                quality: input.quality,
-                format: input.outputFormat,
-                metadata: metadata,
-                processingTime: processingTime
-            )
-            
-            Telemetry.shared.logEvent("video_generation_completed", properties: [
-                "processing_time": processingTime,
-                "output_path": finalVideo.path,
-                "file_size": fileSize
-            ])
-            
-            return .success(output)
-            
+            if let videoURL = videoResult.videoURL {
+                return .success(VideoGenerationOutput(videoURL: videoURL, duration: 0, fileSize: 0, quality: .high, format: .mp4, metadata: .init(title: "", description: "", tags: []), processingTime: 0))
+            } else {
+                return .failure(.executionFailed(videoResult.errorMessage ?? "Unknown error"))
+            }
         } catch {
-            Telemetry.shared.logEvent("video_generation_failed", properties: ["error": error.localizedDescription])
             return .failure(.executionFailed(error.localizedDescription))
         }
     }

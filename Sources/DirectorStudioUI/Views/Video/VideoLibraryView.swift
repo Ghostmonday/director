@@ -79,7 +79,11 @@ struct VideoLibraryView: View {
                 }
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemGray6))
+            #else
+            .background(Color(.controlBackgroundColor))
+            #endif
             .cornerRadius(10)
             
             // Controls
@@ -284,7 +288,11 @@ struct VideoGridItemView: View {
                         .aspectRatio(contentMode: .fill)
                 } placeholder: {
                     RoundedRectangle(cornerRadius: 8)
+                        #if os(iOS)
                         .fill(Color(.systemGray5))
+                        #else
+                        .fill(Color(.quaternaryLabelColor))
+                        #endif
                         .overlay(
                             VStack {
                                 Image(systemName: "video.fill")
@@ -363,11 +371,19 @@ struct VideoGridItemView: View {
                 }
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemBackground))
+            #else
+            .background(Color(.windowBackgroundColor))
+            #endif
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
+                    #if os(iOS)
                     .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                    #else
+                    .stroke(Color(.separatorColor), lineWidth: 1)
+                    #endif
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -420,7 +436,11 @@ struct VideoListItemView: View {
                         .aspectRatio(contentMode: .fill)
                 } placeholder: {
                     RoundedRectangle(cornerRadius: 6)
+                        #if os(iOS)
                         .fill(Color(.systemGray5))
+                        #else
+                        .fill(Color(.quaternaryLabelColor))
+                        #endif
                         .overlay(
                             Image(systemName: "video.fill")
                                 .foregroundColor(.secondary)
@@ -472,11 +492,19 @@ struct VideoListItemView: View {
                     .foregroundColor(.blue)
             }
             .padding()
+            #if os(iOS)
             .background(Color(UIColor.systemBackground))
+            #else
+            .background(Color(.windowBackgroundColor))
+            #endif
             .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
+                    #if os(iOS)
                     .stroke(Color(UIColor.systemGray4), lineWidth: 1)
+                    #else
+                    .stroke(Color(.separatorColor), lineWidth: 1)
+                    #endif
             )
         }
         .buttonStyle(PlainButtonStyle())
@@ -556,8 +584,12 @@ struct VideoPlayerView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
+                        #if os(iOS)
+                        .background(Color(UIColor.systemGray6))
+                        #else
+                        .background(Color(.controlBackgroundColor))
+                        #endif
+                        .foregroundColor(.primary)
                         .cornerRadius(10)
                     }
                     
@@ -569,7 +601,11 @@ struct VideoPlayerView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
+                        #if os(iOS)
                         .background(Color(UIColor.systemGray6))
+                        #else
+                        .background(Color(.controlBackgroundColor))
+                        #endif
                         .foregroundColor(.primary)
                         .cornerRadius(10)
                     }
@@ -580,11 +616,19 @@ struct VideoPlayerView: View {
             .padding()
             .navigationTitle("Video Player")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                #endif
             }
         }
     }
